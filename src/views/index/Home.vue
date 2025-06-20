@@ -24,7 +24,7 @@
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="index.html" class="logo">
-              <h4>SEO Dream <img src="../../assets/images/logo-icon.png" alt=""></h4>
+              <img src="../../assets/images/logo.png" alt="">
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -34,11 +34,13 @@
               <li class="scroll-to-section"><a href="#about">About Us</a></li>
               <li class="scroll-to-section"><a href="#services">Services</a></li>
               <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li>
-              <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
-              <li class="scroll-to-section"><div class="main-blue-button"><a href="#contact">Get Your Quote</a></div></li> 
-            </ul>        
+              <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
+              <li class="scroll-to-section">
+                <div class="main-blue-button"><a href="#contact">Whats App</a></div>
+              </li>
+            </ul>
             <a class='menu-trigger'>
-                <span>Menu</span>
+              <span>Menu</span>
             </a>
             <!-- ***** Menu End ***** -->
           </nav>
@@ -56,7 +58,7 @@
             <div class="col-lg-6 align-self-center">
               <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <div class="row">
-                  <div class="col-lg-4 col-sm-4">
+                  <!-- <div class="col-lg-4 col-sm-4">
                     <div class="info-stat">
                       <h6>Agency Status:</h6>
                       <h4>Ready Work</h4>
@@ -73,13 +75,13 @@
                       <h6>Schedules</h6>
                       <h4>$450/Meeting</h4>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="col-lg-12">
-                    <h2>SEO &amp; Digital Marketing Agency</h2>
+                    <h2>Centro de Especialidades Médicas</h2>
                   </div>
                   <div class="col-lg-12">
                     <div class="main-green-button scroll-to-section">
-                      <a href="#contact">Get Your Quote</a>
+                      <a href="#contact">Fale com nossos atendentes</a>
                     </div>
                   </div>
                 </div>
@@ -87,7 +89,7 @@
             </div>
             <div class="col-lg-6">
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="../../assets/images/banner-right-image.png" alt="">
+                <img src="../../assets/images/doctor_green.png" alt="">
               </div>
             </div>
           </div>
@@ -96,7 +98,96 @@
     </div>
   </div>
 
-  <div id="features" class="features section">
+  <div id="services" class="our-services section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="section-heading wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
+            <h6>Cuidando de você, com qualidade e coração</h6>
+            <h2>Desde 2011, o Centro Médico <span>Cavalcante</span> cuida da <em>saúde</em> da nossa região</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
+            <p>Desde 2011, o Centro Médico Cavalcante cuida da saúde da nossa região, com médicos especializados,
+              exames de ponta e muita dedicação ao bem-estar e à prevenção da saúde dos nossos pacientes. Aqui, todo
+              mundo é tratado com respeito e acolhimento.<br/><br/>
+
+              Além de atender vários convênios, fomos os pioneiros no Guarujá a oferecer consultas populares. Isso
+              facilita para quem não tem plano de saúde, mas precisa de um médico de confiança.
+
+              Em maio de 2017, abrimos nossa segunda unidade em Praia Grande, com 14 médicos atendendo em diferentes
+              especialidades. Hoje, temos uma parceria com a Prefeitura e cuidamos de muitos pacientes do SUS.
+
+              Já em 2021, inauguramos nossa segunda unidade no Guarujá para atender ainda mais pessoas, gerar empregos e
+              trazer novos médicos para a cidade.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4" data-bs-toggle="modal" data-bs-target="#modalConsulta" style="cursor: pointer;">
+          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="icon">
+                  <img src="../../assets/images/service-icon-01.png" alt="">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="right-content">
+                  <h4>Consultas Médicas</h4>
+                  <p>Consultas com profissionais qualificados e prontos para cuidar de você.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4" data-bs-toggle="modal" data-bs-target="#modalExame" style="cursor: pointer;">
+          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="icon">
+                  <img src="../../assets/images/service-icon-02.png" alt="">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="right-content">
+                  <h4>Exames Laboratoriais</h4>
+                  <p>Exames laboratoriais completos para diagnósticos seguros e precisos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4" data-bs-toggle="modal" data-bs-target="#modalEstetica" style="cursor: pointer;">
+          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="icon">
+                  <img src="../../assets/images/service-icon-03.png" alt="">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="right-content">
+                  <h4>Estética</h4>
+                  <p>Serviços de estética para realçar sua beleza e promover bem-estar.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div id="features" class="features section">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -229,7 +320,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div id="about" class="about-us section">
     <div class="container">
@@ -264,7 +355,10 @@
               </div>
             </div>
           </div>
-          <p><a rel="nofollow" href="https://templatemo.com/tm-563-seo-dream" target="_parent">SEO Dream</a> is free digital marketing CSS template provided by TemplateMo website. You are allowed to use this template for your business websites. Please DO NOT redistribute this template ZIP file on any Free CSS collection websites. You may contact us for more information. Thank you.</p>
+          <p><a rel="nofollow" href="https://templatemo.com/tm-563-seo-dream" target="_parent">SEO Dream</a> is free
+            digital marketing CSS template provided by TemplateMo website. You are allowed to use this template for your
+            business websites. Please DO NOT redistribute this template ZIP file on any Free CSS collection websites.
+            You may contact us for more information. Thank you.</p>
           <div class="main-green-button"><a href="#">Discover company</a></div>
         </div>
       </div>
@@ -411,7 +505,9 @@
                   <img src="../../assets/images/portfolio-01.jpg" alt="">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#"><h4>Awesome Project 101</h4></a>
+                      <a href="#">
+                        <h4>Awesome Project 101</h4>
+                      </a>
                       <span>Marketing</span>
                     </div>
                   </div>
@@ -422,7 +518,9 @@
                   <img src="../../assets/images/portfolio-04.jpg" alt="">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#"><h4>Awesome Project 102</h4></a>
+                      <a href="#">
+                        <h4>Awesome Project 102</h4>
+                      </a>
                       <span>Branding</span>
                     </div>
                   </div>
@@ -435,7 +533,9 @@
                   <img src="../../assets/images/portfolio-02.jpg" alt="">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#"><h4>Awesome Project 103</h4></a>
+                      <a href="#">
+                        <h4>Awesome Project 103</h4>
+                      </a>
                       <span>Consulting</span>
                     </div>
                   </div>
@@ -446,7 +546,9 @@
                   <img src="../../assets/images/portfolio-05.jpg" alt="">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#"><h4>Awesome Project 104</h4></a>
+                      <a href="#">
+                        <h4>Awesome Project 104</h4>
+                      </a>
                       <span>Artwork</span>
                     </div>
                   </div>
@@ -459,7 +561,9 @@
                   <img src="../../assets/images/portfolio-03.jpg" alt="">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#"><h4>Awesome Project 105</h4></a>
+                      <a href="#">
+                        <h4>Awesome Project 105</h4>
+                      </a>
                       <span>Branding</span>
                     </div>
                   </div>
@@ -470,7 +574,9 @@
                   <img src="../../assets/images/portfolio-06.jpg" alt="">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#"><h4>Awesome Project 106</h4></a>
+                      <a href="#">
+                        <h4>Awesome Project 106</h4>
+                      </a>
                       <span>Artwork</span>
                     </div>
                   </div>
@@ -483,7 +589,9 @@
                   <img src="../../assets/images/portfolio-04.jpg" alt="">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#"><h4>Awesome Project 107</h4></a>
+                      <a href="#">
+                        <h4>Awesome Project 107</h4>
+                      </a>
                       <span>Creative</span>
                     </div>
                   </div>
@@ -494,7 +602,9 @@
                   <img src="../../assets/images/portfolio-01.jpg" alt="">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#"><h4>Awesome Project 108</h4></a>
+                      <a href="#">
+                        <h4>Awesome Project 108</h4>
+                      </a>
                       <span>Consulting</span>
                     </div>
                   </div>
@@ -528,12 +638,14 @@
                   </div>
                   <div class="col-lg-6">
                     <fieldset>
-                      <input type="surname" name="surname" id="surname" placeholder="Surname" autocomplete="on" required>
+                      <input type="surname" name="surname" id="surname" placeholder="Surname" autocomplete="on"
+                        required>
                     </fieldset>
                   </div>
                   <div class="col-lg-6">
                     <fieldset>
-                      <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                      <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email"
+                        required="">
                     </fieldset>
                   </div>
                   <div class="col-lg-6">
@@ -543,7 +655,8 @@
                   </div>
                   <div class="col-lg-12">
                     <fieldset>
-                      <textarea name="message" type="text" class="form-control" id="message" placeholder="Message" required=""></textarea>  
+                      <textarea name="message" type="text" class="form-control" id="message" placeholder="Message"
+                        required=""></textarea>
                     </fieldset>
                   </div>
                   <div class="col-lg-12">
@@ -588,15 +701,40 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <p>Copyright © 2021 SEO Dream Co., Ltd. All Rights Reserved. 
-          
-          <br>Web Designed by <a rel="nofollow" href="https://templatemo.com" title="free CSS templates">TemplateMo</a></p>
+          <p>Copyright © 2021 SEO Dream Co., Ltd. All Rights Reserved.
+
+            <br>Web Designed by <a rel="nofollow" href="https://templatemo.com"
+              title="free CSS templates">TemplateMo</a>
+          </p>
         </div>
       </div>
     </div>
   </footer>
+  
+  // #region Modal
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalConsultaLabel">Consultas Médicas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Conteúdo do modal. Coloque aqui qualquer informação que deseja exibir.
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  // #endregion Modal
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+  @use '../../style.scss';
 </style>
