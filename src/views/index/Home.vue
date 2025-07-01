@@ -2,6 +2,113 @@
 
 import U3Carousel from '../../components/UCarousel.vue';
 
+const slidesConsulta = [
+  {
+    title: 'Cardiologia',
+    details: 'Na nossa clínica, o atendimento em cardiologia é focado no cuidado integral do coração e do sistema cardiovascular. Oferecemos consultas, exames preventivos e tratamentos de condições como hipertensão, insuficiência cardíaca, arritmias e doenças coronarianas. Estamos aqui para cuidar da sua saúde cardíaca de forma personalizada.',
+  },
+  {
+    title: 'Psiquiatria',
+    details: 'O atendimento em psiquiatria é centrado no bem-estar mental e emocional dos nossos pacientes. Nossos profissionais estão preparados para diagnosticar e tratar condições como depressão, ansiedade, transtorno bipolar e esquizofrenia, sempre com empatia e uma abordagem humanizada.',
+  },
+  {
+    title: 'Otorrino<br>laringologia',
+    details: 'Oferecemos atendimento especializado em otorrinolaringologia, cuidando de problemas no ouvido, nariz e garganta. Nossa equipe trata condições como sinusite, alergias respiratórias, perda auditiva e apneia do sono, garantindo diagnósticos precisos e tratamentos eficazes.',
+  },
+  {
+    title: 'Pediatria',
+    details: 'O atendimento pediátrico na nossa clínica é voltado para o cuidado integral de crianças e adolescentes. Nossos pediatras acompanham o desenvolvimento físico e emocional, oferecendo prevenção, diagnóstico e tratamento de diversas condições, sempre em um ambiente acolhedor.',
+  },
+  {
+    title: 'Ortopedia',
+    details: 'Na área de ortopedia, nossos especialistas cuidam de doenças e lesões musculoesqueléticas. Atendemos pacientes com fraturas, dores crônicas, lesões esportivas e doenças como artrose, oferecendo tratamentos modernos e individualizados.',
+  },
+  {
+    title: 'Oftalmologia',
+    details: 'Nosso serviço de oftalmologia é dedicado à saúde dos olhos. Realizamos consultas, exames e tratamentos para miopia, astigmatismo, glaucoma e outras condições oculares, garantindo um acompanhamento completo e eficaz para a melhor qualidade de visão.',
+  },
+  {
+    title: 'Nutrição',
+    details: 'Oferecemos atendimento nutricional personalizado para promover uma alimentação saudável e equilibrada. Nossos nutricionistas elaboram planos alimentares específicos para prevenção de doenças, controle de peso e melhoria do bem-estar geral.',
+  },
+  {
+    title: 'Hematologia',
+    details: 'Na hematologia, nosso atendimento abrange o diagnóstico e tratamento de condições relacionadas ao sangue, como anemias, leucemias e distúrbios de coagulação. Trabalhamos com equipamentos modernos e protocolos seguros para garantir o melhor cuidado.',
+  },
+  {
+    title: 'Ginecologia',
+    details: 'Nosso atendimento ginecológico é voltado para a saúde integral da mulher, abordando prevenção, diagnóstico e tratamento de condições relacionadas ao sistema reprodutor. Oferecemos orientação em todas as fases da vida, sempre com acolhimento e cuidado.',
+  },
+  {
+    title: 'Gastren<br>terologia',
+    details: 'Na área de gastrenterologia, cuidamos da saúde do sistema digestivo, tratando condições como gastrite, refluxo e doenças inflamatórias intestinais. Oferecemos consultas e exames especializados para garantir o melhor cuidado ao paciente.',
+  },
+  {
+    title: 'Endocrinologia',
+    details: 'O atendimento em endocrinologia na nossa clínica é focado em tratamentos para diabetes, obesidade, problemas hormonais e disfunções da tireoide. Priorizamos uma abordagem individualizada para melhorar a qualidade de vida dos nossos pacientes.',
+  },
+  {
+    title: 'Dermatologia',
+    details: 'Na dermatologia, cuidamos da saúde da pele, cabelos e unhas. Tratamos condições como acne, psoríase e alergias cutâneas, além de realizarmos procedimentos estéticos e preventivos para o bem-estar do paciente.',
+  },
+  {
+    title: 'Clínico Geral',
+    details: 'Nosso atendimento clínico geral é voltado para a avaliação inicial e o acompanhamento integral dos pacientes. Oferecemos diagnóstico, tratamento e, se necessário, encaminhamento para outras especialidades, sempre com foco na saúde preventiva.',
+  },
+  {
+    title: 'Cirurgia Vascular',
+    details: 'Na cirurgia vascular, oferecemos atendimento especializado para o diagnóstico e tratamento de condições como varizes, tromboses e aneurismas. Utilizamos técnicas modernas para garantir segurança e eficácia nos procedimentos.',
+  },
+];
+const slidesExame = [
+  {
+    title: 'Laboratório de Analises Clínicas',
+    details: '',
+  },
+  {
+    title: 'Colposcopia',
+    details: 'A colposcopia é um exame ginecológico que permite a visualização detalhada do colo',
+  },
+  {
+    title: 'Vulvoscopia',
+    details: '',
+  },
+  {
+    title: 'Ultrasonografia',
+    details: '',
+  },
+  {
+    title: 'Papanicolau',
+    details: '',
+  },
+  {
+    title: 'Laringoscopia',
+    details: '',
+  },
+  {
+    title: 'Nasofibro<br>laringoscopia',
+    details: '',
+  },
+];
+const slidesEstetica = [
+  {
+    title: 'Estética Facial',
+    details: '',
+  },
+  {
+    title: 'Estética Corporal',
+    details: '',
+  },
+  {
+    title: 'Criolipólise',
+    details: '',
+  },
+  {
+    title: 'Tratamento Ozonio Terapia',
+    details: '',
+  },
+];
+
 </script>
 
 <template>
@@ -117,7 +224,7 @@ import U3Carousel from '../../components/UCarousel.vue';
           <div class="section-heading wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
             <p>Desde 2011, o Centro Médico Cavalcante cuida da saúde da nossa região, com médicos especializados,
               exames de ponta e muita dedicação ao bem-estar e à prevenção da saúde dos nossos pacientes. Aqui, todo
-              mundo é tratado com respeito e acolhimento.<br/><br/>
+              mundo é tratado com respeito e acolhimento.<br /><br />
 
               Além de atender vários convênios, fomos os pioneiros no Guarujá a oferecer consultas populares. Isso
               facilita para quem não tem plano de saúde, mas precisa de um médico de confiança.
@@ -712,9 +819,8 @@ import U3Carousel from '../../components/UCarousel.vue';
       </div>
     </div>
   </footer>
-  
-  // #region Modal
 
+  // #region Modals
   <!-- Modal -->
   <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -724,7 +830,7 @@ import U3Carousel from '../../components/UCarousel.vue';
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div> -->
         <div class="modal-body">
-          <U3Carousel></U3Carousel>
+          <U3Carousel :slides="slidesConsulta"></U3Carousel>
         </div>
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -734,9 +840,33 @@ import U3Carousel from '../../components/UCarousel.vue';
     </div>
   </div>
 
-  // #endregion Modal
+  <div class="modal fade" id="modalExame" tabindex="-2" aria-labelledby="modalExameLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <U3Carousel :slides="slidesExame"></U3Carousel>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalEstetica" tabindex="-3" aria-labelledby="modalEsteticaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <U3Carousel :slides="slidesEstetica"></U3Carousel>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  // #endregion Modals
 </template>
 
 <style scoped lang="scss">
-  @use '../../style.scss';
+@use '../../style.scss';
 </style>

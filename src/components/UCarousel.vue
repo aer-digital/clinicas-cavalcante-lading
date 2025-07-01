@@ -1,16 +1,18 @@
 <template>
   <div style="width: 100%; height: 100%;">
-    <swiper :slidesPerView="5" :spaceBetween="10" :freeMode="true" :pagination="{ clickable: true }" :modules="modules"
-      class="mySwiper">
+    <swiper :slidesPerView="5" :spaceBetween="10" :breakpoints="breakpoints" :freeMode="true"
+      :pagination="{ clickable: true, }" :modules="modules" class="mySwiper">
       <swiper-slide v-for="(slide, index) in slides" :key="index" @click="toggleSlide(index)">
         <div class="swiper-slide-in" :class="{ 'selected': selectedSlide === index }">
-          <div v-if="selectedSlide === index">
-            <p>{{ slide.details }}</p>
-            <button @click.stop="closeSlide">Fechar</button>
-          </div>
-          <div v-else class="slide-title">
-            <h4>{{ slide.title }}</h4>
-          </div>
+          <transition name="fade" mode="out-in">
+            <div key="1" v-if="selectedSlide === index" class="slide-details">
+              <p>{{ slide.details }}</p>
+              <!-- <button @click.stop="closeSlide">Fechar</button> -->
+            </div>
+            <div key="2" v-else class="slide-title">
+              <h4 v-html="slide.title"></h4>
+            </div>
+          </transition>
         </div>
       </swiper-slide>
     </swiper>
@@ -20,7 +22,7 @@
 
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -28,68 +30,18 @@ import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 
 export default {
+  props: {
+    slides: {
+      type: Array,
+      required: true,
+      default: () => [],
+    },
+  },
   components: { Swiper, SwiperSlide },
-  setup() {
-    const slides = [
-      {
-        title: 'Cardiologia',
-        details: 'A Cardiologia é a especialidade médica dedicada ao diagnóstico e tratamento das doenças que acometem o coração e todo o sistema circulatório. Isso inclui problemas como hipertensão, insuficiência cardíaca, arritmias, infartos e cuidados preventivos para a saúde cardiovascular.',
-      },
-      {
-        title: 'Psiquiatria',
-        details: 'A Psiquiatria é a especialidade médica que se ocupa do diagnóstico, tratamento e prevenção de doenças mentais, emocionais e comportamentais. Entre as condições tratadas estão a ansiedade, depressão, transtorno bipolar, esquizofrenia e outros distúrbios psicológicos.',
-      },
-      {
-        title: 'Otorrinolaringologia',
-        details: 'A Otorrinolaringologia trata das condições que afetam o ouvido, nariz e garganta. Entre as áreas de atuação estão o tratamento de sinusite, amigdalite, problemas auditivos, distúrbios da voz e dificuldades respiratórias.',
-      },
-      {
-        title: 'Pediatria',
-        details: 'A Pediatria é a especialidade médica que cuida da saúde de crianças e adolescentes, desde o nascimento até a adolescência. Abrange o acompanhamento do crescimento, desenvolvimento, vacinação, prevenção e tratamento de doenças comuns da infância.',
-      },
-      {
-        title: 'Ortopedia',
-        details: 'A Ortopedia é a área médica responsável pelo estudo, diagnóstico e tratamento das doenças e lesões relacionadas ao sistema musculoesquelético, que inclui ossos, articulações, ligamentos, músculos e tendões. Ela trata desde fraturas até condições crônicas, como a artrose.',
-      },
-      {
-        title: 'Oftalmologia',
-        details: 'A Oftalmologia é a especialidade médica que cuida da saúde dos olhos. Engloba o diagnóstico e tratamento de doenças oculares, como catarata, glaucoma, problemas de refração (miopia, hipermetropia, astigmatismo) e doenças da retina.',
-      },
-      {
-        title: 'Nutrição',
-        details: 'A Nutrição é a ciência que estuda os alimentos e como eles impactam a saúde e o bem-estar. O nutricionista é responsável por planejar dietas, orientar mudanças alimentares e tratar condições relacionadas à alimentação, como obesidade, diabetes e intolerâncias alimentares.',
-      },
-      {
-        title: 'Hematologista',
-        details: 'A Hematologia é a especialidade médica que se dedica ao estudo do sangue, tecidos produtores e órgãos relacionados. Ela trata anemias, distúrbios de coagulação, leucemias, linfomas, doenças autoimunes do sangue e muito mais.',
-      },
-      {
-        title: 'Ginecologia',
-        details: 'A Ginecologia é a área da medicina voltada para a saúde da mulher. Inclui o diagnóstico e tratamento de doenças do sistema reprodutor feminino, cuidados com o ciclo menstrual, saúde hormonal, menopausa, prevenção de cânceres ginecológicos e planejamento familiar.',
-      },
-      {
-        title: 'Gastrenterologia',
-        details: 'A Gastrenterologia é a especialidade médica que estuda o sistema digestivo, tratando doenças que afetam o esôfago, estômago, intestino, fígado, pâncreas e vesícula biliar. Exemplos incluem gastrite, refluxo, úlceras, síndrome do intestino irritável e hepatite.',
-      },
-      {
-        title: 'Endocrinologia',
-        details: 'A Endocrinologia estuda as glândulas endócrinas e seus hormônios. Os endocrinologistas tratam condições como diabetes, obesidade, doenças da tireoide, alterações hormonais e distúrbios do crescimento.',
-      },
-      {
-        title: 'Dermatologia',
-        details: 'A Dermatologia é a especialidade médica que se ocupa do diagnóstico e tratamento das doenças da pele, cabelo e unhas. Inclui condições como acne, psoríase, dermatites, alopecia e câncer de pele, além de procedimentos estéticos.',
-      },
-      {
-        title: 'Clínico Geral',
-        details: 'O Clínico Geral é o médico que realiza consultas gerais, oferecendo diagnóstico inicial, orientação e tratamento de condições de saúde diversas. Ele também atua no encaminhamento para especialistas quando necessário.',
-      },
-      {
-        title: 'Cirurgia Vascular',
-        details: 'A Cirurgia Vascular trata de doenças dos vasos sanguíneos e linfáticos. Isso inclui varizes, trombose, aneurismas, má circulação e outras condições que afetam o sistema vascular.',
-      },
-    ];
 
+  setup(props, { expose }) {
     const selectedSlide = ref(null);
+    const length = ref(5); // Ref para armazenar dinamicamente o número de slides visíveis
 
     function toggleSlide(index) {
       selectedSlide.value = selectedSlide.value === index ? null : index;
@@ -99,15 +51,43 @@ export default {
       selectedSlide.value = null;
     }
 
+    expose({
+      closeSlide, // Permite que o método seja chamado de fora do componente
+    });
+
+    const breakpoints = ref({
+      1024: { slidesPerView: length.value, spaceBetween: 10 },
+      768: { slidesPerView: 3, spaceBetween: 10 },
+      0: { slidesPerView: 2, spaceBetween: 10 },
+    });
+
+    // Atualiza o valor de length e breakpoints quando `props.slides` muda
+    const updateBreakpoints = () => {
+      length.value = props.slides.length < 5 ? props.slides.length : 5;
+      breakpoints.value = {
+        1024: { slidesPerView: length.value, spaceBetween: 10 },
+        768: { slidesPerView: 3, spaceBetween: 10 },
+        0: { slidesPerView: 2, spaceBetween: 10 },
+      };
+    };
+
+    // Observa alterações no valor de slides
+    watch(() => props.slides, updateBreakpoints, { immediate: true });
+
+    // Atualiza os breakpoints ao montar o componente
+    onMounted(updateBreakpoints);
+
     return {
-      slides,
       selectedSlide,
       toggleSlide,
       closeSlide,
+      breakpoints,
       modules: [FreeMode, Pagination],
     };
   },
 };
+
+
 </script>
 
 
@@ -121,7 +101,7 @@ export default {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #418e7147;
+  background: #418e71;
   height: 200px;
 
   /* Center slide text vertically */
@@ -136,8 +116,8 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  align-items: start;
+  justify-content: center;
+  align-items: center;
 }
 
 .swiper-slide-in.selected {
@@ -170,5 +150,51 @@ export default {
 ::v-deep(.swiper-pagination-bullet-active) {
   background-color: #418E71 !important;
   border-color: #fff !important;
+}
+
+.slide-title {
+
+  color: #d9d9d9;
+  text-wrap: wrap;
+  margin: 0 15px;
+
+  h4{
+    font-size: 1.6rem;
+  }
+}
+
+.slide-details {
+  overflow-y: scroll;
+  padding: 10px;
+  text-align: left;
+  margin: 5px;
+
+  p {
+    line-height: normal;
+    color: #d9d9d9;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #d9d9d975;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .3s
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0
 }
 </style>
