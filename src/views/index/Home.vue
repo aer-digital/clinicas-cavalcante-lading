@@ -1,5 +1,5 @@
 <script setup>
-
+import { ref, computed } from 'vue';
 import U3Carousel from '../../components/UCarousel.vue';
 
 const slidesConsulta = [
@@ -109,7 +109,105 @@ const slidesEstetica = [
   },
 ];
 
+const conveniosSindicatos = [
+  { title: "Awesome Project 101", category: "Marketing", image: "../../assets/images/portfolio-01.jpg", link: "#" },
+  { title: "Awesome Project 102", category: "Branding", image: "../../assets/images/portfolio-04.jpg", link: "#" },
+  { title: "Awesome Project 103", category: "Consulting", image: "../../assets/images/portfolio-02.jpg", link: "#" },
+  { title: "Awesome Project 104", category: "Artwork", image: "../../assets/images/portfolio-05.jpg", link: "#" },
+  { title: "Awesome Project 105", category: "Branding", image: "../../assets/images/portfolio-03.jpg", link: "#" },
+  { title: "Awesome Project 106", category: "Artwork", image: "../../assets/images/portfolio-06.jpg", link: "#" },
+];
+
+const formElement = ref(null)
+const form = ref({
+  name: '',
+  cidade: '',
+  estado: '',
+  email: '',
+  option: '',
+})
+const toBase64 = (file) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result); // inclui o data:mimetype;base64,...
+  reader.onerror = (error) => reject(error);
+});
+
+const file = ref(null)
+const fileInput = ref(null)
+
+const itemsPerGroup = 2;
+
+const grouped = computed(() => {
+  const groups = [];
+  for (let i = 0; i < conveniosSindicatos.length; i += itemsPerGroup) {
+    groups.push(conveniosSindicatos.slice(i, i + itemsPerGroup));
+  }
+  return groups;
+});
+
+const handleDrop = (e) => {
+  const droppedFile = e.dataTransfer.files[0]
+  if (droppedFile.size > 10 * 1024 * 1024) {
+    alert('Arquivo excede 10MB.')
+    return
+  }
+  file.value = droppedFile
+}
+
+const handleFileChange = (e) => {
+  const selectedFile = e.target.files[0]
+  if (selectedFile.size > 10 * 1024 * 1024) {
+    alert('Arquivo excede 10MB.')
+    return
+  }
+  file.value = selectedFile
+}
+
+const sendEmail = async () => {
+  try {
+    const rawFile = file.value; // ou só `file` se for uma variável normal
+    if (!rawFile) {
+      throw new Error("Arquivo não selecionado");
+    }
+
+    console.log("file:", rawFile);
+    console.log("name:", rawFile.name);
+    console.log("type:", rawFile.type);
+
+    const fileBase64 = await toBase64(rawFile);
+
+    const payload = {
+      from_name: form.value.name,
+      from_email: form.value.email,
+      option: form.value.option,
+      cidade: form.value.cidade,
+      estado: form.value.estado,
+      file: fileBase64,
+      filename: rawFile.name,
+      mimetype: rawFile.type,
+    };
+
+    console.log("Payload final:", payload);
+
+    await fetch("http://127.0.0.1:5001/aer-hosting-landings/us-central1/sendEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    alert("Email enviado com sucesso!");
+  } catch (err) {
+    console.error("Erro ao enviar email:", err);
+    alert("Erro ao enviar email.");
+  }
+};
+
+
 </script>
+
 
 <template>
   <!-- ***** Preloader Start ***** -->
@@ -222,7 +320,7 @@ const slidesEstetica = [
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <p>Desde 2011, o Centro Médico Cavalcante cuida da saúde da nossa região, com médicos especializados,
+            <p>Com médicos especializados,
               exames de ponta e muita dedicação ao bem-estar e à prevenção da saúde dos nossos pacientes. Aqui, todo
               mundo é tratado com respeito e acolhimento.<br /><br />
 
@@ -436,39 +534,39 @@ const slidesEstetica = [
       <div class="row">
         <div class="col-lg-6">
           <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-            <img src="../../assets/images/about-left-image.png" alt="">
+            <img src="/assets/img/via_saude_bg.png" alt="">
           </div>
         </div>
         <div class="col-lg-6 align-self-center wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
           <div class="section-heading">
-            <h6>About Us</h6>
-            <h2>Top <em>marketing</em> agency &amp; consult your website <span>with us</span></h2>
+            <h6>VIA SAÚDE</h6>
+            <h2>Cartão de Descontos Familiar<br><em>Economia</em> &amp; <span>Benefícios</span> em um só lugar</h2>
           </div>
           <div class="row">
             <div class="col-lg-4 col-sm-4">
               <div class="about-item">
-                <h4>750+</h4>
-                <h6>projects finished</h6>
+                <h4>500+</h4>
+                <h6>Beneficiados ativos</h6>
               </div>
             </div>
             <div class="col-lg-4 col-sm-4">
               <div class="about-item">
-                <h4>340+</h4>
-                <h6>happy clients</h6>
+                <h4>20+</h4>
+                <h6>Especialidades</h6>
               </div>
             </div>
             <div class="col-lg-4 col-sm-4">
               <div class="about-item">
-                <h4>128+</h4>
-                <h6>awards</h6>
+                <h4>4</h4>
+                <h6>Planos</h6>
               </div>
             </div>
           </div>
-          <p><a rel="nofollow" href="https://templatemo.com/tm-563-seo-dream" target="_parent">SEO Dream</a> is free
-            digital marketing CSS template provided by TemplateMo website. You are allowed to use this template for your
-            business websites. Please DO NOT redistribute this template ZIP file on any Free CSS collection websites.
-            You may contact us for more information. Thank you.</p>
-          <div class="main-green-button"><a href="#">Discover company</a></div>
+          <p>Através do cartão de benefícios o cliente tem descontos em consultas e exames dentro da rede credenciada,
+            sendo a principal rede o centro médico Cavalcante.
+          </p>
+          <div class="main-green-button"><a href="https://via-saude.web.app/" target="_blank"
+              style="background: #596fa5; font-weight: bolder;">Saiba mais</a></div>
         </div>
       </div>
     </div>
@@ -598,8 +696,8 @@ const slidesEstetica = [
       <div class="row">
         <div class="col-lg-5">
           <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
-            <h6>Our Portofolio</h6>
-            <h2>Discover Our Recent <em>Projects</em> And <span>Showcases</span></h2>
+            <h6>Parceiros</h6>
+            <h2>Use o seu <em>Convênio</em> ou <span>Sindicato</span></h2>
           </div>
         </div>
       </div>
@@ -608,113 +706,17 @@ const slidesEstetica = [
       <div class="row">
         <div class="col-lg-12">
           <div class="loop owl-carousel">
-            <div class="item">
-              <div class="portfolio-item">
+            <div v-for="(group, groupIndex) in grouped" :key="groupIndex" class="item">
+              <div v-for="(project, projectIndex) in group" :key="projectIndex" class="portfolio-item">
                 <div class="thumb">
-                  <img src="../../assets/images/portfolio-01.jpg" alt="">
+                  <img :src="project.image" :alt="project.title">
                   <div class="hover-content">
                     <div class="inner-content">
-                      <a href="#">
-                        <h4>Awesome Project 101</h4>
-                      </a>
-                      <span>Marketing</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="../../assets/images/portfolio-04.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Awesome Project 102</h4>
-                      </a>
-                      <span>Branding</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="../../assets/images/portfolio-02.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Awesome Project 103</h4>
-                      </a>
-                      <span>Consulting</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="../../assets/images/portfolio-05.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Awesome Project 104</h4>
-                      </a>
-                      <span>Artwork</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="../../assets/images/portfolio-03.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Awesome Project 105</h4>
-                      </a>
-                      <span>Branding</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="../../assets/images/portfolio-06.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Awesome Project 106</h4>
-                      </a>
-                      <span>Artwork</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="../../assets/images/portfolio-04.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Awesome Project 107</h4>
-                      </a>
-                      <span>Creative</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="../../assets/images/portfolio-01.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Awesome Project 108</h4>
-                      </a>
-                      <span>Consulting</span>
+                      <h4>{{ project.title }}</h4>
+                      <!-- <a :href="project.link">
+                        <h4>{{ project.title }}</h4>
+                      </a> -->
+                      <span>{{ project.category }}</span>
                     </div>
                   </div>
                 </div>
@@ -729,16 +731,94 @@ const slidesEstetica = [
   <div id="contact" class="contact-us section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
-          <form id="contact" action="" method="post">
+        <div class="row col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+
+          <div class="col-6">
+            <div class="contact-info">
+              <ul>
+                <li>
+                  <div class="icon">
+                    <img src="../../assets/images/contact-icon-01.png" alt="email icon">
+                  </div>
+                  <a href="#">info@company.com</a>
+                </li>
+                <li>
+                  <div class="icon">
+                    <img src="../../assets/images/contact-icon-02.png" alt="phone">
+                  </div>
+                  <a href="#">+001-002-0034</a>
+                </li>
+                <li>
+                  <div class="icon">
+                    <img src="../../assets/images/contact-icon-03.png" alt="location">
+                  </div>
+                  <a href="#">26th Street, Digital Villa</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <form id="contact-form" ref="formElement" @submit.prevent="sendEmail">
+              <!-- Campos normais -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <input type="text" name="from_name" v-model="form.name" class="form-control mb-3" placeholder="Nome Completo" required />
+                </div>
+                <div class="col-lg-8">
+                  <input type="text" name="city" v-model="form.cidade" class="form-control mb-3" placeholder="Cidade" required />
+                </div>
+                <div class="col-lg-4">
+                  <input type="text" name="state" v-model="form.estado" class="form-control mb-3" placeholder="Estado" required />
+                </div>
+                <div class="col-lg-12">
+                  <input type="email" name="from_email" v-model="form.email" class="form-control mb-3" placeholder="Email" required />
+                </div>
+                <!-- <div class="col-lg-12">
+                  <textarea v-model="form.message" class="form-control mb-3" rows="4" placeholder="Mensagem"
+                    required></textarea>
+                </div> -->
+
+                <!-- Dropdown -->
+                <div class="col-lg-12">
+                  <select name="option" class="form-select mb-3" v-model="form.option" required>
+                    <option disabled value="">Selecione uma opção</option>
+                    <option>Auxiliar de limpeza</option>
+                    <option>Enfermagem</option>
+                    <option>Médicos</option>
+                    <option>Recepção</option>
+                  </select>
+                </div>
+
+                <!-- Drag & drop -->
+                <div class="col-lg-12">
+                  <div class="border rounded p-4 text-center mb-3" @dragover.prevent @drop.prevent="handleDrop">
+                    <p v-if="!file">Arraste um arquivo aqui (máx. 10MB)</p>
+                    <p v-else>{{ file.name }}</p>
+                    <input type="file" name="attachment" @change="handleFileChange" hidden ref="fileInput" />
+                    <button class="btn btn-outline-secondary mt-2" @click.prevent="$refs.fileInput.click()">Selecionar
+                      Arquivo</button>
+                  </div>
+                </div>
+
+                <!-- Botão -->
+                <div class="col-lg-12">
+                  <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- <form id="contact" action="" method="post">
             <div class="row">
               <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
-                  <h6>Contact Us</h6>
+                  <h6>Fale conosco</h6>
                   <h2>Fill Out The Form Below To <span>Get</span> In <em>Touch</em> With Us</h2>
                 </div>
               </div>
-              <div class="col-lg-9">
+              <div class="col-lg-6">
+                <h2>Faça parte da equipe</h2>
                 <div class="row">
                   <div class="col-lg-6">
                     <fieldset>
@@ -775,7 +855,7 @@ const slidesEstetica = [
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3">
+              <div class="col-lg-6">
                 <div class="contact-info">
                   <ul>
                     <li>
@@ -800,7 +880,7 @@ const slidesEstetica = [
                 </div>
               </div>
             </div>
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
@@ -810,17 +890,16 @@ const slidesEstetica = [
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <p>Copyright © 2021 SEO Dream Co., Ltd. All Rights Reserved.
+          <p>Copyright © 2025 A&R All Rights Reserved.
 
-            <br>Web Designed by <a rel="nofollow" href="https://templatemo.com"
-              title="free CSS templates">TemplateMo</a>
+            <!-- <br>Web Designed by <a rel="nofollow" href="https://templatemo.com"
+              title="free CSS templates">TemplateMo</a> -->
           </p>
         </div>
       </div>
     </div>
   </footer>
 
-  // #region Modals
   <!-- Modal -->
   <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -853,7 +932,7 @@ const slidesEstetica = [
   </div>
 
   <div class="modal fade" id="modalEstetica" tabindex="-3" aria-labelledby="modalEsteticaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
 
         <div class="modal-body">
@@ -864,9 +943,39 @@ const slidesEstetica = [
     </div>
   </div>
 
-  // #endregion Modals
 </template>
 
 <style scoped lang="scss">
 @use '../../style.scss';
+
+.about-us {
+
+  .section-heading {
+    h6 {
+      color: #596fa5;
+    }
+
+    h2 {
+      color: #45423E;
+
+      em,
+      span {
+        color: #596fa5;
+        ;
+      }
+    }
+  }
+
+}
+
+#contact-form{
+  input, select{
+    background-color: #d9d9d945;
+    color: #d9d9d9;
+
+    &::placeholder{
+      color: #d9d9d9;
+    }
+  }
+}
 </style>
