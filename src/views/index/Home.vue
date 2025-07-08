@@ -190,7 +190,7 @@ const sendEmail = async () => {
 
     console.log("Payload final:", payload);
 
-    await fetch("http://127.0.0.1:5001/aer-hosting-landings/us-central1/sendEmail", {
+    await fetch("https://us-central1-aer-hosting-landings.cloudfunctions.net/sendEmail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
