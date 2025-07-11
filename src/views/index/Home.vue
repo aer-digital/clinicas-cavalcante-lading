@@ -1,6 +1,10 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import U3Carousel from '../../components/UCarousel.vue';
+
+onMounted(() => {
+  form.value.token = Date.now(); // marca o tempo de renderização do formulário
+});
 
 const slidesConsulta = [
   {
@@ -125,6 +129,8 @@ const form = ref({
   estado: '',
   email: '',
   option: '',
+  empresa: '', // campo honeypot para evitar spam
+  token: '',
 })
 const toBase64 = (file) => new Promise((resolve, reject) => {
   const reader = new FileReader();
@@ -184,8 +190,10 @@ const sendEmail = async () => {
       cidade: form.value.cidade,
       estado: form.value.estado,
       file: fileBase64,
-      filename: rawFile.name,
-      mimetype: rawFile.type,
+      filename: file.value.name,
+      mimetype: file.value.type,
+      empresa: form.value.empresa, // honeypot
+      token: form.value.token,     // timestamp
     };
 
     console.log("Payload final:", payload);
@@ -762,6 +770,9 @@ const sendEmail = async () => {
             <form id="contact-form" ref="formElement" @submit.prevent="sendEmail">
               <!-- Campos normais -->
               <div class="row">
+                <!-- Honeypot: campo invisível para bots -->
+                <input type="text" name="empresa" v-model="form.empresa" style="display:none;" tabindex="-1" autocomplete="off" />
+
                 <div class="col-lg-12">
                   <input type="text" name="from_name" v-model="form.name" class="form-control mb-3" placeholder="Nome Completo" required />
                 </div>
