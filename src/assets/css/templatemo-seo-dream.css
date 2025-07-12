@@ -1362,6 +1362,17 @@ Services Style
   border-radius: 50%;
 }
 
+#plans .service-item .icon {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.service-item h4{
+  overflow-wrap: break-word; 
+  word-break: break-word;
+}
+
 .service-item .icon img {
     width: 38px;
     height: 38px;

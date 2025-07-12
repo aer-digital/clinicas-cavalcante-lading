@@ -553,6 +553,12 @@ const sendEmail = async () => {
           <div class="row">
             <div class="col-lg-4 col-sm-4">
               <div class="about-item">
+                <h4>R$29,90</h4>
+                <h6>Planos a partir</h6>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+              <div class="about-item">
                 <h4>500+</h4>
                 <h6>Beneficiados ativos</h6>
               </div>
@@ -561,12 +567,6 @@ const sendEmail = async () => {
               <div class="about-item">
                 <h4>20+</h4>
                 <h6>Especialidades</h6>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-4">
-              <div class="about-item">
-                <h4>4</h4>
-                <h6>Planos</h6>
               </div>
             </div>
           </div>
@@ -580,116 +580,101 @@ const sendEmail = async () => {
     </div>
   </div>
 
-  <div id="services" class="our-services section">
+  <div id="plans" class="our-services section">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <h6>Our Services</h6>
-            <h2>Discover What We Do &amp; <span>Offer</span> To Our <em>Clients</em></h2>
+            <h6>Nossos pacotes</h6>
+            <h2>Pensados para <span>cuidar</span> da sua saúde sem pesar no <em>bolso</em>.</h2>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-4">
+    <div class="container-fluid" style="padding: 0;">
+      <div class="row" style="justify-content: center;">
+        
+        <div class="col-lg-2">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-            <div class="row">
-              <div class="col-lg-4">
+            <div class="">
+              <div class="">
                 <div class="icon">
                   <img src="../../assets/images/service-icon-01.png" alt="">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="">
                 <div class="right-content">
-                  <h4>Similar Websites</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
+                  <h4>Clinico Geral</h4>
+                  <p>10x R$36</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-2">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-            <div class="row">
-              <div class="col-lg-4">
+            <div class="">
+              <div class="">
                 <div class="icon">
                   <img src="../../assets/images/service-icon-02.png" alt="">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="">
                 <div class="right-content">
-                  <h4>Website Trends</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
+                  <h4>Endocrinologia</h4>
+                  <p>10x R$44</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-2">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-            <div class="row">
-              <div class="col-lg-4">
+            <div class="">
+              <div class="">
                 <div class="icon">
                   <img src="../../assets/images/service-icon-03.png" alt="">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="">
                 <div class="right-content">
-                  <h4>Traffic Analysis</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
+                  <h4>Ginecologia</h4>
+                  <p>10x R$53</p>
+                  <p>10x R$64</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-2">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-            <div class="row">
-              <div class="col-lg-4">
+            <div class="">
+              <div class="">
                 <div class="icon">
                   <img src="../../assets/images/service-icon-03.png" alt="">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="">
                 <div class="right-content">
-                  <h4>Optimizing Keywords</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
+                  <h4>Pediatria</h4>
+                  <p>10x R$42,50</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-2">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-            <div class="row">
-              <div class="col-lg-4">
+            <div class="">
+              <div class="">
                 <div class="icon">
                   <img src="../../assets/images/service-icon-01.png" alt="">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="">
                 <div class="right-content">
-                  <h4>Page Optimizations</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.8s">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="icon">
-                  <img src="../../assets/images/service-icon-02.png" alt="">
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <div class="right-content">
-                  <h4>Deep URL Analysis</h4>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
+                  <h4>Pré Natal</h4>
+                  <p>10x R$250</p>
                 </div>
               </div>
             </div>
