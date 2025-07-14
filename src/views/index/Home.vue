@@ -154,13 +154,13 @@ const fileInput = ref(null)
 const itemsPerGroup = 2;
 const grouped = computed(() => {
   const groups = [];
-  for (let i = 0; i < 20; i += itemsPerGroup) {
+  for (let i = 0; i < 22; i += itemsPerGroup) {
     groups.push(
       [{ title: `Project ${i}`, category: "Convênio", image: `assets/img/convenios/${i}.jpg`, link: "#" },
       { title: `Project ${i+1}`, category: "Convênio", image: `assets/img/convenios/${i+1}.jpg`, link: "#" }]
     );
   }
-  for (let i = 0; i < 11; i += itemsPerGroup) {
+  for (let i = 0; i < 12; i += itemsPerGroup) {
     groups.push(
       [{ title: `Project ${i}`, category: "Sindicato", image: `assets/img/sindicatos/${i}.jpg`, link: "#" },
       { title: `Project ${i+1}`, category: "Sindicato", image: `assets/img/sindicatos/${i+1}.jpg`, link: "#" }]
@@ -570,19 +570,19 @@ const sendEmail = async () => {
             <h2>Cartão de Descontos Familiar<br><em>Economia</em> &amp; <span>Benefícios</span> em um só lugar</h2>
           </div>
           <div class="row">
-            <div class="col-lg-4 col-sm-4">
+            <div class="col-lg-4 col-sm-4 about-div">
               <div class="about-item">
-                <h4>R$29,90</h4>
+                <h4><span>R$</span><br>29,90</h4>
                 <h6>Planos a partir</h6>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-4">
+            <div class="col-lg-4 col-sm-4 about-div">
               <div class="about-item">
                 <h4>500+</h4>
                 <h6>Beneficiados ativos</h6>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-4">
+            <div class="col-lg-4 col-sm-4 about-div">
               <div class="about-item">
                 <h4>20+</h4>
                 <h6>Especialidades</h6>
@@ -618,7 +618,7 @@ const sendEmail = async () => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="../../assets/images/service-icon-01.png" alt="">
+                  <img src="/assets/img/clinico.png" alt="">
                 </div>
               </div>
               <div class="">
@@ -635,7 +635,7 @@ const sendEmail = async () => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="../../assets/images/service-icon-02.png" alt="">
+                  <img src="/assets/img/endocrino.png" alt="">
                 </div>
               </div>
               <div class="">
@@ -652,7 +652,7 @@ const sendEmail = async () => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="../../assets/images/service-icon-03.png" alt="">
+                  <img src="/assets/img/ginecologia.png" alt="">
                 </div>
               </div>
               <div class="">
@@ -670,7 +670,7 @@ const sendEmail = async () => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="../../assets/images/service-icon-03.png" alt="">
+                  <img src="/assets/img/pediatria.png" alt="">
                 </div>
               </div>
               <div class="">
@@ -952,10 +952,21 @@ const sendEmail = async () => {
 
 .about-us {
 
+  h4{
+    line-height: 1.7rem;
+    span{
+      font-size: 1.2rem;
+    }
+  }
+
+  h6{
+    margin-top: 10px;
+  }
   .section-heading {
     h6 {
       color: #596fa5;
     }
+
 
     h2 {
       color: #45423E;
@@ -966,6 +977,10 @@ const sendEmail = async () => {
         ;
       }
     }
+  }
+
+  .about-div{
+    align-content: end;
   }
 
 }
