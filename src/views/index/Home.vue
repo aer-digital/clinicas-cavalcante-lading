@@ -113,14 +113,23 @@ const slidesEstetica = [
   },
 ];
 
-const conveniosSindicatos = [
-  { title: "Awesome Project 101", category: "Marketing", image: "../../assets/images/portfolio-01.jpg", link: "#" },
-  { title: "Awesome Project 102", category: "Branding", image: "../../assets/images/portfolio-04.jpg", link: "#" },
-  { title: "Awesome Project 103", category: "Consulting", image: "../../assets/images/portfolio-02.jpg", link: "#" },
-  { title: "Awesome Project 104", category: "Artwork", image: "../../assets/images/portfolio-05.jpg", link: "#" },
-  { title: "Awesome Project 105", category: "Branding", image: "../../assets/images/portfolio-03.jpg", link: "#" },
-  { title: "Awesome Project 106", category: "Artwork", image: "../../assets/images/portfolio-06.jpg", link: "#" },
-];
+// Antigo código comentado para conveniosSindicatos - portfolio carousel
+// const conveniosSindicatos = [
+//   { title: "Awesome Project 101", category: "Marketing", image: "../../assets/images/portfolio-01.jpg", link: "#" },
+//   { title: "Awesome Project 102", category: "Branding", image: "../../assets/images/portfolio-04.jpg", link: "#" },
+//   { title: "Awesome Project 103", category: "Consulting", image: "../../assets/images/portfolio-02.jpg", link: "#" },
+//   { title: "Awesome Project 104", category: "Artwork", image: "../../assets/images/portfolio-05.jpg", link: "#" },
+//   { title: "Awesome Project 105", category: "Branding", image: "../../assets/images/portfolio-03.jpg", link: "#" },
+//   { title: "Awesome Project 106", category: "Artwork", image: "../../assets/images/portfolio-06.jpg", link: "#" },
+// ];
+// const grouped = computed(() => {
+//   const groups = [];
+//   for (let i = 0; i < conveniosSindicatos.length; i += itemsPerGroup) {
+//     groups.push(conveniosSindicatos.slice(i, i + itemsPerGroup));
+//   }
+//   return groups;
+// });
+
 
 const formElement = ref(null)
 const form = ref({
@@ -143,14 +152,24 @@ const file = ref(null)
 const fileInput = ref(null)
 
 const itemsPerGroup = 2;
-
 const grouped = computed(() => {
   const groups = [];
-  for (let i = 0; i < conveniosSindicatos.length; i += itemsPerGroup) {
-    groups.push(conveniosSindicatos.slice(i, i + itemsPerGroup));
+  for (let i = 0; i < 20; i += itemsPerGroup) {
+    groups.push(
+      [{ title: `Project ${i}`, category: "Convênio", image: `assets/img/convenios/${i}.jpg`, link: "#" },
+      { title: `Project ${i+1}`, category: "Convênio", image: `assets/img/convenios/${i+1}.jpg`, link: "#" }]
+    );
   }
+  for (let i = 0; i < 11; i += itemsPerGroup) {
+    groups.push(
+      [{ title: `Project ${i}`, category: "Sindicato", image: `assets/img/sindicatos/${i}.jpg`, link: "#" },
+      { title: `Project ${i+1}`, category: "Sindicato", image: `assets/img/sindicatos/${i+1}.jpg`, link: "#" }]
+    );
+  }
+
   return groups;
 });
+
 
 const handleDrop = (e) => {
   const droppedFile = e.dataTransfer.files[0]
@@ -591,10 +610,10 @@ const sendEmail = async () => {
         </div>
       </div>
     </div>
-    <div class="container-fluid" style="padding: 0;">
+    <div class="container-fluid">
       <div class="row" style="justify-content: center;">
         
-        <div class="col-lg-2">
+        <div class="col-lg-3">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
             <div class="">
               <div class="">
@@ -611,7 +630,7 @@ const sendEmail = async () => {
             </div>
           </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-3">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
             <div class="">
               <div class="">
@@ -628,7 +647,7 @@ const sendEmail = async () => {
             </div>
           </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-3">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
             <div class="">
               <div class="">
@@ -646,7 +665,7 @@ const sendEmail = async () => {
             </div>
           </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-3">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
             <div class="">
               <div class="">
@@ -658,23 +677,6 @@ const sendEmail = async () => {
                 <div class="right-content">
                   <h4>Pediatria</h4>
                   <p>10x R$42,50</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-            <div class="">
-              <div class="">
-                <div class="icon">
-                  <img src="../../assets/images/service-icon-01.png" alt="">
-                </div>
-              </div>
-              <div class="">
-                <div class="right-content">
-                  <h4>Pré Natal</h4>
-                  <p>10x R$250</p>
                 </div>
               </div>
             </div>
@@ -702,10 +704,14 @@ const sendEmail = async () => {
             <div v-for="(group, groupIndex) in grouped" :key="groupIndex" class="item">
               <div v-for="(project, projectIndex) in group" :key="projectIndex" class="portfolio-item">
                 <div class="thumb">
-                  <img :src="project.image" :alt="project.title">
+                  <img
+                    :src="project.image"
+                    :alt="project.title"
+                    @error="e => e.target.src = project.image.replace('.jpg', '.png')"
+                  />
                   <div class="hover-content">
                     <div class="inner-content">
-                      <h4>{{ project.title }}</h4>
+                      <!-- <h4>{{ project.title }}</h4> -->
                       <!-- <a :href="project.link">
                         <h4>{{ project.title }}</h4>
                       </a> -->

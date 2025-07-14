@@ -23,9 +23,8 @@
       nav: true,
       margin:30,
       responsive:{
-          
           992:{
-              items:4
+              items: 8
           }
       }
   });
