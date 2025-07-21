@@ -732,7 +732,13 @@ const sendEmail = async () => {
       <div class="row">
         <div class="row col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
 
-          <div class="col-6">
+          <div class="col-4">
+            <div class="row">
+              
+            </div>
+          </div>
+
+          <div class="col-4">
             <div class="contact-info">
               <ul>
                 <li>
@@ -757,7 +763,8 @@ const sendEmail = async () => {
             </div>
           </div>
 
-          <div class="col-6">
+          <div class="col-4">
+            <h3 style="margin-bottom: 15px; color: #d9d9d9;">Trabalhe conosco</h3>
             <form id="contact-form" ref="formElement" @submit.prevent="sendEmail">
               <!-- Campos normais -->
               <div class="row">
