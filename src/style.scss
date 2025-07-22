@@ -14,6 +14,10 @@ $primary-dark-2: #285B49;
 
 $dark: #45423E;
 
+body {
+  color: $base;
+}
+
 #services > div:nth-child(2) > div > div > div > p {
   color: $dark;
   font-weight: 100;
@@ -28,5 +32,18 @@ $dark: #45423E;
 
   .modal-body{
     // background-color: #285b4948;
+  }
+}
+
+#contact{
+  *{
+    color: $base;
+  }
+  
+  .atendimento{
+  
+    .title{
+  
+    }
   }
 }

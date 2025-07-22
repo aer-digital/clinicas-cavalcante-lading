@@ -130,7 +130,6 @@ const slidesEstetica = [
 //   return groups;
 // });
 
-
 const formElement = ref(null)
 const form = ref({
   name: '',
@@ -231,6 +230,31 @@ const sendEmail = async () => {
     alert("Erro ao enviar email.");
   }
 };
+
+const estaDentroDoHorarioComercial = computed(() => {
+  const agora = new Date();
+  const diaSemana = agora.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+  const hora = agora.getHours();
+  const minuto = agora.getMinutes();
+
+  const ehDiaUtil = diaSemana >= 1 && diaSemana <= 5;
+  const ehHorarioUtil = (hora > 8 && hora < 18) || (hora === 8 && minuto >= 0) || (hora === 18 && minuto === 0);
+
+  return ehDiaUtil && ehHorarioUtil;
+});
+
+// const estaDentroDoHorarioComercial = () => {
+//   const agora = new Date();
+//   const diaSemana = agora.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+//   const hora = agora.getHours();
+//   const minuto = agora.getMinutes();
+//   debugger
+
+//   const ehDiaUtil = diaSemana >= 1 && diaSemana <= 5;
+//   const ehHorarioUtil = (hora > 8 && hora < 18) || (hora === 8 && minuto >= 0) || (hora === 18 && minuto === 0);
+
+//   return ehDiaUtil && ehHorarioUtil;
+// };
 
 
 </script>
@@ -733,34 +757,20 @@ const sendEmail = async () => {
         <div class="row col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
 
           <div class="col-4">
-            <div class="row">
+            <div class="row atendimento">
+              <div class="title">
+
+                <h3>Atendimento <b>({{ estaDentroDoHorarioComercial ? 'Aberto' : 'Fechado' }})</b></h3>
+                <p>Segunda à Sexta das 8h00 às 18h00</p>
+              </div>
+              <!-- <i class="fa fa-phone" aria-hidden="true"></i> -->
+
+
               
             </div>
           </div>
 
           <div class="col-4">
-            <div class="contact-info">
-              <ul>
-                <li>
-                  <div class="icon">
-                    <img src="../../assets/images/contact-icon-01.png" alt="email icon">
-                  </div>
-                  <a href="#">info@company.com</a>
-                </li>
-                <li>
-                  <div class="icon">
-                    <img src="../../assets/images/contact-icon-02.png" alt="phone">
-                  </div>
-                  <a href="#">+001-002-0034</a>
-                </li>
-                <li>
-                  <div class="icon">
-                    <img src="../../assets/images/contact-icon-03.png" alt="location">
-                  </div>
-                  <a href="#">26th Street, Digital Villa</a>
-                </li>
-              </ul>
-            </div>
           </div>
 
           <div class="col-4">
