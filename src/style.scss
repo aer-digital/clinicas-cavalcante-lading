@@ -3,8 +3,11 @@ $primary: #418E71;
 $base: #d9d9d9;
 $secondary: #AC453A;
 $white: #EAE4D7;
-$red: #AC453A;
+$red: rgb(172, 69, 58);
 $blue: #3A57A5;
+
+$pass: #52b38d;
+$notPass: #cb5446;
 
 $primary-light: #66A88E;
 $primary-light-2: #8FC6B0;
@@ -39,11 +42,55 @@ body {
   *{
     color: $base;
   }
-  
+
   .atendimento{
   
-    .title{
-  
+    a{
+      font-size: 1.5rem;
+      font-weight: bolder;
+      span{
+        font-size: 1.1rem; 
+        font-weight: 100;
+      }
     }
   }
+
+  #location{
+    p{
+      line-height: 1.4;
+    }
+  }
+
+  #map{    
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 3;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    width: 90%;
+    
+    img{
+      opacity: .9;
+      object-fit: cover;
+      object-position: right 65%;
+      width: 100%;
+      transform: scale(1.1);
+      transform-origin: 75% center;
+    }
+  }
+}
+
+.pass{
+  color: $pass !important;
+}
+
+.notPass{
+  color: $notPass !important;
+}
+
+#social{
+  margin-top: 30px;
+  font-size: 3rem;
 }

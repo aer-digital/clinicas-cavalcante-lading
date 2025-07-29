@@ -4,6 +4,9 @@ import U3Carousel from '../../components/UCarousel.vue';
 
 onMounted(() => {
   form.value.token = Date.now(); // marca o tempo de renderização do formulário
+  setTimeout(() => {
+    $('#modalCampanha').modal('show');
+  }, 1000);
 });
 
 const slidesConsulta = [
@@ -156,13 +159,13 @@ const grouped = computed(() => {
   for (let i = 0; i < 22; i += itemsPerGroup) {
     groups.push(
       [{ title: `Project ${i}`, category: "Convênio", image: `assets/img/convenios/${i}.jpg`, link: "#" },
-      { title: `Project ${i+1}`, category: "Convênio", image: `assets/img/convenios/${i+1}.jpg`, link: "#" }]
+      { title: `Project ${i + 1}`, category: "Convênio", image: `assets/img/convenios/${i + 1}.jpg`, link: "#" }]
     );
   }
   for (let i = 0; i < 12; i += itemsPerGroup) {
     groups.push(
       [{ title: `Project ${i}`, category: "Sindicato", image: `assets/img/sindicatos/${i}.jpg`, link: "#" },
-      { title: `Project ${i+1}`, category: "Sindicato", image: `assets/img/sindicatos/${i+1}.jpg`, link: "#" }]
+      { title: `Project ${i + 1}`, category: "Sindicato", image: `assets/img/sindicatos/${i + 1}.jpg`, link: "#" }]
     );
   }
 
@@ -243,20 +246,6 @@ const estaDentroDoHorarioComercial = computed(() => {
   return ehDiaUtil && ehHorarioUtil;
 });
 
-// const estaDentroDoHorarioComercial = () => {
-//   const agora = new Date();
-//   const diaSemana = agora.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
-//   const hora = agora.getHours();
-//   const minuto = agora.getMinutes();
-//   debugger
-
-//   const ehDiaUtil = diaSemana >= 1 && diaSemana <= 5;
-//   const ehHorarioUtil = (hora > 8 && hora < 18) || (hora === 8 && minuto >= 0) || (hora === 18 && minuto === 0);
-
-//   return ehDiaUtil && ehHorarioUtil;
-// };
-
-
 </script>
 
 
@@ -288,13 +277,13 @@ const estaDentroDoHorarioComercial = computed(() => {
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#features">Features</a></li>
-              <li class="scroll-to-section"><a href="#about">About Us</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li>
-              <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
+              <li class="scroll-to-section"><a href="#service">Serviços</a></li>
+              <li class="scroll-to-section"><a href="#about">Nossa clínica</a></li>
+              <li class="scroll-to-section"><a href="#plans">Planos</a></li>
+              <li class="scroll-to-section"><a href="#portfolio">Portfólio</a></li>
+              <li class="scroll-to-section"><a href="#contact">Fale conosco</a></li>
               <li class="scroll-to-section">
-                <div class="main-blue-button"><a href="#contact">Whats App</a></div>
+                <div class="main-blue-button"><a href="#wa.me/+551333045401" target="_blank">Whats App</a></div>
               </li>
             </ul>
             <a class='menu-trigger'>
@@ -636,7 +625,7 @@ const estaDentroDoHorarioComercial = computed(() => {
     </div>
     <div class="container-fluid">
       <div class="row" style="justify-content: center;">
-        
+
         <div class="col-lg-3">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
             <div class="">
@@ -648,7 +637,8 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div class="">
                 <div class="right-content">
                   <h4>Clinico Geral</h4>
-                  <p>10x R$36</p>
+                  <p>10x</p>
+                  <h2>R$36</h2>
                 </div>
               </div>
             </div>
@@ -728,11 +718,8 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div v-for="(group, groupIndex) in grouped" :key="groupIndex" class="item">
               <div v-for="(project, projectIndex) in group" :key="projectIndex" class="portfolio-item">
                 <div class="thumb">
-                  <img
-                    :src="project.image"
-                    :alt="project.title"
-                    @error="e => e.target.src = project.image.replace('.jpg', '.png')"
-                  />
+                  <img :src="project.image" :alt="project.title"
+                    @error="e => e.target.src = project.image.replace('.jpg', '.png')" />
                   <div class="hover-content">
                     <div class="inner-content">
                       <!-- <h4>{{ project.title }}</h4> -->
@@ -756,42 +743,82 @@ const estaDentroDoHorarioComercial = computed(() => {
       <div class="row">
         <div class="row col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
 
-          <div class="col-4">
+          <div class="col-md-4">
             <div class="row atendimento">
               <div class="title">
 
-                <h3>Atendimento <b>({{ estaDentroDoHorarioComercial ? 'Aberto' : 'Fechado' }})</b></h3>
-                <p>Segunda à Sexta das 8h00 às 18h00</p>
+                <h3>Atendimento <b :class="estaDentroDoHorarioComercial ? 'pass' : 'notPass'">({{
+                  estaDentroDoHorarioComercial ? 'Aberto' : 'Fechado' }})</b></h3>
+                <p>Segunda à Sexta das <b>8h00</b> às <b>18h00</b></p>
               </div>
-              <!-- <i class="fa fa-phone" aria-hidden="true"></i> -->
 
+              <div style="display: flex; flex-direction: column;">
+                <a target="_blank" href="tel:+551333045401"><i class="fa fa-phone" aria-hidden="true"
+                    style="margin-right: 20px;"></i><span>(13)</span> 3304 - 5401</a>
+                <a target="_blank" href="wa.me/+551333045401"><i class="fa fa-whatsapp" aria-hidden="true"
+                    style="margin-right: 20px;"></i><span>(13)</span> 99175 - 1190</a>
+              </div>
+            </div>
 
-              
+            <div id="social">
+              <a target="_blank" href="tel:+551333045401"><i class="fa fa-instagram" aria-hidden="true"
+                  style="margin-right: 20px;"></i></a>
+              <a target="_blank" href="tel:+551333045401"><i class="fa fa-facebook" aria-hidden="true"
+                  style="margin-right: 20px;"></i></a>
+
             </div>
           </div>
 
-          <div class="col-4">
+          <div id="location" class="col-md-4">
+            <div class="title">
+              <h3>Nossas clínicas <span style="font-size: 1.4rem; color: #52b38d; font-weight: bold;">(SP)</span></h3>
+            </div>
+            <div class="mt-4">
+              <h5><b>Guarujá</b></h5>
+              <a href="" target="_blank">
+                <p class="mt-1"><b>Unidade I</b> - Rua Montenegro, 18 – Sala 05/10, Vila Maia</p>
+              </a>
+              <a href="" target="_blank">
+                <p><b>Unidade II</b> - Rua Whashington,140 - Mezanino, Vila Maia</p>
+              </a>
+            </div>
+            <div class="mt-4">
+              <h5><b>Praia Grande</b></h5>
+              <a href="" target="_blank">
+                <p class="mt-1"><b>Unidade III</b> - Avenida Brasil nº 600 - 906, Ed. Beatrix, Boqueirão</p>
+              </a>
+            </div>
+            <a href="https://maps.app.goo.gl/h7EuCZ9rfEio7zKr8" target="_blank">
+              <div id="map">
+                <img src="/assets/img/mapa.png" alt="">
+              </div>
+            </a>
           </div>
 
-          <div class="col-4">
+          <div class="col-md-4">
             <h3 style="margin-bottom: 15px; color: #d9d9d9;">Trabalhe conosco</h3>
             <form id="contact-form" ref="formElement" @submit.prevent="sendEmail">
               <!-- Campos normais -->
               <div class="row">
                 <!-- Honeypot: campo invisível para bots -->
-                <input type="text" name="empresa" v-model="form.empresa" style="display:none;" tabindex="-1" autocomplete="off" />
+                <input type="text" name="empresa" v-model="form.empresa" style="display:none;" tabindex="-1"
+                  autocomplete="off" />
 
                 <div class="col-lg-12">
-                  <input type="text" name="from_name" v-model="form.name" class="form-control mb-3" placeholder="Nome Completo" required />
+                  <input type="text" name="from_name" v-model="form.name" class="form-control mb-3"
+                    placeholder="Nome Completo" required />
                 </div>
                 <div class="col-lg-8">
-                  <input type="text" name="city" v-model="form.cidade" class="form-control mb-3" placeholder="Cidade" required />
+                  <input type="text" name="city" v-model="form.cidade" class="form-control mb-3" placeholder="Cidade"
+                    required />
                 </div>
                 <div class="col-lg-4">
-                  <input type="text" name="state" v-model="form.estado" class="form-control mb-3" placeholder="Estado" required />
+                  <input type="text" name="state" v-model="form.estado" class="form-control mb-3" placeholder="Estado"
+                    required />
                 </div>
                 <div class="col-lg-12">
-                  <input type="email" name="from_email" v-model="form.email" class="form-control mb-3" placeholder="Email" required />
+                  <input type="email" name="from_email" v-model="form.email" class="form-control mb-3"
+                    placeholder="Email" required />
                 </div>
                 <!-- <div class="col-lg-12">
                   <textarea v-model="form.message" class="form-control mb-3" rows="4" placeholder="Mensagem"
@@ -962,6 +989,18 @@ const estaDentroDoHorarioComercial = computed(() => {
     </div>
   </div>
 
+  <div class="modal fade" id="modalCampanha" tabindex="-3" aria-labelledby="modalCampanhaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <h1>Campanha X</h1>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </template>
 
 <style scoped lang="scss">
@@ -969,16 +1008,18 @@ const estaDentroDoHorarioComercial = computed(() => {
 
 .about-us {
 
-  h4{
+  h4 {
     line-height: 1.7rem;
-    span{
+
+    span {
       font-size: 1.2rem;
     }
   }
 
-  h6{
+  h6 {
     margin-top: 10px;
   }
+
   .section-heading {
     h6 {
       color: #596fa5;
@@ -996,18 +1037,20 @@ const estaDentroDoHorarioComercial = computed(() => {
     }
   }
 
-  .about-div{
+  .about-div {
     align-content: end;
   }
 
 }
 
-#contact-form{
-  input, select{
+#contact-form {
+
+  input,
+  select {
     background-color: #d9d9d945;
     color: #d9d9d9;
 
-    &::placeholder{
+    &::placeholder {
       color: #d9d9d9;
     }
   }
