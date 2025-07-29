@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import U3Carousel from '../../components/UCarousel.vue';
+import campanhas from '../../assets/data/campanhas.json';
 
 onMounted(() => {
   form.value.token = Date.now(); // marca o tempo de renderização do formulário
@@ -8,6 +9,10 @@ onMounted(() => {
     $('#modalCampanha').modal('show');
   }, 1000);
 });
+
+// Pega a campanha correspondente ao mês atual
+const mesAtualIndex = new Date().getMonth()
+const campanhaDoMes = computed(() => campanhas[mesAtualIndex])
 
 const slidesConsulta = [
   {
@@ -993,8 +998,16 @@ const estaDentroDoHorarioComercial = computed(() => {
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
 
-        <div class="modal-body">
-          <h1>Campanha X</h1>
+        <div id="campanha" class="modal-body" v-if="campanhaDoMes">
+          <div>
+            <h1>{{ campanhaDoMes.titulo }}</h1>
+            <h4>{{ campanhaDoMes.subtitulo }}</h4>
+            <p>{{ campanhaDoMes.texto }}</p>
+            <a :href="`tel:${campanhaDoMes.telefone}`">{{ campanhaDoMes.telefone }}</a>
+          </div>
+          <div id="campanha-img">
+            <img :src="campanhaDoMes.imagem" :alt="campanhaDoMes.titulo" />
+          </div>
         </div>
 
       </div>

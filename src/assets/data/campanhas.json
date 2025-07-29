@@ -1,0 +1,98 @@
+[
+  {
+    "mes": "Janeiro",
+    "imagem": "https://exemplo.com/imagens/janeiro.jpg",
+    "titulo": "Campanha de Verão",
+    "subtitulo": "Ofertas quentes para começar o ano",
+    "texto": "Aproveite as promoções exclusivas de janeiro com descontos imperdíveis.",
+    "telefone": "(11) 1234-5678"
+  },
+  {
+    "mes": "Fevereiro",
+    "imagem": "https://exemplo.com/imagens/fevereiro.jpg",
+    "titulo": "Carnaval de Ofertas",
+    "subtitulo": "Descontos que vão fazer você sambar",
+    "texto": "Entre no ritmo das promoções com preços especiais de carnaval.",
+    "telefone": "(11) 2345-6789"
+  },
+  {
+    "mes": "Março",
+    "imagem": "https://exemplo.com/imagens/marco.jpg",
+    "titulo": "Março de Economia",
+    "subtitulo": "Comece o ano economizando",
+    "texto": "Campanha com foco em produtos essenciais com preços reduzidos.",
+    "telefone": "(11) 3456-7890"
+  },
+  {
+    "mes": "Abril",
+    "imagem": "https://exemplo.com/imagens/abril.jpg",
+    "titulo": "Outono de Oportunidades",
+    "subtitulo": "Ofertas que caem como folhas",
+    "texto": "Aproveite o clima de mudança e renove com descontos especiais.",
+    "telefone": "(11) 4567-8901"
+  },
+  {
+    "mes": "Maio",
+    "imagem": "https://exemplo.com/imagens/maio.jpg",
+    "titulo": "Mês das Mães",
+    "subtitulo": "Presentes que emocionam",
+    "texto": "Seleção especial para homenagear quem você mais ama.",
+    "telefone": "(11) 5678-9012"
+  },
+  {
+    "mes": "Junho",
+    "imagem": "https://exemplo.com/imagens/junho.jpg",
+    "titulo": "Arraiá de Ofertas",
+    "subtitulo": "Promoções de tirar o chapéu",
+    "texto": "Esquente o inverno com descontos típicos de festa junina.",
+    "telefone": "(11) 6789-0123"
+  },
+  {
+    "mes": "Julho",
+    "imagem": "assets/img/campanhas/julho.png",
+    "titulo": "Férias com Economia",
+    "subtitulo": "Tudo para curtir sem gastar muito",
+    "texto": "Campanha voltada para lazer e entretenimento familiar.",
+    "telefone": "(11) 7890-1234"
+  },
+  {
+    "mes": "Agosto",
+    "imagem": "https://exemplo.com/imagens/agosto.jpg",
+    "titulo": "Agosto Surpreendente",
+    "subtitulo": "Descontos inesperados o mês todo",
+    "texto": "Campanha para movimentar o mês com promoções surpresa.",
+    "telefone": "(11) 8901-2345"
+  },
+  {
+    "mes": "Setembro",
+    "imagem": "https://exemplo.com/imagens/setembro.jpg",
+    "titulo": "Primavera de Preços Baixos",
+    "subtitulo": "Floresça suas compras",
+    "texto": "Descontos para renovar o guarda-roupa e a casa.",
+    "telefone": "(11) 9012-3456"
+  },
+  {
+    "mes": "Outubro",
+    "imagem": "https://exemplo.com/imagens/outubro.jpg",
+    "titulo": "Mês das Crianças",
+    "subtitulo": "Brinquedos e diversão em oferta",
+    "texto": "Ofertas especiais para os pequenos.",
+    "telefone": "(11) 0123-4567"
+  },
+  {
+    "mes": "Novembro",
+    "imagem": "https://exemplo.com/imagens/novembro.jpg",
+    "titulo": "Esquenta Black Friday",
+    "subtitulo": "Descontos antecipados",
+    "texto": "Antecipe suas compras com preços de Black Friday o mês inteiro.",
+    "telefone": "(11) 1234-5670"
+  },
+  {
+    "mes": "Dezembro",
+    "imagem": "https://exemplo.com/imagens/dezembro.jpg",
+    "titulo": "Natal Premiado",
+    "subtitulo": "Ofertas mágicas de fim de ano",
+    "texto": "Feche o ano com chave de ouro com presentes e descontos especiais.",
+    "telefone": "(11) 2345-6780"
+  }
+]
