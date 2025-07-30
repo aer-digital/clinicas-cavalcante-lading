@@ -1000,10 +1000,13 @@ const estaDentroDoHorarioComercial = computed(() => {
 
         <div id="campanha" class="modal-body" v-if="campanhaDoMes">
           <div>
-            <h1>{{ campanhaDoMes.titulo }}</h1>
-            <h4>{{ campanhaDoMes.subtitulo }}</h4>
-            <p>{{ campanhaDoMes.texto }}</p>
-            <a :href="`tel:${campanhaDoMes.telefone}`">{{ campanhaDoMes.telefone }}</a>
+            <h1 class="mb-2" style="line-height: 1.1; font-weight: 600;">{{ campanhaDoMes.titulo }}</h1>
+            <h4 style="line-height: 1.1;">{{ campanhaDoMes.subtitulo }}</h4>
+            <p v-html="campanhaDoMes.texto"></p>
+            <p v-html="campanhaDoMes.conversao"></p>
+            <a :href="campanhaDoMes.telefone">
+              <button class="btn">Saiba +</button>
+            </a>
           </div>
           <div id="campanha-img">
             <img :src="campanhaDoMes.imagem" :alt="campanhaDoMes.titulo" />
