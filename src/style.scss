@@ -97,13 +97,26 @@ body {
 
 #campanha{
   display: flex;
-
-  > div{
-    flex: 1;
-    margin: 10px;
+  color: grey;
+  
+  &::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
   }
 
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $base;
+    border-radius: 20px;
+    border: 3px solid grey;
+  }
+
+  
   p{
+    color: #45423E;
     font-size: 1rem;
     line-height: 1.1;
     margin-top: 10px;
