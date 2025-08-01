@@ -997,7 +997,9 @@ const estaDentroDoHorarioComercial = computed(() => {
   <div class="modal fade" id="modalCampanha" tabindex="-3" aria-labelledby="modalCampanhaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
-
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
         <div id="campanha" class="modal-body" v-if="campanhaDoMes">
           <div class="row">
             <div class="col-12 col-lg-6 order-2 order-lg-1">
