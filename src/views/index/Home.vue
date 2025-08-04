@@ -161,13 +161,13 @@ const fileInput = ref(null)
 const itemsPerGroup = 2;
 const grouped = computed(() => {
   const groups = [];
-  for (let i = 0; i < 22; i += itemsPerGroup) {
+  for (let i = 0; i < 24; i += itemsPerGroup) {
     groups.push(
       [{ title: `Project ${i}`, category: "Convênio", image: `assets/img/convenios/${i}.jpg`, link: "#" },
       { title: `Project ${i + 1}`, category: "Convênio", image: `assets/img/convenios/${i + 1}.jpg`, link: "#" }]
     );
   }
-  for (let i = 0; i < 12; i += itemsPerGroup) {
+  for (let i = 0; i < 10; i += itemsPerGroup) {
     groups.push(
       [{ title: `Project ${i}`, category: "Sindicato", image: `assets/img/sindicatos/${i}.jpg`, link: "#" },
       { title: `Project ${i + 1}`, category: "Sindicato", image: `assets/img/sindicatos/${i + 1}.jpg`, link: "#" }]
@@ -247,9 +247,10 @@ const estaDentroDoHorarioComercial = computed(() => {
 
   const ehDiaUtil = diaSemana >= 1 && diaSemana <= 5;
   const ehHorarioUtil = (hora > 8 && hora < 18) || (hora === 8 && minuto >= 0) || (hora === 18 && minuto === 0);
+  const ehSabadoComercial = (diaSemana == 6) && (hora > 8 && hora < 12);
 
-  return ehDiaUtil && ehHorarioUtil;
-});
+  return (ehDiaUtil && ehHorarioUtil) || ehSabadoComercial;
+});;
 
 </script>
 
@@ -285,10 +286,10 @@ const estaDentroDoHorarioComercial = computed(() => {
               <li class="scroll-to-section"><a href="#nossa-clinica">Nossa clínica</a></li>
               <li class="scroll-to-section"><a href="#via-saude">Via saúde</a></li>
               <li class="scroll-to-section"><a href="#plans">Planos</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Portfólio</a></li>
+              <li class="scroll-to-section"><a href="#portfolio">Parceiros</a></li>
               <li class="scroll-to-section"><a href="#contact">Fale conosco</a></li>
               <li class="scroll-to-section">
-                <div class="main-blue-button"><a href="#wa.me/+551333045401" target="_blank">Whats App</a></div>
+                <div class="main-blue-button"><a href="#wa.me/+551333024002" target="_blank">Whats App</a></div>
               </li>
             </ul>
             <a class='menu-trigger'>
@@ -757,20 +758,21 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <h3>Atendimento <b :class="estaDentroDoHorarioComercial ? 'pass' : 'notPass'">({{
                   estaDentroDoHorarioComercial ? 'Aberto' : 'Fechado' }})</b></h3>
                 <p>Segunda à Sexta das <b>8h00</b> às <b>18h00</b></p>
+                <p>Sábado das <b>8h00</b> às <b>12h00</b></p>
               </div>
 
               <div style="display: flex; flex-direction: column;">
-                <a target="_blank" href="tel:+551333045401"><i class="fa fa-phone" aria-hidden="true"
+                <a target="_blank" href="tel:+551333024002"><i class="fa fa-phone" aria-hidden="true"
                     style="margin-right: 20px;"></i><span>(13)</span> 3304 - 5401</a>
-                <a target="_blank" href="wa.me/+551333045401"><i class="fa fa-whatsapp" aria-hidden="true"
+                <a target="_blank" href="wa.me/+551333024002"><i class="fa fa-whatsapp" aria-hidden="true"
                     style="margin-right: 20px;"></i><span>(13)</span> 99175 - 1190</a>
               </div>
             </div>
 
             <div id="social">
-              <a target="_blank" href="tel:+551333045401"><i class="fa fa-instagram" aria-hidden="true"
+              <a target="_blank" href="tel:+551333024002"><i class="fa fa-instagram" aria-hidden="true"
                   style="margin-right: 20px;"></i></a>
-              <a target="_blank" href="tel:+551333045401"><i class="fa fa-facebook" aria-hidden="true"
+              <a target="_blank" href="tel:+551333024002"><i class="fa fa-facebook" aria-hidden="true"
                   style="margin-right: 20px;"></i></a>
 
             </div>
