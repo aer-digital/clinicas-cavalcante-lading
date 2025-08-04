@@ -643,7 +643,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="right-content">
                   <h4>Clinico Geral</h4>
                   <p>10x</p>
-                  <h2>R$36</h2>
+                  <h2>R$36,00</h2>
                 </div>
               </div>
             </div>
@@ -661,7 +661,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="right-content">
                   <h4>Endocrinologia</h4>
                   <p>10x</p>
-                  <h2>R$44</h2>
+                  <h2>R$44,00</h2>
                 </div>
               </div>
             </div>
@@ -679,7 +679,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="right-content">
                   <h4>Ginecologia</h4>
                   <p>10x</p>
-                  <h2>R$53</h2>
+                  <h2>R$53,00</h2>
                 </div>
               </div>
             </div>
