@@ -21,7 +21,7 @@ body {
   color: $base;
 }
 
-#services > div:nth-child(2) > div > div > div > p {
+#nossa-clinica > div:nth-child(2) > div > div > div > p {
   color: $dark;
   font-weight: 100;
 }
@@ -88,6 +88,14 @@ body {
 
 .notPass{
   color: $notPass !important;
+}
+
+#plans{
+  h2{
+    font-weight: bold;
+    line-height: 1;
+    color: $primary-dark-2;
+  }
 }
 
 #social{

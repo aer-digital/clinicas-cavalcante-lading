@@ -282,8 +282,8 @@ const estaDentroDoHorarioComercial = computed(() => {
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#service">Serviços</a></li>
-              <li class="scroll-to-section"><a href="#about">Nossa clínica</a></li>
+              <li class="scroll-to-section"><a href="#nossa-clinica">Nossa clínica</a></li>
+              <li class="scroll-to-section"><a href="#via-saude">Via saúde</a></li>
               <li class="scroll-to-section"><a href="#plans">Planos</a></li>
               <li class="scroll-to-section"><a href="#portfolio">Portfólio</a></li>
               <li class="scroll-to-section"><a href="#contact">Fale conosco</a></li>
@@ -350,7 +350,7 @@ const estaDentroDoHorarioComercial = computed(() => {
     </div>
   </div>
 
-  <div id="services" class="our-services section">
+  <div id="nossa-clinica" class="our-services section">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-9">
@@ -365,7 +365,7 @@ const estaDentroDoHorarioComercial = computed(() => {
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <p>Com médicos especializados,
+            <p style="font-size: 1.1rem;">Com médicos especializados,
               exames de ponta e muita dedicação ao bem-estar e à prevenção da saúde dos nossos pacientes. Aqui, todo
               mundo é tratado com respeito e acolhimento.<br /><br />
 
@@ -574,7 +574,7 @@ const estaDentroDoHorarioComercial = computed(() => {
     </div>
   </div> -->
 
-  <div id="about" class="about-us section">
+  <div id="via-saude" class="about-us section">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -660,7 +660,8 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div class="">
                 <div class="right-content">
                   <h4>Endocrinologia</h4>
-                  <p>10x R$44</p>
+                  <p>10x</p>
+                  <h2>R$44</h2>
                 </div>
               </div>
             </div>
@@ -677,8 +678,8 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div class="">
                 <div class="right-content">
                   <h4>Ginecologia</h4>
-                  <p>10x R$53</p>
-                  <p>10x R$64</p>
+                  <p>10x</p>
+                  <h2>R$53</h2>
                 </div>
               </div>
             </div>
@@ -695,7 +696,8 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div class="">
                 <div class="right-content">
                   <h4>Pediatria</h4>
-                  <p>10x R$42,50</p>
+                  <p>10x</p>
+                  <h2>R$42,50</h2>
                 </div>
               </div>
             </div>
@@ -854,7 +856,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
                 <!-- Botão -->
                 <div class="col-lg-12">
-                  <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+                  <button id="btn-send" class="btn" type="submit">Enviar 🚀</button>
                 </div>
               </div>
             </form>
@@ -1027,6 +1029,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 @use '../../style.scss';
 
 .about-us {
+  margin-top: 10%;
 
   h4 {
     line-height: 1.7rem;
@@ -1073,6 +1076,11 @@ const estaDentroDoHorarioComercial = computed(() => {
     &::placeholder {
       color: #d9d9d9;
     }
+
+  }
+
+  #btn-send{
+    background-color: #285B49;
   }
 }
 </style>
