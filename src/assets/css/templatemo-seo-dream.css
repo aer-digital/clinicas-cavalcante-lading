@@ -282,7 +282,7 @@ header
   position: absolute;
   width: 20px;
   height: 2px;
-  background-color: #285B49;
+  background-color: #285B49 ;
   content: '';
   left: 50%;
   bottom: 0px;
