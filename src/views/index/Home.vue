@@ -289,7 +289,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <li class="scroll-to-section"><a href="#portfolio">Parceiros</a></li>
               <li class="scroll-to-section"><a href="#contact">Fale conosco</a></li>
               <li class="scroll-to-section">
-                <div class="main-blue-button"><a href="#wa.me/+551333024002" target="_blank">Whats App</a></div>
+                <div class="main-blue-button"><a href="wa.me/+551333024002" target="_blank">Whats App</a></div>
               </li>
             </ul>
             <a class='menu-trigger'>
@@ -1010,7 +1010,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <h1 class="mb-2" style="line-height: 1.1; font-weight: 600;">{{ campanhaDoMes.titulo }}</h1>
               <h4 style="line-height: 1.1;">{{ campanhaDoMes.subtitulo }}</h4>
               <p v-html="campanhaDoMes.texto"></p>
-              <a :href="campanhaDoMes.telefone">
+              <a :href="campanhaDoMes.href">
                 <button class="btn">Saiba +</button>
               </a>
             </div>
