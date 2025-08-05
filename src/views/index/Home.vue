@@ -75,37 +75,37 @@ const slidesConsulta = [
 const slidesExame = [
   {
     title: 'Laboratório de Analises Clínicas',
-    details: '',
+    details: 'A análise clínica consiste no estudo de substâncias biológicas, como sangue e urina, para auxiliar no diagnóstico de doenças. Esses exames são solicitados por médicos e realizados em laboratórios por profissionais qualificados, como biomédicos, farmacêuticos ou médicos. A atuação segue normas da Anvisa e exige conhecimento técnico especializado.',
   },
   {
     title: 'Colposcopia',
-    details: 'A colposcopia é um exame ginecológico que permite a visualização detalhada do colo',
+    details: 'Colposcopia é a técnica que consiste no exame de colo de útero, aplicando uma solução de 3% a 5% de ácido e lugol na área afetada. No exame, o médico ou enfermeiro mantém o colo do útero aberto e o banha com uma gaze embebida de ácido. Passado um minuto, as lesões pré-cancerosas aparecem tomando uma cor esbranquiçada, podendo ser vistas através do colposcópio.',
   },
   {
     title: 'Vulvoscopia',
-    details: '',
+    details: 'O que é o exame de vulvoscopia? O exame de vulvoscopia analisa, com o auxílio de uma instrumento chamado colposcópio, a parte externa da vulva, que engloba: a região pubiana, clitóris, grandes lábios, sulcos interlabiais, pequenos lábios, introito e a região perineal. O exame permite a identificação de diversas lesões.',
   },
   {
     title: 'Ultrasonografia',
-    details: '',
+    details: 'A ultrassonografia, ou ecografia, é um método diagnóstico por imagem que utiliza ondas sonoras de alta frequência para visualizar estruturas internas do corpo em tempo real. Quando associada ao Doppler, permite avaliar o fluxo sanguíneo em vasos. Embora tenha menor qualidade de imagem comparada a exames como ressonância magnética ou tomografia, destaca-se por ser rápida, acessível, segura (sem radiação), de baixo custo e realizável até mesmo à beira do leito. Sua aplicação é ampla, sendo ideal para estudar o funcionamento dos órgãos. <br><b>Exames disponíveis em nossas clínicas:</b><br>Ultrassons de abdome (inferior, superior, total), articulações, mamas, próstata, rins, vias urinárias, órgãos superficiais e ginecológicos (incluindo transvaginal e obstétrica com ou sem Doppler). Também realizamos diversos tipos de Doppler: arterial e venoso (membros superiores/inferiores), de carótidas, vertebrais e de órgãos/estruturas.',
   },
   {
     title: 'Papanicolau',
-    details: '',
+    details: 'O exame de citologia oncótica conhecido também por exame preventivo do colo do útero, papanicolau ou PapTest, é, no Brasil, a principal estratégia escolhida para o rastreamento precoce do câncer de colo de útero e doenças sexualmente transmissíveis.',
   },
   {
     title: 'Laringoscopia',
-    details: '',
+    details: 'A laringoscopia é um exame feito com anestesia local para diagnosticar doenças da laringe, especialmente nas pregas vocais. É realizada pela boca com o paciente sentado e tem alta taxa de tolerância, acima de 95%. Quando não é bem tolerada, pode ser substituída pela fibronasofaringolaringoscopia.',
   },
   {
     title: 'Nasofibro<br>laringoscopia',
-    details: '',
+    details: 'A nasofibrolaringoscopia é uma técnica realizada para fazer a investigação e o diagnóstico de problemas e doenças que acometem as vias digestivas e aéreas superiores. Permite analisar o nariz, a faringe e a laringe, onde se encontram as cordas vocais.',
   },
 ];
 const slidesEstetica = [
   {
     title: 'Estética Facial',
-    details: '',
+    details: ' <b>Bioestimuladores de colágeno</b><br>O tratamento com bioestimuladores de colágeno é realizado através da aplicação de ativos na derme que estimulam a produção de colágeno pelo organismo e resulta em uma melhor aparência da pele, reduz o aspecto de envelhecimento e recupera o viço trazendo um semblante mais jovem.<br><br><b>Botox</b><br>A aplicação da toxina botulínica é muito conhecida e desejada por muitos pacientes, principalmente quando as linhas de expressão começam a incomodar.<br>A aplicação do botox é feita em regiões estratégicas da face de acordo com a intenção e necessidade do paciente, ela ameniza a aparência de linhas, rugas, pés de galinha (marcas de expressão na lateral dos olhos) e muitos outros resultados que deixam a aparência do rosto rejuvenescida.<br><br><b>Drenagem facial</b><br>Esta técnica é realizada por um conjunto de movimentos na região da face que estimulam a circulação, melhora a hidratação e reduzem o inchaço, além de relaxar os músculos e suavizar manchas.<br><br><b>Esfoliação enzimática</b><br>É um tipo de esfoliação composta por enzimas que removem as células mortas da pele deixando ela mais limpa e macia.<br><br><b>Limpeza de pele</b><br>Este tratamento é indicado para quem quer fazer uma limpeza profunda na pele e também para aquelas pessoas que sofrem com acne, removendo cravos e outras impurezas que ficam na região da face. Se for feita regularmente reduz a oleosidade e previne o envelhecimento precoce.<br><br><b>Microagulhamento</b><br>Este tratamento é feito com pequenas agulhas que são aplicadas na pele e é indicado para diminuir a aparência de cicatrizes, rugas, melasma etc.<br><br><b>Peeling</b><br>O peeling é um procedimento não evasivo que atua diretamente na renovação celular da pele podendo ser do tipo físico ou químico. A indicação é feita pela profissional de acordo com a necessidade do paciente e o tipo de pele. Ele auxilia no clareamento de manchas, reduz sinais de cicatriz e linhas de expressão deixando a aparência da pele mais bonita e viçosa.',
   },
   {
     title: 'Estética Corporal',
@@ -987,7 +987,7 @@ const estaDentroDoHorarioComercial = computed(() => {
   </div>
 
   <div class="modal fade" id="modalEstetica" tabindex="-3" aria-labelledby="modalEsteticaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
       <div class="modal-content">
 
         <div class="modal-body">

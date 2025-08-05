@@ -6,7 +6,7 @@
         <div class="swiper-slide-in" :class="{ 'selected': selectedSlide === index }">
           <transition name="fade" mode="out-in">
             <div key="1" v-if="selectedSlide === index" class="slide-details">
-              <p>{{ slide.details }}</p>
+              <p v-html="slide.details"></p>
               <!-- <button @click.stop="closeSlide">Fechar</button> -->
             </div>
             <div key="2" v-else class="slide-title">
