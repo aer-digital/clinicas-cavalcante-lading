@@ -86,7 +86,7 @@ const slidesExame = [
     details: 'O que é o exame de vulvoscopia? O exame de vulvoscopia analisa, com o auxílio de uma instrumento chamado colposcópio, a parte externa da vulva, que engloba: a região pubiana, clitóris, grandes lábios, sulcos interlabiais, pequenos lábios, introito e a região perineal. O exame permite a identificação de diversas lesões.',
   },
   {
-    title: 'Ultrasonografia',
+    title: 'Ultrassonografia',
     details: 'A ultrassonografia, ou ecografia, é um método diagnóstico por imagem que utiliza ondas sonoras de alta frequência para visualizar estruturas internas do corpo em tempo real. Quando associada ao Doppler, permite avaliar o fluxo sanguíneo em vasos. Embora tenha menor qualidade de imagem comparada a exames como ressonância magnética ou tomografia, destaca-se por ser rápida, acessível, segura (sem radiação), de baixo custo e realizável até mesmo à beira do leito. Sua aplicação é ampla, sendo ideal para estudar o funcionamento dos órgãos. <br><b>Exames disponíveis em nossas clínicas:</b><br>Ultrassons de abdome (inferior, superior, total), articulações, mamas, próstata, rins, vias urinárias, órgãos superficiais e ginecológicos (incluindo transvaginal e obstétrica com ou sem Doppler). Também realizamos diversos tipos de Doppler: arterial e venoso (membros superiores/inferiores), de carótidas, vertebrais e de órgãos/estruturas.',
   },
   {
@@ -176,6 +176,7 @@ const grouped = computed(() => {
 
   return groups;
 });
+const pacoteSelecionado = ref('');
 
 
 const handleDrop = (e) => {
@@ -632,7 +633,8 @@ const estaDentroDoHorarioComercial = computed(() => {
     <div class="container-fluid">
       <div class="row" style="justify-content: center;">
 
-        <div class="col-lg-3">
+        <div class="col-lg-3" data-bs-toggle="modal" data-bs-target="#modalPacotes" style="cursor: pointer;"
+          @click="pacoteSelecionado = 'clinico'">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
             <div class="">
               <div class="">
@@ -650,7 +652,9 @@ const estaDentroDoHorarioComercial = computed(() => {
             </div>
           </div>
         </div>
-        <div class="col-lg-3">
+
+        <div class="col-lg-3" data-bs-toggle="modal" data-bs-target="#modalPacotes" style="cursor: pointer;"
+          @click="pacoteSelecionado = 'endocrinologia'">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
             <div class="">
               <div class="">
@@ -668,7 +672,8 @@ const estaDentroDoHorarioComercial = computed(() => {
             </div>
           </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3" data-bs-toggle="modal" data-bs-target="#modalPacotes" style="cursor: pointer;"
+          @click="pacoteSelecionado = 'ginecologia'">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
             <div class="">
               <div class="">
@@ -679,14 +684,15 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div class="">
                 <div class="right-content">
                   <h4>Ginecologia</h4>
-                  <p>10x</p>
+                  <p>Apartir de 10x</p>
                   <h2>R$53,00</h2>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3" data-bs-toggle="modal" data-bs-target="#modalPacotes" style="cursor: pointer;"
+          @click="pacoteSelecionado = 'pediatria'">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
             <div class="">
               <div class="">
@@ -998,6 +1004,50 @@ const estaDentroDoHorarioComercial = computed(() => {
     </div>
   </div>
 
+  <div class="modal fade" id="modalPacotes" tabindex="-3" aria-labelledby="modalEsteticaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+
+        <div class="modal-body" v-if="pacoteSelecionado == 'clinico'">
+          <div class="img col-12 col-lg-3">
+            <div class="">
+              <div class="">
+                <div class="icon">
+                  <img src="/assets/img/clinico.png" alt="">
+                </div>
+              </div>
+              <div class="values">
+                <div class="mx-3">
+                  <!-- <h4>Clinico Geral</h4> -->
+                  <h2>R$360,00</h2>
+                  <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="description col-12 col-lg-9 px-4">
+            <h2>Pacote Clínico Geral</h2>
+            <p>Consultas com clínico geral, ideal para quem busca um acompanhamento contínuo e preventivo.</p>
+            <hr>
+            <h4>Procedimentos inclusos no pacote</h4>
+            <p>
+              Hemograma completo, colesterol total e frações, triglicerídeos, glicemia, hemoglobina glicosada, ácido úrico, ureia, creatinina, TSH, urina I, TGO, TGP, sódio, potássio, vitamina B12, vitamina D e consulta com médico clínico geral.
+            </p>
+            <h4>Indicação</h4>
+            <p>
+              Este pacote é indicado para pessoas de 14 à 64 anos. Nele contém exames essenciais de rotina para analisar e prevenir as disfunções da sua saúde.
+            </p>
+            <hr>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="modalCampanha" tabindex="-3" aria-labelledby="modalCampanhaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
@@ -1081,7 +1131,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
   }
 
-  #btn-send{
+  #btn-send {
     background-color: #285B49;
   }
 }
