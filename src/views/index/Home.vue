@@ -1038,9 +1038,129 @@ const estaDentroDoHorarioComercial = computed(() => {
             <p>
               Este pacote é indicado para pessoas de 14 à 64 anos. Nele contém exames essenciais de rotina para analisar e prevenir as disfunções da sua saúde.
             </p>
+
+            <div class="contact-buttons mt-4">
+              <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
+              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Cl%C3%ADnico%20geral!">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body" v-if="pacoteSelecionado == 'endocrinologia'">
+          <div class="img col-12 col-lg-3">
+            <div class="">
+              <div class="">
+                <div class="icon">
+                  <img src="/assets/img/endocrino.png" alt="">
+                </div>
+              </div>
+              <div class="values">
+                <div class="mx-3">
+                  <!-- <h4>Clinico Geral</h4> -->
+                  <h2>R$440,00</h2>
+                  <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="description col-12 col-lg-9 px-4">
+            <h2>Pacote Endocrinologia</h2>
+            <p>Consultas com endocrinologista, ideal para quem busca acompanhamento de condições hormonais, metabólicas e prevenção de doenças como diabetes, obesidade.</p>
             <hr>
+            <h4>Procedimentos inclusos no pacote</h4>
+            <p>
+              Hemograma completo, glicemia, hemoglobina glicosada, triglicerídeos, TSH, T4 LIVRE, colesterol total e frações, vitamina B12, vitamina D, TGO, TGP, ácido úrico e consulta com médico endocrinologista.
+            </p>
+            <h4>Indicação</h4>
+            <p>
+              Este pacote é indicado para identificar doenças como: gordura no fígado, distúrbios da tireoide, diabetes, síndrome metabólica e disfunções do colesterol visando tratar e zelar pela saúde e qualidade de vida.
+            </p>
 
+            <div class="contact-buttons mt-4">
+              <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
+              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%20!">WhatsApp</a>
+            </div>
+          </div>
+        </div>
 
+        <div class="modal-body" v-if="pacoteSelecionado == 'ginecologia'">
+          <div class="img col-12 col-lg-3">
+            <div class="">
+              <div class="">
+                <div class="icon">
+                  <img src="/assets/img/ginecologia.png" alt="">
+                </div>
+              </div>
+              <div class="values">
+                <div class="mx-3">
+                  <!-- <h4>Clinico Geral</h4> -->
+                  <span>Até 39 anos</span>
+                  <h2 style="margin-bottom: 15px;">R$530,00</h2>
+                  <span>+40 anos</span>
+                  <h2>R$640,00</h2>
+                  <hr>
+                  <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="description col-12 col-lg-9 px-4">
+            <h2>Pacote Ginecologia</h2>
+            <p>Consultas com endocrinologista, ideal para quem busca acompanhamento de condições hormonais, metabólicas e prevenção de doenças como diabetes, obesidade.</p>
+            <hr>
+            <h4>Procedimentos inclusos no pacote</h4>
+            <p>
+              Glicemia, urina I, DHEA, FSH, LH, TSH, prolactina, estrogênio, estradiol, cálcio, vitamina B12, vitamina D, citologia oncótica (preventivo), ultrassom de mamas, ultrassom transvaginal e consulta com ginecologia com retorno.
+            </p>
+            <h4>Indicação</h4>
+            <p>
+              Este pacote é indicado para mulheres a partir de 40 anos. Nele contém exames essenciais para tratamento de menopausa, miomas, climatério e diversas patologias ginecológicas.
+            </p>
+
+            <div class="contact-buttons mt-4">
+              <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
+              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%2040+!">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body" v-if="pacoteSelecionado == 'pediatria'">
+          <div class="img col-12 col-lg-3">
+            <div class="">
+              <div class="">
+                <div class="icon">
+                  <img src="/assets/img/pediatria.png" alt="">
+                </div>
+              </div>
+              <div class="values">
+                <div class="mx-3">
+                  <!-- <h4>Clinico Geral</h4> -->
+                  <h2>R$425,00</h2>
+                  <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="description col-12 col-lg-9 px-4">
+            <h2>Pacote Pediatria</h2>
+            <p>Consultas com pediatra, ideal para o acompanhamento do crescimento e desenvolvimento de crianças e adolescentes.</p>
+            <hr>
+            <h4>Procedimentos inclusos no pacote</h4>
+            <p>
+              Hemograma completo, glicemia, colesterol total e frações, ureia, creatinina, TSH, T4 LIVRE, vitamina B12, vitamina D, parasitológico de fezes, TGO, TGP, ferro, ferritina, urina I, urocultura e consulta com médico pediatra.
+            </p>
+            <h4>Indicação</h4>
+            <p>
+              Este pacote é indicado para pacientes de 0 à 13 anos. Nele contém exames que visam acompanhar a saúde e desenvolvimento da criança.
+            </p>
+
+            <div class="contact-buttons mt-4">
+              <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
+              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Pediatria">WhatsApp</a>
+            </div>
           </div>
         </div>
 

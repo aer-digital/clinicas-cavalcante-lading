@@ -104,9 +104,29 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     color: $dark2;
+
+    .contact-buttons{
+      display: flex;
+      gap: 20px;
+
+      a{
+        padding: .7rem 1.5rem;
+      }
+
+      .btn-phone{
+        background-color: $primary;
+        color: $white;
+      }
+      
+      .btn-wpp{
+        background-color: $primary;
+        color: $white;
+        font-weight: 600;
+      }
+    }
 
     .img{
 
@@ -114,6 +134,8 @@ body {
         h2{
           color: $primary-dark-2;
           font-weight: 600;
+          line-height: .8;
+          margin-bottom: 1rem;
         }
         span{
           font-size: 1.1rem;
@@ -123,6 +145,12 @@ body {
     }
 
     .description{
+      margin: 1rem 0;
+
+      h2{
+        font-weight: 600;
+      }
+
       h4{
         margin-top: 1rem;
       }
