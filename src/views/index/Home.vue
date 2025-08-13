@@ -18,106 +18,131 @@ const slidesConsulta = [
   {
     title: 'Cardiologia',
     details: 'Na nossa clínica, o atendimento em cardiologia é focado no cuidado integral do coração e do sistema cardiovascular. Oferecemos consultas, exames preventivos e tratamentos de condições como hipertensão, insuficiência cardíaca, arritmias e doenças coronarianas. Estamos aqui para cuidar da sua saúde cardíaca de forma personalizada.',
+    photo: 'cardiologia.png',
   },
   {
     title: 'Psiquiatria',
     details: 'O atendimento em psiquiatria é centrado no bem-estar mental e emocional dos nossos pacientes. Nossos profissionais estão preparados para diagnosticar e tratar condições como depressão, ansiedade, transtorno bipolar e esquizofrenia, sempre com empatia e uma abordagem humanizada.',
+    photo: 'psiquiatria.png',
   },
   {
     title: 'Otorrino<br>laringologia',
     details: 'Oferecemos atendimento especializado em otorrinolaringologia, cuidando de problemas no ouvido, nariz e garganta. Nossa equipe trata condições como sinusite, alergias respiratórias, perda auditiva e apneia do sono, garantindo diagnósticos precisos e tratamentos eficazes.',
+    photo: 'otorrinolaringologista.png',
   },
   {
     title: 'Pediatria',
     details: 'O atendimento pediátrico na nossa clínica é voltado para o cuidado integral de crianças e adolescentes. Nossos pediatras acompanham o desenvolvimento físico e emocional, oferecendo prevenção, diagnóstico e tratamento de diversas condições, sempre em um ambiente acolhedor.',
+    photo: 'pediatria.png',
   },
   {
     title: 'Ortopedia',
     details: 'Na área de ortopedia, nossos especialistas cuidam de doenças e lesões musculoesqueléticas. Atendemos pacientes com fraturas, dores crônicas, lesões esportivas e doenças como artrose, oferecendo tratamentos modernos e individualizados.',
+    photo: 'ortopedia.png',
   },
   {
     title: 'Oftalmologia',
     details: 'Nosso serviço de oftalmologia é dedicado à saúde dos olhos. Realizamos consultas, exames e tratamentos para miopia, astigmatismo, glaucoma e outras condições oculares, garantindo um acompanhamento completo e eficaz para a melhor qualidade de visão.',
+    photo: 'oftalmologia.png',
   },
   {
     title: 'Nutrição',
     details: 'Oferecemos atendimento nutricional personalizado para promover uma alimentação saudável e equilibrada. Nossos nutricionistas elaboram planos alimentares específicos para prevenção de doenças, controle de peso e melhoria do bem-estar geral.',
+    photo: 'nutricao.png',
   },
   {
     title: 'Hematologia',
     details: 'Na hematologia, nosso atendimento abrange o diagnóstico e tratamento de condições relacionadas ao sangue, como anemias, leucemias e distúrbios de coagulação. Trabalhamos com equipamentos modernos e protocolos seguros para garantir o melhor cuidado.',
+    photo: 'hematologia.png',
   },
   {
     title: 'Ginecologia',
     details: 'Nosso atendimento ginecológico é voltado para a saúde integral da mulher, abordando prevenção, diagnóstico e tratamento de condições relacionadas ao sistema reprodutor. Oferecemos orientação em todas as fases da vida, sempre com acolhimento e cuidado.',
+    photo: 'ginecologia.png',
   },
   {
     title: 'Gastren<br>terologia',
     details: 'Na área de gastrenterologia, cuidamos da saúde do sistema digestivo, tratando condições como gastrite, refluxo e doenças inflamatórias intestinais. Oferecemos consultas e exames especializados para garantir o melhor cuidado ao paciente.',
+    photo: 'gastrenterologia.png',
   },
   {
     title: 'Endocrinologia',
     details: 'O atendimento em endocrinologia na nossa clínica é focado em tratamentos para diabetes, obesidade, problemas hormonais e disfunções da tireoide. Priorizamos uma abordagem individualizada para melhorar a qualidade de vida dos nossos pacientes.',
+    photo: 'endocrinologia.png',
   },
   {
     title: 'Dermatologia',
     details: 'Na dermatologia, cuidamos da saúde da pele, cabelos e unhas. Tratamos condições como acne, psoríase e alergias cutâneas, além de realizarmos procedimentos estéticos e preventivos para o bem-estar do paciente.',
+    photo: 'dermatologia.png',
   },
   {
     title: 'Clínico Geral',
     details: 'Nosso atendimento clínico geral é voltado para a avaliação inicial e o acompanhamento integral dos pacientes. Oferecemos diagnóstico, tratamento e, se necessário, encaminhamento para outras especialidades, sempre com foco na saúde preventiva.',
+    photo: 'clinico_geral.png',
   },
   {
     title: 'Cirurgia Vascular',
     details: 'Na cirurgia vascular, oferecemos atendimento especializado para o diagnóstico e tratamento de condições como varizes, tromboses e aneurismas. Utilizamos técnicas modernas para garantir segurança e eficácia nos procedimentos.',
+    photo: 'cirurgia_vascular.png',
   },
 ];
 const slidesExame = [
   {
     title: 'Laboratório de Analises Clínicas',
     details: 'A análise clínica consiste no estudo de substâncias biológicas, como sangue e urina, para auxiliar no diagnóstico de doenças. Esses exames são solicitados por médicos e realizados em laboratórios por profissionais qualificados, como biomédicos, farmacêuticos ou médicos. A atuação segue normas da Anvisa e exige conhecimento técnico especializado.',
+    photo: 'laboratorio_analises_clinicas.png',
   },
   {
     title: 'Colposcopia',
     details: 'Colposcopia é a técnica que consiste no exame de colo de útero, aplicando uma solução de 3% a 5% de ácido e lugol na área afetada. No exame, o médico ou enfermeiro mantém o colo do útero aberto e o banha com uma gaze embebida de ácido. Passado um minuto, as lesões pré-cancerosas aparecem tomando uma cor esbranquiçada, podendo ser vistas através do colposcópio.',
+    photo: 'colposcopia.png',
   },
   {
     title: 'Vulvoscopia',
     details: 'O que é o exame de vulvoscopia? O exame de vulvoscopia analisa, com o auxílio de uma instrumento chamado colposcópio, a parte externa da vulva, que engloba: a região pubiana, clitóris, grandes lábios, sulcos interlabiais, pequenos lábios, introito e a região perineal. O exame permite a identificação de diversas lesões.',
+    photo: 'vulvoscopia.png',
   },
   {
     title: 'Ultrassonografia',
     details: 'A ultrassonografia, ou ecografia, é um método diagnóstico por imagem que utiliza ondas sonoras de alta frequência para visualizar estruturas internas do corpo em tempo real. Quando associada ao Doppler, permite avaliar o fluxo sanguíneo em vasos. Embora tenha menor qualidade de imagem comparada a exames como ressonância magnética ou tomografia, destaca-se por ser rápida, acessível, segura (sem radiação), de baixo custo e realizável até mesmo à beira do leito. Sua aplicação é ampla, sendo ideal para estudar o funcionamento dos órgãos. <br><b>Exames disponíveis em nossas clínicas:</b><br>Ultrassons de abdome (inferior, superior, total), articulações, mamas, próstata, rins, vias urinárias, órgãos superficiais e ginecológicos (incluindo transvaginal e obstétrica com ou sem Doppler). Também realizamos diversos tipos de Doppler: arterial e venoso (membros superiores/inferiores), de carótidas, vertebrais e de órgãos/estruturas.',
+    photo: 'ultrasonografia.png',
   },
   {
     title: 'Papanicolau',
     details: 'O exame de citologia oncótica conhecido também por exame preventivo do colo do útero, papanicolau ou PapTest, é, no Brasil, a principal estratégia escolhida para o rastreamento precoce do câncer de colo de útero e doenças sexualmente transmissíveis.',
+    photo: 'papanicolau.png',
   },
   {
     title: 'Laringoscopia',
     details: 'A laringoscopia é um exame feito com anestesia local para diagnosticar doenças da laringe, especialmente nas pregas vocais. É realizada pela boca com o paciente sentado e tem alta taxa de tolerância, acima de 95%. Quando não é bem tolerada, pode ser substituída pela fibronasofaringolaringoscopia.',
+    photo: 'laringoscopia.png',
   },
   {
     title: 'Nasofibro<br>laringoscopia',
     details: 'A nasofibrolaringoscopia é uma técnica realizada para fazer a investigação e o diagnóstico de problemas e doenças que acometem as vias digestivas e aéreas superiores. Permite analisar o nariz, a faringe e a laringe, onde se encontram as cordas vocais.',
+    photo: 'nasofibrolaringoscopia.png',
   },
 ];
 const slidesEstetica = [
   {
     title: 'Estética Facial',
     details: ' <b>Bioestimuladores de colágeno</b><br>O tratamento com bioestimuladores de colágeno é realizado através da aplicação de ativos na derme que estimulam a produção de colágeno pelo organismo e resulta em uma melhor aparência da pele, reduz o aspecto de envelhecimento e recupera o viço trazendo um semblante mais jovem.<br><br><b>Botox</b><br>A aplicação da toxina botulínica é muito conhecida e desejada por muitos pacientes, principalmente quando as linhas de expressão começam a incomodar.<br>A aplicação do botox é feita em regiões estratégicas da face de acordo com a intenção e necessidade do paciente, ela ameniza a aparência de linhas, rugas, pés de galinha (marcas de expressão na lateral dos olhos) e muitos outros resultados que deixam a aparência do rosto rejuvenescida.<br><br><b>Drenagem facial</b><br>Esta técnica é realizada por um conjunto de movimentos na região da face que estimulam a circulação, melhora a hidratação e reduzem o inchaço, além de relaxar os músculos e suavizar manchas.<br><br><b>Esfoliação enzimática</b><br>É um tipo de esfoliação composta por enzimas que removem as células mortas da pele deixando ela mais limpa e macia.<br><br><b>Limpeza de pele</b><br>Este tratamento é indicado para quem quer fazer uma limpeza profunda na pele e também para aquelas pessoas que sofrem com acne, removendo cravos e outras impurezas que ficam na região da face. Se for feita regularmente reduz a oleosidade e previne o envelhecimento precoce.<br><br><b>Microagulhamento</b><br>Este tratamento é feito com pequenas agulhas que são aplicadas na pele e é indicado para diminuir a aparência de cicatrizes, rugas, melasma etc.<br><br><b>Peeling</b><br>O peeling é um procedimento não evasivo que atua diretamente na renovação celular da pele podendo ser do tipo físico ou químico. A indicação é feita pela profissional de acordo com a necessidade do paciente e o tipo de pele. Ele auxilia no clareamento de manchas, reduz sinais de cicatriz e linhas de expressão deixando a aparência da pele mais bonita e viçosa.',
+    photo: 'estetica_facial.png',
   },
   {
     title: 'Estética Corporal',
     details: '<b>Bumbum de milhões</b><br>Procedimento com bioestimuladores e equipamentos estéticos para modelar, firmar o glúteo e reduzir celulites.<br><br><b>Drenagem Linfática</b><br>Massagem que acelera a circulação da linfa, melhora a oxigenação e ajuda na eliminação de toxinas.<br><br><b>Drenagem pré e pós-operatório</b><br>Massagem que reduz inchaços, edemas, hematomas e tensões antes ou após cirurgias.<br><br><b>Endermologia</b><br>Tratamento com aparelho a vácuo que aumenta o fluxo sanguíneo, relaxa tecidos e reduz gordura localizada e inchaços.<br><br><b>Massagem modeladora</b><br>Técnica manual que ajuda a modelar o corpo, reduzir medidas, celulites e inchaços, estimulando a circulação.<br><br><b>Pump Up</b><br>Aplicação de ventosas nos glúteos para dar efeito empinado, modelado, firme e com menos celulite.<br><br><b>Radiofrequência</b><br>Terapia com aparelho que estimula a produção de colágeno, minimiza inchaço, sinais de envelhecimento e tonifica a pele.<br><br><b>Tratamento com injetáveis</b><br>Uso de bioestimuladores, enzimas e outros para melhorar o corpo, o bem-estar e a autoestima.<br><br><b>Ventosaterapia</b><br>Aplicação de vácuo em pontos estratégicos para aliviar dores, relaxar, estimular circulação e desintoxicar o organismo.',
+    photo: 'estetica_corporal.png',
   },
   {
     title: 'Criolipólise',
     details: '<b>Criolipólise</b><br>Técnica não invasiva que utiliza o frio para destruir células de gordura, eliminadas naturalmente pelo corpo, reduzindo medidas.<br><br><b>Como funciona</b><br>- Congelamento seletivo: resfria as células adiposas sem lesionar outros tecidos.<br>- Apoptose: células congeladas passam por morte celular programada e são eliminadas.<br>- Redução de medidas: nas semanas seguintes, o corpo elimina a gordura morta, diminuindo a área tratada.<br><br><b>Benefícios</b><br>- Não invasivo, sem cortes ou anestesia.<br>- Seguro e eficaz.<br>- Resultados duradouros com hábitos saudáveis.<br>- Poucas sessões necessárias.<br>- Recuperação rápida.<br><br><b>Indicações</b><br>- Gordura localizada (abdômen, flancos, coxas, braços, papada).<br>- Gordura resistente à dieta e exercícios.<br>- Bom tônus muscular (não trata flacidez).<br><br><b>Contraindicações</b><br>- Gravidez e lactação.<br>- Doenças de pele na área tratada.<br>- Distúrbios circulatórios.<br>- Uso de anticoagulantes.<br>- Sensibilidade ao frio.<br><br><b>Importante</b><br>Deve ser realizado após avaliação médica para indicar o tratamento mais adequado.',
+    photo: 'criolipolise.png',
   },
   {
     title: 'Tratamento Ozonio Terapia',
     details: '<b>O que é</b><br>A ozonioterapia estética é uma técnica que utiliza o ozônio (três átomos de oxigênio) para aumentar a oxigenação dos tecidos, estimular o sistema imunológico e promover a regeneração celular.<br><br><b>Como funciona</b><br>- Aumento da oxigenação: melhora a circulação e dá mais viço à pele.<br>- Estimulação do colágeno: reduz rugas e linhas de expressão.<br>- Ação antioxidante: combate radicais livres.<br>- Redução da inflamação: alivia vermelhidão e inchaço.<br>- Quebra de gordura localizada: ajuda na redução de gordura e celulite.<br><br><b>Formas de aplicação</b><br>- Injeções subcutâneas.<br>- Auto-hemoterapia (sangue ozonizado reinfundido).<br>- Banhos de ozônio.<br><br><b>Indicações</b><br>- Rejuvenescimento facial.<br>- Tratamento de acne.<br>- Redução de celulite.<br>- Atenuação de estrias.<br>- Melhora da flacidez.<br>- Queda de cabelo.<br><br><b>Benefícios</b><br>- Resultados rápidos.<br>- Não invasivo.<br>- Poucas contraindicações.<br>- Compatível com outros tratamentos.<br>- Melhora autoestima e qualidade de vida.<br><br><b>Importante</b><br>O tratamento deve ser feito por profissional qualificado, em ambiente adequado, e com avaliação médica prévia.',
+    photo: 'ozonio.png',
   },
 ];
 
