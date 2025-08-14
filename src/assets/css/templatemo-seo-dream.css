@@ -858,7 +858,7 @@ Banner Style
 
 .main-banner:after {
   content: '';
-  background-image: url(../images/bg_red.png);
+  /* background-image: url(../images/bg_red.png); */
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
@@ -911,9 +911,9 @@ Banner Style
   color: #2a2a2a;
   line-height: 72px;
   background: #FA9D4D;
-  background: -webkit-linear-gradient(to right, #FA9D4D 0%, #FF4F6B 100%);
-  background: -moz-linear-gradient(to right, #FA9D4D 0%, #FF4F6B 100%);
-  background: linear-gradient(to right, #FA9D4D 0%, #FF4F6B 100%);
+  background: -webkit-linear-gradient(to right, #AC453A 0%, #FF4F6B 100%);
+  background: -moz-linear-gradient(to right, #AC453A 0%, #FF4F6B 100%);
+  background: linear-gradient(to left, #AC453A 0%, #b94b3e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -922,6 +922,8 @@ Banner Style
   text-align: right;
   position: relative;
   z-index: 2;
+  background-color: #97b8ac8d;
+  border-radius: 1rem;
 }
 
 .main-banner .right-image img {

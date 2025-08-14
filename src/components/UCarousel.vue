@@ -4,7 +4,11 @@
       :pagination="{ clickable: true, }" :modules="modules" class="mySwiper">
       <swiper-slide v-for="(slide, index) in slides" :key="index" @click="toggleSlide(index)">
         <div class="swiper-slide-in" :class="{ 'selected': selectedSlide === index }">
+          <div class="slide-bg" :class="{ selected: selectedSlide === index }">
+            <img :src="`./assets/img/especialidades/${slide.photo}`" :alt="slide.title" />
+          </div>
           <transition name="fade" mode="out-in">
+
             <div key="1" v-if="selectedSlide === index" class="slide-details">
               <p v-html="slide.details"></p>
               <!-- <button @click.stop="closeSlide">Fechar</button> -->
@@ -101,8 +105,9 @@ export default {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #418e71;
+  // background: #418e71;
   height: 200px;
+  overflow: hidden;
 
   /* Center slide text vertically */
   display: flex;
@@ -160,6 +165,7 @@ export default {
 
   h4{
     font-size: 1.6rem;
+    font-weight: 600;
   }
 }
 
@@ -196,5 +202,37 @@ export default {
 .fade-enter,
 .fade-leave-to {
     opacity: 0
+}
+
+.slide-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  z-index: -1;
+
+  img{
+    filter: saturate(0);
+  }
+
+  &::after{
+    content: '';
+    background-color: #418E71;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    transition: opacity 0.3s ease; // anima apenas a opacidade
+  }
+
+  &.selected::after {
+    opacity: .95;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 // Nova paleta de cores
 $primary: #418E71;
-$base: #d9d9d9;
+$base: #eaeaea;
 $secondary: #AC453A;
 $white: #EAE4D7;
 $red: rgb(172, 69, 58);
@@ -20,6 +20,7 @@ $dark2: #6d6964;
 
 body {
   color: $base;
+  background-color: $base;
 }
 
 #nossa-clinica > div:nth-child(2) > div > div > div > p {

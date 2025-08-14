@@ -315,7 +315,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <li class="scroll-to-section"><a href="#portfolio">Parceiros</a></li>
               <li class="scroll-to-section"><a href="#contact">Fale conosco</a></li>
               <li class="scroll-to-section">
-                <div class="main-blue-button"><a href="wa.me/+551333024002" target="_blank">Whats App</a></div>
+                <div class="main-blue-button"><a href="https://wa.me/+551333024002" target="_blank">WhatsApp</a></div>
               </li>
             </ul>
             <a class='menu-trigger'>
@@ -368,7 +368,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             </div>
             <div class="col-lg-6">
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="../../assets/images/doctor_green.png" alt="">
+                <img src="/assets/img/medic.png" alt="">
               </div>
             </div>
           </div>
@@ -793,17 +793,17 @@ const estaDentroDoHorarioComercial = computed(() => {
               </div>
 
               <div style="display: flex; flex-direction: column;">
-                <a target="_blank" href="tel:+551333024002"><i class="fa fa-phone" aria-hidden="true"
+                <a target="_blank" href="tel:+551333045401"><i class="fa fa-phone" aria-hidden="true"
                     style="margin-right: 20px;"></i><span>(13)</span> 3304 - 5401</a>
-                <a target="_blank" href="wa.me/+551333024002"><i class="fa fa-whatsapp" aria-hidden="true"
-                    style="margin-right: 20px;"></i><span>(13)</span> 99175 - 1190</a>
+                <a target="_blank" href="https://wa.me/+551333024002"><i class="fa fa-whatsapp" aria-hidden="true"
+                    style="margin-right: 20px;"></i><span>(13)</span> 3302 - 4002</a>
               </div>
             </div>
 
             <div id="social">
-              <a target="_blank" href="tel:+551333024002"><i class="fa fa-instagram" aria-hidden="true"
+              <a target="_blank" href="https://www.instagram.com/centromedicocavalcante/"><i class="fa fa-instagram" aria-hidden="true"
                   style="margin-right: 20px;"></i></a>
-              <a target="_blank" href="tel:+551333024002"><i class="fa fa-facebook" aria-hidden="true"
+              <a target="_blank" href="https://www.facebook.com/centromedicocavalcante"><i class="fa fa-facebook" aria-hidden="true"
                   style="margin-right: 20px;"></i></a>
 
             </div>
@@ -1205,7 +1205,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <h1 class="mb-2" style="line-height: 1.1; font-weight: 600;">{{ campanhaDoMes.titulo }}</h1>
               <h4 style="line-height: 1.1;">{{ campanhaDoMes.subtitulo }}</h4>
               <p v-html="campanhaDoMes.texto"></p>
-              <a :href="campanhaDoMes.href">
+              <a :href="campanhaDoMes.href" target="_blank">
                 <button class="btn">Saiba +</button>
               </a>
             </div>
