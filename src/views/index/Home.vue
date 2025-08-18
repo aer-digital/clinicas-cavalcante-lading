@@ -366,7 +366,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 img-doctors">
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
                 <img src="/assets/img/medic.png" alt="">
               </div>
@@ -990,10 +990,9 @@ const estaDentroDoHorarioComercial = computed(() => {
   <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
       <div class="modal-content">
-        <!-- <div class="modal-header">
-          <h5 class="modal-title" id="modalConsultaLabel">Consultas Médicas</h5>
+        <div class="modal-header">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div> -->
+        </div>
         <div class="modal-body">
           <U3Carousel :slides="slidesConsulta"></U3Carousel>
         </div>
@@ -1008,6 +1007,9 @@ const estaDentroDoHorarioComercial = computed(() => {
   <div class="modal fade" id="modalExame" tabindex="-2" aria-labelledby="modalExameLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
       <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
         <div class="modal-body">
           <U3Carousel :slides="slidesExame"></U3Carousel>
@@ -1020,6 +1022,9 @@ const estaDentroDoHorarioComercial = computed(() => {
   <div class="modal fade" id="modalEstetica" tabindex="-3" aria-labelledby="modalEsteticaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
       <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
         <div class="modal-body">
           <U3Carousel :slides="slidesEstetica"></U3Carousel>
@@ -1032,6 +1037,9 @@ const estaDentroDoHorarioComercial = computed(() => {
   <div class="modal fade" id="modalPacotes" tabindex="-3" aria-labelledby="modalEsteticaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
       <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
         <div class="modal-body" v-if="pacoteSelecionado == 'clinico'">
           <div class="img col-12 col-lg-3">
@@ -1201,7 +1209,7 @@ const estaDentroDoHorarioComercial = computed(() => {
         </div>
         <div id="campanha" class="modal-body" v-if="campanhaDoMes">
           <div class="row">
-            <div class="col-12 col-lg-6 order-2 order-lg-1">
+            <div class="col-12 col-lg-6 order-2 order-lg-1 pb-3">
               <h1 class="mb-2" style="line-height: 1.1; font-weight: 600;">{{ campanhaDoMes.titulo }}</h1>
               <h4 style="line-height: 1.1;">{{ campanhaDoMes.subtitulo }}</h4>
               <p v-html="campanhaDoMes.texto"></p>
@@ -1209,7 +1217,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <button class="btn">Saiba +</button>
               </a>
             </div>
-            <div id="campanha-img" class="col-12 col-lg-6 order-1 order-lg-2">
+            <div id="campanha-img" class="col-12 col-lg-6 order-1 order-lg-2 mb-3">
               <img :src="campanhaDoMes.imagem" :alt="campanhaDoMes.titulo" />
             </div>
 
@@ -1280,4 +1288,38 @@ const estaDentroDoHorarioComercial = computed(() => {
     background-color: #285B49;
   }
 }
+
+@media (max-width: 470px) {
+  .main-banner .left-content h2{
+    font-size: 2.4rem;
+  }
+
+  .our-services{
+    padding-top: 2rem;
+  }
+
+  .our-services .container-fluid{
+    padding: 0px 20px;
+  }
+}
+
+@media (max-width: 991px){
+  .main-banner{
+    padding-top: 40%;
+  }
+
+  .main-banner .left-content h2{
+    border-top: 0;
+  }
+
+  .img-doctors{
+    position: absolute;
+    z-index: -1;
+    opacity: .4;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 </style>

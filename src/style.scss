@@ -172,6 +172,7 @@ body {
 #campanha{
   display: flex;
   color: grey;
+  overflow-x: hidden;
 
   
   &::-webkit-scrollbar{

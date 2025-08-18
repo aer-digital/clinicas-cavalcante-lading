@@ -926,6 +926,12 @@ Banner Style
   border-radius: 1rem;
 }
 
+@media (max-width: 991px){
+  .main-banner .right-image{
+    background-color: transparent;
+  }
+}
+
 .main-banner .right-image img {
   max-width: 593px;
 }

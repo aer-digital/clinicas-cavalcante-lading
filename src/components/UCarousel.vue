@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%; height: 100%;">
-    <swiper :slidesPerView="5" :spaceBetween="10" :breakpoints="breakpoints" :freeMode="true"
+    <swiper :slidesPerView="1" :spaceBetween="10" :breakpoints="breakpoints" :freeMode="true"
       :pagination="{ clickable: true, }" :modules="modules" class="mySwiper">
       <swiper-slide v-for="(slide, index) in slides" :key="index" @click="toggleSlide(index)">
         <div class="swiper-slide-in" :class="{ 'selected': selectedSlide === index }">
@@ -106,7 +106,7 @@ export default {
   text-align: center;
   font-size: 18px;
   // background: #418e71;
-  height: 200px;
+  height: 300px;
   overflow: hidden;
 
   /* Center slide text vertically */
