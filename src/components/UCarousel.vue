@@ -176,6 +176,7 @@ export default {
   margin: 5px;
 
   p {
+    overflow-wrap: break-word;
     line-height: normal;
     color: #d9d9d9;
   }
