@@ -245,7 +245,7 @@ const sendEmail = async () => {
     const payload = {
       from_name: form.value.name,
       from_email: form.value.email,
-      to_email: 'cmcguaruja@gmail.com',
+      to_email: 'centromedicocavalcante@gmail.com',
       option: form.value.option,
       cidade: form.value.cidade,
       estado: form.value.estado,
