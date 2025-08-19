@@ -5,6 +5,11 @@ import campanhas from '../../assets/data/campanhas.json';
 
 onMounted(() => {
   form.value.token = Date.now(); // marca o tempo de renderização do formulário
+
+  // gera números aleatórios entre 1 e 9
+  captcha.value.a = Math.floor(Math.random() * 9) + 1;
+  captcha.value.b = Math.floor(Math.random() * 9) + 1;
+
   setTimeout(() => {
     $('#modalCampanha').modal('show');
   }, 1000);
@@ -163,7 +168,9 @@ const slidesEstetica = [
 //   return groups;
 // });
 
-const formElement = ref(null)
+const formElement = ref(null);
+const captcha = ref({ a: 0, b: 0 });
+const captchaInput = ref(null);
 const form = ref({
   name: '',
   cidade: '',
@@ -172,7 +179,7 @@ const form = ref({
   option: '',
   empresa: '', // campo honeypot para evitar spam
   token: '',
-})
+});
 const toBase64 = (file) => new Promise((resolve, reject) => {
   const reader = new FileReader();
   reader.readAsDataURL(file);
@@ -238,6 +245,7 @@ const sendEmail = async () => {
     const payload = {
       from_name: form.value.name,
       from_email: form.value.email,
+      to_email: 'cmcguaruja@gmail.com',
       option: form.value.option,
       cidade: form.value.cidade,
       estado: form.value.estado,
@@ -263,6 +271,21 @@ const sendEmail = async () => {
     console.error("Erro ao enviar email:", err);
     alert("Erro ao enviar email.");
   }
+};
+
+function validateCaptcha() {
+  if (!captchaInput.value) return;
+
+  const expected = captcha.value.a + captcha.value.b;
+  if (form.value.captcha === "") {
+    captchaInput.value.setCustomValidity("Por favor, responda a conta.");
+  } else if (parseInt(form.value.captcha, 10) !== expected) {
+    captchaInput.value.setCustomValidity("Resposta incorreta, tente novamente.");
+  } else {
+    captchaInput.value.setCustomValidity(""); // válido
+  }
+
+  captchaInput.value.reportValidity(); // força exibir mensagem
 };
 
 const estaDentroDoHorarioComercial = computed(() => {
@@ -866,7 +889,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 </div> -->
 
                 <!-- Dropdown -->
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                   <select name="option" class="form-select mb-3" v-model="form.option" required>
                     <option disabled value="">Selecione uma opção</option>
                     <option>Auxiliar de limpeza</option>
@@ -874,6 +897,20 @@ const estaDentroDoHorarioComercial = computed(() => {
                     <option>Médicos</option>
                     <option>Recepção</option>
                   </select>
+                </div>
+
+                <!-- Conta simples -->
+                <div class="col-lg-4">
+                  <input
+                    type="number"
+                    :placeholder="captcha.a + '+' + captcha.b + ' = ?'"
+                    id="captcha"
+                    v-model="form.captcha"
+                    class="form-control mb-3"
+                    required
+                    ref="captchaInput"
+                    @input="validateCaptcha"
+                  />
                 </div>
 
                 <!-- Drag & drop -->
