@@ -170,6 +170,7 @@ export default {
 }
 
 .slide-details {
+  width: 100%;
   overflow-y: scroll;
   padding: 10px;
   text-align: left;

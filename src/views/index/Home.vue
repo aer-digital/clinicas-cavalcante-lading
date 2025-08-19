@@ -151,23 +151,6 @@ const slidesEstetica = [
   },
 ];
 
-// Antigo código comentado para conveniosSindicatos - portfolio carousel
-// const conveniosSindicatos = [
-//   { title: "Awesome Project 101", category: "Marketing", image: "../../assets/images/portfolio-01.jpg", link: "#" },
-//   { title: "Awesome Project 102", category: "Branding", image: "../../assets/images/portfolio-04.jpg", link: "#" },
-//   { title: "Awesome Project 103", category: "Consulting", image: "../../assets/images/portfolio-02.jpg", link: "#" },
-//   { title: "Awesome Project 104", category: "Artwork", image: "../../assets/images/portfolio-05.jpg", link: "#" },
-//   { title: "Awesome Project 105", category: "Branding", image: "../../assets/images/portfolio-03.jpg", link: "#" },
-//   { title: "Awesome Project 106", category: "Artwork", image: "../../assets/images/portfolio-06.jpg", link: "#" },
-// ];
-// const grouped = computed(() => {
-//   const groups = [];
-//   for (let i = 0; i < conveniosSindicatos.length; i += itemsPerGroup) {
-//     groups.push(conveniosSindicatos.slice(i, i + itemsPerGroup));
-//   }
-//   return groups;
-// });
-
 const formElement = ref(null);
 const captcha = ref({ a: 0, b: 0 });
 const captchaInput = ref(null);
@@ -229,6 +212,8 @@ const handleFileChange = (e) => {
   file.value = selectedFile
 }
 
+const emailSended = ref(false);
+
 const sendEmail = async () => {
   try {
     const rawFile = file.value; // ou só `file` se for uma variável normal
@@ -267,6 +252,7 @@ const sendEmail = async () => {
     });
 
     alert("Email enviado com sucesso!");
+    emailSended.value = true;
   } catch (err) {
     console.error("Erro ao enviar email:", err);
     alert("Erro ao enviar email.");
@@ -926,7 +912,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
                 <!-- Botão -->
                 <div class="col-lg-12">
-                  <button id="btn-send" class="btn" type="submit">Enviar 🚀</button>
+                  <button id="btn-send" class="btn" type="submit" :disabled="emailSended">Enviar 🚀</button>
                 </div>
               </div>
             </form>
@@ -1357,6 +1343,18 @@ const estaDentroDoHorarioComercial = computed(() => {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 </style>
