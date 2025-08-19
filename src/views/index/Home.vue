@@ -46,7 +46,7 @@ const slidesConsulta = [
     photo: 'ortopedia.png',
   },
   {
-    title: 'Oftalmologia',
+    title: 'Oftalmo<br>logia',
     details: 'Nosso serviço de oftalmologia é dedicado à saúde dos olhos. Realizamos consultas, exames e tratamentos para miopia, astigmatismo, glaucoma e outras condições oculares, garantindo um acompanhamento completo e eficaz para a melhor qualidade de visão.',
     photo: 'oftalmologia.png',
   },
@@ -66,17 +66,17 @@ const slidesConsulta = [
     photo: 'ginecologia.png',
   },
   {
-    title: 'Gastren<br>terologia',
-    details: 'Na área de gastrenterologia, cuidamos da saúde do sistema digestivo, tratando condições como gastrite, refluxo e doenças inflamatórias intestinais. Oferecemos consultas e exames especializados para garantir o melhor cuidado ao paciente.',
+    title: 'Gastroen<br>terologia',
+    details: 'Na área de gastroenterologia, cuidamos da saúde do sistema digestivo, tratando condições como gastrite, refluxo e doenças inflamatórias intestinais. Oferecemos consultas e exames especializados para garantir o melhor cuidado ao paciente.',
     photo: 'gastrenterologia.png',
   },
   {
-    title: 'Endocrinologia',
+    title: 'Endocrino<br>logia',
     details: 'O atendimento em endocrinologia na nossa clínica é focado em tratamentos para diabetes, obesidade, problemas hormonais e disfunções da tireoide. Priorizamos uma abordagem individualizada para melhorar a qualidade de vida dos nossos pacientes.',
     photo: 'endocrinologia.png',
   },
   {
-    title: 'Dermatologia',
+    title: 'Dermato<br>logia',
     details: 'Na dermatologia, cuidamos da saúde da pele, cabelos e unhas. Tratamos condições como acne, psoríase e alergias cutâneas, além de realizarmos procedimentos estéticos e preventivos para o bem-estar do paciente.',
     photo: 'dermatologia.png',
   },
@@ -108,7 +108,7 @@ const slidesExame = [
     photo: 'vulvoscopia.png',
   },
   {
-    title: 'Ultrassonografia',
+    title: 'Ultrasson<br>ografia',
     details: 'A ultrassonografia, ou ecografia, é um método diagnóstico por imagem que utiliza ondas sonoras de alta frequência para visualizar estruturas internas do corpo em tempo real. Quando associada ao Doppler, permite avaliar o fluxo sanguíneo em vasos. Embora tenha menor qualidade de imagem comparada a exames como ressonância magnética ou tomografia, destaca-se por ser rápida, acessível, segura (sem radiação), de baixo custo e realizável até mesmo à beira do leito. Sua aplicação é ampla, sendo ideal para estudar o funcionamento dos órgãos. <br><b>Exames disponíveis em nossas clínicas:</b><br>Ultrassons de abdome (inferior, superior, total), articulações, mamas, próstata, rins, vias urinárias, órgãos superficiais e ginecológicos (incluindo transvaginal e obstétrica com ou sem Doppler). Também realizamos diversos tipos de Doppler: arterial e venoso (membros superiores/inferiores), de carótidas, vertebrais e de órgãos/estruturas.',
     photo: 'ultrasonografia.png',
   },
@@ -118,12 +118,12 @@ const slidesExame = [
     photo: 'papanicolau.png',
   },
   {
-    title: 'Laringoscopia',
+    title: 'Laringo<br>scopia',
     details: 'A laringoscopia é um exame feito com anestesia local para diagnosticar doenças da laringe, especialmente nas pregas vocais. É realizada pela boca com o paciente sentado e tem alta taxa de tolerância, acima de 95%. Quando não é bem tolerada, pode ser substituída pela fibronasofaringolaringoscopia.',
     photo: 'laringoscopia.png',
   },
   {
-    title: 'Nasofibro<br>laringoscopia',
+    title: 'Nasofibrola<br>ringoscopia',
     details: 'A nasofibrolaringoscopia é uma técnica realizada para fazer a investigação e o diagnóstico de problemas e doenças que acometem as vias digestivas e aéreas superiores. Permite analisar o nariz, a faringe e a laringe, onde se encontram as cordas vocais.',
     photo: 'nasofibrolaringoscopia.png',
   },
