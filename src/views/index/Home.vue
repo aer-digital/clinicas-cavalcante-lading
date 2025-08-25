@@ -3,6 +3,9 @@ import { ref, computed, onMounted } from 'vue';
 import U3Carousel from '../../components/UCarousel.vue';
 import campanhas from '../../assets/data/campanhas.json';
 
+const mockup = ref(false);
+const githubAssets = "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets"
+
 onMounted(() => {
   form.value.token = Date.now(); // marca o tempo de renderização do formulário
 
@@ -178,14 +181,14 @@ const grouped = computed(() => {
   const groups = [];
   for (let i = 0; i < 24; i += itemsPerGroup) {
     groups.push(
-      [{ title: `Project ${i}`, category: "Convênio", image: `assets/img/convenios/${i}.jpg`, link: "#" },
-      { title: `Project ${i + 1}`, category: "Convênio", image: `assets/img/convenios/${i + 1}.jpg`, link: "#" }]
+      [{ title: `Project ${i}`, category: "Convênio", image: `${mockup.value ? "assets" : githubAssets}/img/convenios/${i}.jpg${!mockup.value?'?raw=true':''}`, link: "#" },
+      { title: `Project ${i + 1}`, category: "Convênio", image: `${mockup.value ? "assets" : githubAssets}/img/convenios/${i + 1}.jpg${!mockup.value?'?raw=true':''}`, link: "#" }]
     );
   }
   for (let i = 0; i < 10; i += itemsPerGroup) {
     groups.push(
-      [{ title: `Project ${i}`, category: "Sindicato", image: `assets/img/sindicatos/${i}.jpg`, link: "#" },
-      { title: `Project ${i + 1}`, category: "Sindicato", image: `assets/img/sindicatos/${i + 1}.jpg`, link: "#" }]
+      [{ title: `Project ${i}`, category: "Sindicato", image: `${mockup.value ? "assets" : githubAssets}/img/sindicatos/${i}.jpg${!mockup.value?'?raw=true':''}`, link: "#" },
+      { title: `Project ${i + 1}`, category: "Sindicato", image: `${mockup.value ? "assets" : githubAssets}/img/sindicatos/${i + 1}.jpg${!mockup.value?'?raw=true':''}`, link: "#" }]
     );
   }
 
@@ -377,7 +380,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             </div>
             <div class="col-lg-6 img-doctors">
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="/assets/img/medic.png" alt="">
+                <img :src="(mockup ? 'assets' : githubAssets) + '/img/medic.png' + (!mockup?'?raw=true':'')" alt="">
               </div>
             </div>
           </div>
@@ -615,7 +618,7 @@ const estaDentroDoHorarioComercial = computed(() => {
       <div class="row">
         <div class="col-lg-6">
           <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-            <img src="/assets/img/via_saude_bg.png" alt="">
+            <img :src="(mockup ? 'assets' : githubAssets) + '/img/via_saude_bg.png' + (!mockup?'?raw=true':'')" alt="">
           </div>
         </div>
         <div class="col-lg-6 align-self-center wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -673,7 +676,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="/assets/img/clinico.png" alt="">
+                  <img :src="(mockup ? 'assets' : githubAssets) + '/img/clinico.png' + (!mockup?'?raw=true':'')" alt="">
                 </div>
               </div>
               <div class="">
@@ -693,7 +696,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="/assets/img/endocrino.png" alt="">
+                  <img :src="(mockup ? 'assets' : githubAssets) + '/img/endocrino.png' + (!mockup?'?raw=true':'')" alt="">
                 </div>
               </div>
               <div class="">
@@ -712,7 +715,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="/assets/img/ginecologia.png" alt="">
+                  <img :src="(mockup ? 'assets' : githubAssets) + '/img/ginecologia.png' + (!mockup?'?raw=true':'')" alt="">
                 </div>
               </div>
               <div class="">
@@ -731,7 +734,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="/assets/img/pediatria.png" alt="">
+                  <img :src="(mockup ? 'assets' : githubAssets) + '/img/pediatria.png' + (!mockup?'?raw=true':'')" alt="">
                 </div>
               </div>
               <div class="">
@@ -766,8 +769,19 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div v-for="(group, groupIndex) in grouped" :key="groupIndex" class="item">
               <div v-for="(project, projectIndex) in group" :key="projectIndex" class="portfolio-item">
                 <div class="thumb">
-                  <img :src="project.image" :alt="project.title"
-                    @error="e => e.target.src = project.image.replace('.jpg', '.png')" />
+                 <img
+                    :src="project.image"
+                    :alt="project.title"
+                    @error="e => {
+                      if (!e.target.dataset.fallback) {
+                        e.target.src = project.image.replace('.jpg', '.png')
+                        e.target.dataset.fallback = true
+                      } else {
+                        // remove o card (portfolio-item) do DOM
+                        e.target.closest('.portfolio-item').style.display = 'none'
+                      }
+                    }"
+                  />
                   <div class="hover-content">
                     <div class="inner-content">
                       <!-- <h4>{{ project.title }}</h4> -->
@@ -810,10 +824,10 @@ const estaDentroDoHorarioComercial = computed(() => {
             </div>
 
             <div id="social">
-              <a target="_blank" href="https://www.instagram.com/centromedicocavalcante/"><i class="fa fa-instagram" aria-hidden="true"
-                  style="margin-right: 20px;"></i></a>
-              <a target="_blank" href="https://www.facebook.com/centromedicocavalcante"><i class="fa fa-facebook" aria-hidden="true"
-                  style="margin-right: 20px;"></i></a>
+              <a target="_blank" href="https://www.instagram.com/centromedicocavalcante/"><i class="fa fa-instagram"
+                  aria-hidden="true" style="margin-right: 20px;"></i></a>
+              <a target="_blank" href="https://www.facebook.com/centromedicocavalcante"><i class="fa fa-facebook"
+                  aria-hidden="true" style="margin-right: 20px;"></i></a>
 
             </div>
           </div>
@@ -839,7 +853,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             </div>
             <a href="https://maps.app.goo.gl/h7EuCZ9rfEio7zKr8" target="_blank">
               <div id="map">
-                <img src="/assets/img/mapa.png" alt="">
+                <img :src="(mockup ? 'assets' : githubAssets) + '/img/mapa.png' + (!mockup?'?raw=true':'')" alt="">
               </div>
             </a>
           </div>
@@ -887,16 +901,9 @@ const estaDentroDoHorarioComercial = computed(() => {
 
                 <!-- Conta simples -->
                 <div class="col-lg-4">
-                  <input
-                    type="number"
-                    :placeholder="captcha.a + '+' + captcha.b + ' = ?'"
-                    id="captcha"
-                    v-model="form.captcha"
-                    class="form-control mb-3"
-                    required
-                    ref="captchaInput"
-                    @input="validateCaptcha"
-                  />
+                  <input type="number" :placeholder="captcha.a + '+' + captcha.b + ' = ?'" id="captcha"
+                    v-model="form.captcha" class="form-control mb-3" required ref="captchaInput"
+                    @input="validateCaptcha" />
                 </div>
 
                 <!-- Drag & drop -->
@@ -1069,7 +1076,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="/assets/img/clinico.png" alt="">
+                  <img :src="(mockup ? 'assets' : githubAssets) + '/img/clinico.png' + (!mockup?'?raw=true':'')" alt="">
                 </div>
               </div>
               <div class="values">
@@ -1088,16 +1095,20 @@ const estaDentroDoHorarioComercial = computed(() => {
             <hr>
             <h4>Procedimentos inclusos no pacote</h4>
             <p>
-              Hemograma completo, colesterol total e frações, triglicerídeos, glicemia, hemoglobina glicosada, ácido úrico, ureia, creatinina, TSH, urina I, TGO, TGP, sódio, potássio, vitamina B12, vitamina D e consulta com médico clínico geral.
+              Hemograma completo, colesterol total e frações, triglicerídeos, glicemia, hemoglobina glicosada, ácido
+              úrico, ureia, creatinina, TSH, urina I, TGO, TGP, sódio, potássio, vitamina B12, vitamina D e consulta com
+              médico clínico geral.
             </p>
             <h4>Indicação</h4>
             <p>
-              Este pacote é indicado para pessoas de 14 à 64 anos. Nele contém exames essenciais de rotina para analisar e prevenir as disfunções da sua saúde.
+              Este pacote é indicado para pessoas de 14 à 64 anos. Nele contém exames essenciais de rotina para analisar
+              e prevenir as disfunções da sua saúde.
             </p>
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Cl%C3%ADnico%20geral!">WhatsApp</a>
+              <a class="btn btn-wpp"
+                href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Cl%C3%ADnico%20geral!">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1107,7 +1118,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="/assets/img/endocrino.png" alt="">
+                  <img :src="(mockup ? 'assets' : githubAssets) + '/img/endocrino.png' + (!mockup?'?raw=true':'')" alt="">
                 </div>
               </div>
               <div class="values">
@@ -1122,20 +1133,24 @@ const estaDentroDoHorarioComercial = computed(() => {
 
           <div class="description col-12 col-lg-9 px-4">
             <h2>Pacote Endocrinologia</h2>
-            <p>Consultas com endocrinologista, ideal para quem busca acompanhamento de condições hormonais, metabólicas e prevenção de doenças como diabetes, obesidade.</p>
+            <p>Consultas com endocrinologista, ideal para quem busca acompanhamento de condições hormonais, metabólicas
+              e prevenção de doenças como diabetes, obesidade.</p>
             <hr>
             <h4>Procedimentos inclusos no pacote</h4>
             <p>
-              Hemograma completo, glicemia, hemoglobina glicosada, triglicerídeos, TSH, T4 LIVRE, colesterol total e frações, vitamina B12, vitamina D, TGO, TGP, ácido úrico e consulta com médico endocrinologista.
+              Hemograma completo, glicemia, hemoglobina glicosada, triglicerídeos, TSH, T4 LIVRE, colesterol total e
+              frações, vitamina B12, vitamina D, TGO, TGP, ácido úrico e consulta com médico endocrinologista.
             </p>
             <h4>Indicação</h4>
             <p>
-              Este pacote é indicado para identificar doenças como: gordura no fígado, distúrbios da tireoide, diabetes, síndrome metabólica e disfunções do colesterol visando tratar e zelar pela saúde e qualidade de vida.
+              Este pacote é indicado para identificar doenças como: gordura no fígado, distúrbios da tireoide, diabetes,
+              síndrome metabólica e disfunções do colesterol visando tratar e zelar pela saúde e qualidade de vida.
             </p>
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%20!">WhatsApp</a>
+              <a class="btn btn-wpp"
+                href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%20!">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1145,7 +1160,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="/assets/img/ginecologia.png" alt="">
+                  <img :src="(mockup ? 'assets' : githubAssets) + '/img/ginecologia.png' + (!mockup?'?raw=true':'')" alt="">
                 </div>
               </div>
               <div class="values">
@@ -1164,20 +1179,25 @@ const estaDentroDoHorarioComercial = computed(() => {
 
           <div class="description col-12 col-lg-9 px-4">
             <h2>Pacote Ginecologia</h2>
-            <p>Consultas com endocrinologista, ideal para quem busca acompanhamento de condições hormonais, metabólicas e prevenção de doenças como diabetes, obesidade.</p>
+            <p>Consultas com endocrinologista, ideal para quem busca acompanhamento de condições hormonais, metabólicas
+              e prevenção de doenças como diabetes, obesidade.</p>
             <hr>
             <h4>Procedimentos inclusos no pacote</h4>
             <p>
-              Glicemia, urina I, DHEA, FSH, LH, TSH, prolactina, estrogênio, estradiol, cálcio, vitamina B12, vitamina D, citologia oncótica (preventivo), ultrassom de mamas, ultrassom transvaginal e consulta com ginecologia com retorno.
+              Glicemia, urina I, DHEA, FSH, LH, TSH, prolactina, estrogênio, estradiol, cálcio, vitamina B12, vitamina
+              D, citologia oncótica (preventivo), ultrassom de mamas, ultrassom transvaginal e consulta com ginecologia
+              com retorno.
             </p>
             <h4>Indicação</h4>
             <p>
-              Este pacote é indicado para mulheres a partir de 40 anos. Nele contém exames essenciais para tratamento de menopausa, miomas, climatério e diversas patologias ginecológicas.
+              Este pacote é indicado para mulheres a partir de 40 anos. Nele contém exames essenciais para tratamento de
+              menopausa, miomas, climatério e diversas patologias ginecológicas.
             </p>
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%2040+!">WhatsApp</a>
+              <a class="btn btn-wpp"
+                href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%2040+!">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1187,7 +1207,7 @@ const estaDentroDoHorarioComercial = computed(() => {
             <div class="">
               <div class="">
                 <div class="icon">
-                  <img src="/assets/img/pediatria.png" alt="">
+                  <img :src="(mockup ? 'assets' : githubAssets) + '/img/pediatria.png' + (!mockup?'?raw=true':'')" alt="">
                 </div>
               </div>
               <div class="values">
@@ -1202,20 +1222,25 @@ const estaDentroDoHorarioComercial = computed(() => {
 
           <div class="description col-12 col-lg-9 px-4">
             <h2>Pacote Pediatria</h2>
-            <p>Consultas com pediatra, ideal para o acompanhamento do crescimento e desenvolvimento de crianças e adolescentes.</p>
+            <p>Consultas com pediatra, ideal para o acompanhamento do crescimento e desenvolvimento de crianças e
+              adolescentes.</p>
             <hr>
             <h4>Procedimentos inclusos no pacote</h4>
             <p>
-              Hemograma completo, glicemia, colesterol total e frações, ureia, creatinina, TSH, T4 LIVRE, vitamina B12, vitamina D, parasitológico de fezes, TGO, TGP, ferro, ferritina, urina I, urocultura e consulta com médico pediatra.
+              Hemograma completo, glicemia, colesterol total e frações, ureia, creatinina, TSH, T4 LIVRE, vitamina B12,
+              vitamina D, parasitológico de fezes, TGO, TGP, ferro, ferritina, urina I, urocultura e consulta com médico
+              pediatra.
             </p>
             <h4>Indicação</h4>
             <p>
-              Este pacote é indicado para pacientes de 0 à 13 anos. Nele contém exames que visam acompanhar a saúde e desenvolvimento da criança.
+              Este pacote é indicado para pacientes de 0 à 13 anos. Nele contém exames que visam acompanhar a saúde e
+              desenvolvimento da criança.
             </p>
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Pediatria">WhatsApp</a>
+              <a class="btn btn-wpp"
+                href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Pediatria">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1313,29 +1338,29 @@ const estaDentroDoHorarioComercial = computed(() => {
 }
 
 @media (max-width: 470px) {
-  .main-banner .left-content h2{
+  .main-banner .left-content h2 {
     font-size: 2.4rem;
   }
 
-  .our-services{
+  .our-services {
     padding-top: 2rem;
   }
 
-  .our-services .container-fluid{
+  .our-services .container-fluid {
     padding: 0px 20px;
   }
 }
 
-@media (max-width: 991px){
-  .main-banner{
+@media (max-width: 991px) {
+  .main-banner {
     padding-top: 40%;
   }
 
-  .main-banner .left-content h2{
+  .main-banner .left-content h2 {
     border-top: 0;
   }
 
-  .img-doctors{
+  .img-doctors {
     position: absolute;
     z-index: -1;
     opacity: .4;
@@ -1356,5 +1381,4 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-
 </style>
