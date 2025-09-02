@@ -2,6 +2,9 @@
 import { ref, computed, onMounted } from 'vue';
 import U3Carousel from '../../components/UCarousel.vue';
 import campanhas from '../../assets/data/campanhas.json';
+// Pega a campanha correspondente ao mês atual
+const mesAtualIndex = new Date().getMonth()
+const campanhaDoMes = computed(() => campanhas[mesAtualIndex])
 
 onMounted(() => {
   form.value.token = Date.now(); // marca o tempo de renderização do formulário
@@ -11,13 +14,12 @@ onMounted(() => {
   captcha.value.b = Math.floor(Math.random() * 9) + 1;
 
   setTimeout(() => {
-    $('#modalCampanha').modal('show');
+    if(campanhaDoMes.value.titulo != "" && campanhaDoMes.value.subtitulo != "") {
+      $('#modalCampanha').modal('show');
+    }
   }, 1000);
 });
 
-// Pega a campanha correspondente ao mês atual
-const mesAtualIndex = new Date().getMonth()
-const campanhaDoMes = computed(() => campanhas[mesAtualIndex])
 
 const slidesConsulta = [
   {

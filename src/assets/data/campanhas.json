@@ -65,34 +65,34 @@
   },
   {
     "mes": "Setembro",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/setembro.jpeg?raw=true",
-    "titulo": "Primavera de Preços Baixos",
-    "subtitulo": "Floresça suas compras",
-    "texto": "Descontos para renovar o guarda-roupa e a casa.",
+    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/setembro.png?raw=true",
+    "titulo": "Campanha de valorização da vida",
+    "subtitulo": "Você não está sozinho, procure ajuda ❤️",
+    "texto": "Desconto na consulta com psiquiatra, apenas 120,00 sem retorno",
     "href": "https://wa.me/+551333024002"
   },
   {
     "mes": "Outubro",
     "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/outubro.jpeg?raw=true",
-    "titulo": "Mês das Crianças",
-    "subtitulo": "Brinquedos e diversão em oferta",
-    "texto": "Ofertas especiais para os pequenos.",
+    "titulo": "",
+    "subtitulo": "",
+    "texto": "",
     "href": "https://wa.me/+551333024002"
   },
   {
     "mes": "Novembro",
     "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/novembro.jpeg?raw=true",
-    "titulo": "Esquenta Black Friday",
-    "subtitulo": "Descontos antecipados",
-    "texto": "Antecipe suas compras com preços de Black Friday o mês inteiro.",
+    "titulo": "",
+    "subtitulo": "",
+    "texto": "",
     "href": "https://wa.me/+551333024002"
   },
   {
     "mes": "Dezembro",
     "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/dezembro.jpeg?raw=true",
-    "titulo": "Natal Premiado",
-    "subtitulo": "Ofertas mágicas de fim de ano",
-    "texto": "Feche o ano com chave de ouro com presentes e descontos especiais.",
+    "titulo": "",
+    "subtitulo": "",
+    "texto": "",
     "href": "https://wa.me/+551333024002"
   }
 ]
