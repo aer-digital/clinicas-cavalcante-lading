@@ -9,6 +9,10 @@ __Copia os arquuvos da dist para a branch gh-pages__
 
 git subtree push --prefix dist origin gh-pages
 
+__Se comecar a dar muito erro por conta do historico do git, cria outra branh e referencia ela la:__
+
+git subtree push --prefix dist origin gh-pages2
+
 
 ## Componentes interessantes
 ### Campanhas
