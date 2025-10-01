@@ -1,7 +1,7 @@
 [
   {
     "mes": "Janeiro",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/janeiro.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/janeiro.jpeg?raw=true",
     "titulo": "Campanha de Verão",
     "subtitulo": "Ofertas quentes para começar o ano",
     "texto": "Aproveite as promoções exclusivas de janeiro com descontos imperdíveis.",
@@ -9,7 +9,7 @@
   },
   {
     "mes": "Fevereiro",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/fevereiro.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/fevereiro.jpeg?raw=true",
     "titulo": "Carnaval de Ofertas",
     "subtitulo": "Descontos que vão fazer você sambar",
     "texto": "Entre no ritmo das promoções com preços especiais de carnaval.",
@@ -17,7 +17,7 @@
   },
   {
     "mes": "Março",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/marco.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/marco.jpeg?raw=true",
     "titulo": "Março de Economia",
     "subtitulo": "Comece o ano economizando",
     "texto": "Campanha com foco em produtos essenciais com preços reduzidos.",
@@ -25,7 +25,7 @@
   },
   {
     "mes": "Abril",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/abril.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/abril.jpeg?raw=true",
     "titulo": "Outono de Oportunidades",
     "subtitulo": "Ofertas que caem como folhas",
     "texto": "Aproveite o clima de mudança e renove com descontos especiais.",
@@ -33,7 +33,7 @@
   },
   {
     "mes": "Maio",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/maio.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/maio.jpeg?raw=true",
     "titulo": "Mês das Mães",
     "subtitulo": "Presentes que emocionam",
     "texto": "Seleção especial para homenagear quem você mais ama.",
@@ -41,7 +41,7 @@
   },
   {
     "mes": "Junho",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/junho.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/junho.jpeg?raw=true",
     "titulo": "Arraiá de Ofertas",
     "subtitulo": "Promoções de tirar o chapéu",
     "texto": "Esquente o inverno com descontos típicos de festa junina.",
@@ -49,7 +49,7 @@
   },
   {
     "mes": "Julho",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/julho.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/julho.jpeg?raw=true",
     "titulo": "Campanha Julho Turquesa!",
     "subtitulo": "Você sabia que mais de 30% da população sofre com olho seco e nem sabe?",
     "texto": "<b>Os sintomas principais são:</b> ardência, coceira, visão embaçada, sensação de areia nos olhos.<br/> <b>E as principais causas:</b> uso excessivo de telas, ar-condicionado, baixa umidade, uso de lentes de contato..<br>Neste mês, aqui no Centro Médico Cavalcante, a sua consulta oftalmológica baixou para <strong>R$100,00 e com retorno</strong>. <br/><br/>Aproveite para cuidar da sua visão, agende sua consulta com desconto! Para informações e agendamento, chame-nos pelo WhatsApp!",
@@ -57,7 +57,7 @@
   },
   {
     "mes": "Agosto",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/agosto.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/agosto.jpeg?raw=true",
     "titulo": "Mês de conscientização das doenças vasculares",
     "subtitulo": "Pacote de consulta + usg vascular",
     "texto": "<b>5 sinais que podem indicar uma doença vascular:</b><br/>1. Inchaço nas pernas ou pés<br/>2. Varizes visíveis<br/>3. Cãibras noturnas<br/>4. Dormência nos membros<br/>5. Dor ao caminhar<br/><br/>Neste mês, aqui no Centro Médico Cavalcante, a sua consulta com o especialista vascular baixou para <strong>R$100,00 e com retorno</strong>. <br/><br/>Aproveite para cuidar da sua saúde vascular, agende sua consulta com desconto! Para informações e agendamento, chame-nos pelo WhatsApp!",
@@ -65,7 +65,7 @@
   },
   {
     "mes": "Setembro",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/setembro.png?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/setembro.png?raw=true",
     "titulo": "Campanha de valorização da vida",
     "subtitulo": "Você não está sozinho, procure ajuda ❤️",
     "texto": "Desconto na consulta com psiquiatra, apenas 120,00 sem retorno",
@@ -73,7 +73,7 @@
   },
   {
     "mes": "Outubro",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/outubro.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/outubro.jpeg?raw=true",
     "titulo": "Mês de prevenção do câncer de mama",
     "subtitulo": "Pacote da campanha: 160,00 consulta com retorno na ginecologia e usg de mama",
     "texto": "Valorize a saúde, bem-estar e sua vida. Faça o autoexame contra o câncer de mama. <br/>O diagnóstico precoce pode salvar vidas. Procure um médico e realize o seu!",
@@ -81,7 +81,7 @@
   },
   {
     "mes": "Novembro",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/novembro.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/novembro.jpeg?raw=true",
     "titulo": "",
     "subtitulo": "",
     "texto": "",
@@ -89,7 +89,7 @@
   },
   {
     "mes": "Dezembro",
-    "imagem": "https://github.com/uedarap/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/dezembro.jpeg?raw=true",
+    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/dezembro.jpeg?raw=true",
     "titulo": "",
     "subtitulo": "",
     "texto": "",
