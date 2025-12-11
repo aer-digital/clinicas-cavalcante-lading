@@ -1099,7 +1099,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Cl%C3%ADnico%20geral!">WhatsApp</a>
+              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=551333024002&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Cl%C3%ADnico%20geral!">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1137,7 +1137,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%20!">WhatsApp</a>
+              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=551333024002&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%20!">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1179,7 +1179,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%2040+!">WhatsApp</a>
+              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=551333024002&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%2040+!">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1217,7 +1217,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=5513974256180&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Pediatria">WhatsApp</a>
+              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=551333024002&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Pediatria">WhatsApp</a>
             </div>
           </div>
         </div>
