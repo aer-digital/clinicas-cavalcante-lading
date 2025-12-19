@@ -833,7 +833,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <p><b>Unidade II</b> - Rua Whashington,140 - Mezanino, Vila Maia</p>
               </a>
               <a href="" target="_blank" style="pointer-events: none; cursor: default;">
-                <p class="mt-1"><b>Unidade III</b> - Avenida Brasil nº 600 - 906, Ed. Beatrix, Boqueirão</p>
+                <p class="mt-1"><b>Unidade III</b> - Rua Buenos Aires, 611, - Sala 85, Vila Maia</p>
               </a>
             </div>
             <div class="mt-4">
