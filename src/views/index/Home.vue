@@ -826,17 +826,20 @@ const estaDentroDoHorarioComercial = computed(() => {
             </div>
             <div class="mt-4">
               <h5><b>Guarujá</b></h5>
-              <a href="" target="_blank">
+              <a href="" target="_blank" style="pointer-events: none; cursor: default;">
                 <p class="mt-1"><b>Unidade I</b> - Rua Montenegro, 18 – Sala 05/10, Vila Maia</p>
               </a>
-              <a href="" target="_blank">
+              <a href="" target="_blank" style="pointer-events: none; cursor: default;">
                 <p><b>Unidade II</b> - Rua Whashington,140 - Mezanino, Vila Maia</p>
+              </a>
+              <a href="" target="_blank" style="pointer-events: none; cursor: default;">
+                <p class="mt-1"><b>Unidade III</b> - Avenida Brasil nº 600 - 906, Ed. Beatrix, Boqueirão</p>
               </a>
             </div>
             <div class="mt-4">
               <h5><b>Praia Grande</b></h5>
-              <a href="" target="_blank">
-                <p class="mt-1"><b>Unidade III</b> - Avenida Brasil nº 600 - 906, Ed. Beatrix, Boqueirão</p>
+              <a href="" target="_blank" style="pointer-events: none; cursor: default;">
+                <p class="mt-1">Avenida Brasil nº 600 - 906, Ed. Beatrix, Boqueirão</p>
               </a>
             </div>
             <a href="https://maps.app.goo.gl/h7EuCZ9rfEio7zKr8" target="_blank">
