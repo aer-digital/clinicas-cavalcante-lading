@@ -682,7 +682,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="right-content">
                   <h4>Clinico Geral</h4>
                   <p>10x</p>
-                  <h2>R$36,00</h2>
+                  <h2>R$39,60</h2>
                 </div>
               </div>
             </div>
@@ -702,7 +702,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="right-content">
                   <h4>Endocrinologia</h4>
                   <p>10x</p>
-                  <h2>R$44,00</h2>
+                  <h2>R$48,40</h2>
                 </div>
               </div>
             </div>
@@ -721,7 +721,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="right-content">
                   <h4>Ginecologia</h4>
                   <p>Apartir de 10x</p>
-                  <h2>R$53,00</h2>
+                  <h2>R$58,30</h2>
                 </div>
               </div>
             </div>
@@ -740,7 +740,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="right-content">
                   <h4>Pediatria</h4>
                   <p>10x</p>
-                  <h2>R$42,50</h2>
+                  <h2>R$46,70</h2>
                 </div>
               </div>
             </div>
@@ -1080,7 +1080,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div class="values">
                 <div class="mx-3">
                   <!-- <h4>Clinico Geral</h4> -->
-                  <h2>R$360,00</h2>
+                  <h2>R$396,00</h2>
                   <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
                 </div>
               </div>
@@ -1118,7 +1118,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div class="values">
                 <div class="mx-3">
                   <!-- <h4>Clinico Geral</h4> -->
-                  <h2>R$440,00</h2>
+                  <h2>R$484,00</h2>
                   <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
                 </div>
               </div>
@@ -1157,9 +1157,9 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="mx-3">
                   <!-- <h4>Clinico Geral</h4> -->
                   <span>Até 39 anos</span>
-                  <h2 style="margin-bottom: 15px;">R$530,00</h2>
+                  <h2 style="margin-bottom: 15px;">R$583,00</h2>
                   <span>+40 anos</span>
-                  <h2>R$640,00</h2>
+                  <h2>R$704,00</h2>
                   <hr>
                   <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
                 </div>
@@ -1198,7 +1198,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div class="values">
                 <div class="mx-3">
                   <!-- <h4>Clinico Geral</h4> -->
-                  <h2>R$425,00</h2>
+                  <h2>R$467,00</h2>
                   <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
                 </div>
               </div>

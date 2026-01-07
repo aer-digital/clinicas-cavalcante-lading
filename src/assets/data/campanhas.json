@@ -1,7 +1,7 @@
 [
   {
     "mes": "Janeiro",
-    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/janeiro.jpeg?raw=true",
+    "imagem": "/assets/img/campanhas/janeiro.png",
     "titulo": "Campanha de Verão",
     "subtitulo": "Ofertas quentes para começar o ano",
     "texto": "Aproveite as promoções exclusivas de janeiro com descontos imperdíveis.",

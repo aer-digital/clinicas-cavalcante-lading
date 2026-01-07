@@ -1,0 +1,1 @@
+import{_ as n,g as o,s as r,l as s}from"./router-CuLCIz_f.js";const t={};function a(c,e){return s(),o("div",null,e[0]||(e[0]=[r("h1",null,"Comming Soon",-1)]))}const _=n(t,[["render",a]]);export{_ as default};
