@@ -9,10 +9,10 @@
   },
   {
     "mes": "Fevereiro",
-    "imagem": "https://github.com/aer-digital/clinicas-cavalcante-lading/blob/master/public/assets/img/campanhas/fevereiro.jpeg?raw=true",
-    "titulo": "Carnaval de Ofertas",
-    "subtitulo": "Descontos que vão fazer você sambar",
-    "texto": "Entre no ritmo das promoções com preços especiais de carnaval.",
+    "imagem": "/assets/img/campanhas/fevereiro.png",
+    "titulo": "Fevereiro Laranja",
+    "subtitulo": "Mês de conscientização sobre a leucemia",
+    "texto": "Destacando a importância do diagnóstico precoce e da doação de medula óssea. A campanha incentiva a atenção aos sintomas, a realização de exames de rotina e a solidariedade, já que a doação pode salvar vidas. Informar e compartilhar essa causa é um ato de cuidado e esperança.",
     "href": "https://wa.me/+551333024002"
   },
   {
