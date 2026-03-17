@@ -19,3 +19,6 @@ git subtree push --prefix dist origin gh-pages2
 ### Campanhas
 Crie camapnhas q sao atualizadas automaticamente todo mes, é so atualziar o json com os dados q irao aparecer.
 Ex: id=modalCampanha
+
+
+centromedicocavalcante.com.br
