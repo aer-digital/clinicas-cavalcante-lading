@@ -8,11 +8,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
   plugins: [vue()],
   base: './', // Configura caminhos relativos para o Amplify
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
   build: {
     rollupOptions: {
       input: {
         index: resolve(__dirname, 'index.html'),
-        comming_soon: resolve(__dirname, 'comming-soon/index.html'),
+        'via-saude': resolve(__dirname, 'src/views/via-saude/index.html')
       }
     },
     outDir: 'dist',       // Ativa a geração na pasta dist

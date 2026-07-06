@@ -648,7 +648,7 @@ const estaDentroDoHorarioComercial = computed(() => {
           <p>Através do cartão de benefícios o cliente tem descontos em consultas e exames dentro da rede credenciada,
             sendo a principal rede o centro médico Cavalcante.
           </p>
-          <div class="main-green-button"><a href="https://via-saude.web.app/" target="_blank"
+          <div class="main-green-button"><a href="/via-saude" target="_blank"
               style="background: #596fa5; font-weight: bolder;">Saiba mais</a></div>
         </div>
       </div>
