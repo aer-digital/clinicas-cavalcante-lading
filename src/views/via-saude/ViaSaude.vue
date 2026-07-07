@@ -1,956 +1,979 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const openFaq = ref(null)
+function toggleFaq(i) {
+  openFaq.value = openFaq.value === i ? null : i
+}
+
+const planType = ref('individual')
+
+const faqGroups = [
+  {
+    category: 'Contratação e Adesão',
+    items: [
+      { q: 'O que é o Cartão de Benefícios Via Saúde?', a: 'É um programa de descontos em saúde que oferece acesso a consultas, exames e benefícios odontológicos por uma mensalidade acessível.' },
+      { q: 'O Via Saúde é um plano de saúde?', a: 'Não. É um cartão de benefícios que oferece descontos e condições especiais em serviços de saúde.' },
+      { q: 'Quais documentos são necessários para contratar?', a: 'Para o titular: RG, CPF ou CNH e comprovante de residência atualizado. Para dependentes: RG, CPF ou CNH.' },
+      { q: 'Existe taxa de adesão?', a: 'Sim. Na contratação é cobrada a primeira mensalidade mais uma taxa de adesão equivalente ao valor da mensalidade do plano escolhido.' },
+      { q: 'Posso mudar de plano depois de contratar?', a: 'Sim. Nossa equipe poderá orientar sobre a migração para outro plano.' },
+      { q: 'Posso usar o cartão logo após contratar?', a: 'Sim. Não existe carência para utilização dos benefícios.' },
+    ]
+  },
+  {
+    category: 'Titular e Dependentes',
+    items: [
+      { q: 'Quantas pessoas podem utilizar o cartão?', a: 'O titular pode incluir até 5 dependentes sem acréscimo na mensalidade.' },
+      { q: 'Quem pode ser dependente?', a: 'Cônjuge, filhos e outros familiares, conforme as regras do contrato.' },
+      { q: 'Os dependentes também têm direito aos benefícios?', a: 'Sim. Todos os dependentes cadastrados podem utilizar os benefícios previstos no plano contratado.' },
+      { q: 'Existe acréscimo na mensalidade devido à idade?', a: 'Não. O valor da mensalidade é fixo de acordo com o plano escolhido e não sofre alteração em função da idade do titular ou dos dependentes cadastrados.' },
+      { q: 'Há limite de idade para contratar o cartão?', a: 'Não. O Cartão Via Saúde pode ser contratado por pessoas de qualquer faixa etária, conforme as condições cadastrais estabelecidas pela empresa.' },
+      { q: 'O valor aumenta ao incluir dependentes?', a: 'Não. O titular pode incluir até 5 dependentes sem acréscimo no valor da mensalidade do plano contratado.' },
+    ]
+  },
+  {
+    category: 'Consultas Médicas',
+    items: [
+      { q: 'Como faço para agendar uma consulta?', a: 'O agendamento pode ser realizado pelos canais de atendimento das unidades credenciadas.' },
+      { q: 'Como funciona a consulta cortesia?', a: 'Os planos que possuem esse benefício oferecem 1 consulta gratuita por mês em especialidades específicas do plano.' },
+      { q: 'Posso escolher qualquer especialidade para a consulta cortesia?', a: 'Não. As especialidades disponíveis variam conforme o plano contratado.' },
+      { q: 'Como funciona o retorno médico?', a: 'As consultas possuem retorno em até 30 dias corridos, conforme a especialidade e as regras do profissional.' },
+      { q: 'A consulta com nutricionista possui retorno?', a: 'Não. As consultas de Nutrição não possuem retorno incluso.' },
+      { q: 'Onde posso utilizar as consultas?', a: 'Em toda a rede credenciada, tendo como principal referência o Centro Médico Cavalcante.' },
+    ]
+  },
+  {
+    category: 'Exames e Odontologia',
+    items: [
+      { q: 'Quais descontos tenho nos exames laboratoriais?', a: 'Bronze: 30% | Prata: 30% | Ouro: 30% | Diamante: 35% de desconto nos exames laboratoriais.' },
+      { q: 'Posso realizar exames sem pedido médico?', a: 'Alguns exames podem exigir solicitação médica. Consulte nossa equipe para orientações.' },
+      { q: 'Todos os planos possuem benefícios odontológicos?', a: 'Os planos Prata, Ouro e Diamante oferecem benefícios odontológicos. O plano Bronze não inclui odontologia.' },
+      { q: 'Os dependentes têm direito aos benefícios odontológicos?', a: 'Sim. Os benefícios odontológicos contemplam titular e dependentes conforme o plano contratado.' },
+    ]
+  },
+  {
+    category: 'Pagamentos e Cancelamento',
+    items: [
+      { q: 'Quais formas de pagamento são aceitas?', a: 'Cartão de crédito recorrente, boleto bancário e plano pré-pago (3, 6 ou 12 meses).' },
+      { q: 'Posso escolher a data de vencimento?', a: 'Sim. Para pagamento via boleto, o cliente escolhe a data de vencimento.' },
+      { q: 'O que acontece se eu atrasar uma mensalidade?', a: 'Os benefícios ficam indisponíveis até a regularização dos pagamentos.' },
+      { q: 'Existe fidelidade contratual?', a: 'Não. O Via Saúde não possui fidelidade. O cancelamento pode ser solicitado a qualquer momento pelos canais de atendimento.' },
+      { q: 'Existe alguma condição para cancelamento?', a: 'Sim. É necessário que não existam mensalidades pendentes em aberto.' },
+    ]
+  },
+]
+
+let faqCounter = 0
+const flatFaqIndex = faqGroups.flatMap(g => g.items.map((_, i) => ({ groupIndex: faqGroups.indexOf(g), itemIndex: i })))
+</script>
 
 <template>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader">
-            <div class="loader-outter"></div>
-            <div class="loader-inner"></div>
+  <div class="vs-page">
 
-            <div class="indicator">
-                <svg width="16px" height="12px">
-                    <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-                    <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-                </svg>
+    <!-- Header -->
+    <header class="vs-header">
+      <div class="vs-topbar">
+        <div class="vs-container">
+          <div class="vs-topbar-inner">
+            <div class="vs-topbar-links">
+              <a href="https://planoonline.com.br/portal/redirect/viasaude/rede-credenciada" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Rede credenciada
+              </a>
+              <a href="https://planoonline.com.br/portal/redirect/viasaude/segunda-via" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                Segunda Via
+              </a>
             </div>
-        </div>
-    </div>
-    <!-- End Preloader -->
-
-    <!-- Header Area -->
-    <header class="header">
-        <!-- Topbar -->
-        <div class="topbar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-5 col-12">
-
-                        <!-- Contact -->
-                        <ul class="top-contact" style="float: left;">
-                            <li>
-                                <i class="fa fa-address-book"></i>
-                                <a href="https://planoonline.com.br/portal/redirect/viasaude/rede-credenciada" target="blank">Rede credenciada</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-file-text"></i>
-                                <a href="https://planoonline.com.br/portal/redirect/viasaude/segunda-via" target="blank">Segunda Via</a>
-                            </li>
-                        </ul>
-                        <!-- End Contact -->
-                    </div>
-                    <div class="col-lg-6 col-md-7 col-12">
-                        <!-- Top Contact -->
-                        <ul class="top-contact">
-                            <li>
-                                <i class="fa fa-phone"></i>
-                                <a href="https://wa.me/+551321912391" target="blank">+55 13 2191-2391</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-envelope"></i><a
-                                    href="mailto:support@yourmail.com" target="blank">cartaoviasaude@gmail.com</a>
-                            </li>
-                        </ul>
-                        <!-- End Top Contact -->
-                    </div>
-                </div>
+            <div class="vs-topbar-contacts">
+              <a href="https://wa.me/+551321912391" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                +55 13 2191-2391
+              </a>
+              <a href="mailto:cartaoviasaude@gmail.com">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                cartaoviasaude@gmail.com
+              </a>
             </div>
+          </div>
         </div>
-        <!-- End Topbar -->
-        <!-- Header Inner -->
-        <div class="header-inner">
-            <div class="container">
-                <div class="inner">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-12">
-                            <!-- Start Logo -->
-                            <div class="logo">
-                                <a href="index.html"><img src="../../assets/img/logo_degrade.webp" alt="#" /></a>
-                            </div>
-                            <!-- End Logo -->
-                            <!-- Mobile Nav -->
-                            <div class="mobile-nav"></div>
-                            <!-- End Mobile Nav -->
-                        </div>
-                        <!-- <div class="col-lg-7 col-md-9 col-12"> -->
-                        <!-- Main Menu -->
-                        <!-- <div class="main-menu">
-									<nav class="navigation">
-										<ul class="nav menu">
-											<li class="active"><a href="#">Home <i class="icofont-rounded-down"></i></a>
-												<ul class="dropdown">
-													<li><a href="index.html">Home Page 1</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Doctos </a></li>
-											<li><a href="#">Services </a></li>
-											<li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
-												<ul class="dropdown">
-													<li><a href="404.html">404 Error</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
-												<ul class="dropdown">
-													<li><a href="blog-single.html">Blog Details</a></li>
-												</ul>
-											</li>
-											<li><a href="contact.html">Contact Us</a></li>
-										</ul>
-									</nav>
-								</div> -->
-                        <!--/ End Main Menu -->
-                        <!-- </div> -->
-                        <div class="col-lg-2 col-12" style="align-content: center;">
-                            <div class="get-quote">
-                                <a href="https://wa.me/+551321912391" id="btn-whatsapp" class="btn">
-                                    <img src="../../assets/img/whatsapp.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="vs-header-main">
+        <div class="vs-container">
+          <div class="vs-header-inner">
+            <a href="/" class="vs-logo">
+              <img src="/assets/img/via_saude.png" alt="Via Saúde" />
+            </a>
+            <a href="https://wa.me/+551321912391" class="vs-btn vs-btn-wpp" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
         </div>
-        <!--/ End Header Inner -->
+      </div>
     </header>
-    <!-- End Header Area -->
 
-    <!-- Slider Area -->
-    <section class="slider">
-        <div class="hero-slider">
-            <!-- Start Single Slider -->
-            <div class="single-slider">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="text">
-                                <h1>
-                                    Quando foi sua última <span>Avaliação médica</span>
-                                </h1>
-                                <p>
-                                    Via Saúde oferece diversas opções de planos de benefício saúde na baixada. <br>
-                                    É importante que você tenha cartão de descontos seguro, quando o assunto é saúde.
-                                </p>
-                                <div class="button">
-                                    <a class="btn" href="https://wa.me/+551321912391">Saber mais</a>
-                                    <a href="#pricing-table" class="btn primary">Ver nossos planos</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Slider -->
-
+    <!-- Hero -->
+    <section class="vs-hero">
+      <div class="vs-container">
+        <div class="vs-hero-content">
+          <h1>Quando foi sua última <span>Avaliação médica?</span></h1>
+          <p>Via Saúde oferece diversas opções de planos de benefício saúde na baixada.<br>
+          É importante que você tenha um cartão de descontos seguro, quando o assunto é saúde.</p>
+          <div class="vs-hero-btns">
+            <a href="https://wa.me/+551321912391" class="vs-btn" target="_blank">Saber mais</a>
+            <a href="#planos" class="vs-btn vs-btn-outline">Ver nossos planos</a>
+          </div>
         </div>
+      </div>
     </section>
-    <!--/ End Slider Area -->
 
-    <!-- Start Schedule Area -->
-    <section class="schedule">
-        <div class="container">
-            <div class="schedule-inner">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- single-schedule -->
-                        <div class="single-schedule first">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i class="fa fa-ambulance"></i>
-                                </div>
-                                <div class="single-content">
-                                    <!-- <span>Lorem Amet</span> -->
-                                    <h4>Procedimentos Estéticos</h4>
-                                    <p>
-                                        Realce sua beleza com tratamentos modernos e personalizados, realizados por
-                                        especialistas em um ambiente seguro e equipado com tecnologia de ponta para
-                                        garantir resultados incríveis.
-                                    </p>
-                                    <!-- <a href="#"
-                                        >LEARN MORE<i
-                                            class="fa fa-long-arrow-right"
-                                        ></i
-                                    ></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- single-schedule -->
-                        <div class="single-schedule middle">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i class="icofont-prescription"></i>
-                                </div>
-                                <div class="single-content">
-                                    <!-- <span>Fusce Porttitor</span> -->
-                                    <h4>Exames laboratoriais</h4>
-                                    <p>
-                                        Oferecemos benefícios em exames médicos, desde simples análises de sangue até
-                                        ecografias e exames complexos, atendendo a diversas necessidades clínicas.
-                                    </p>
-                                    <!-- <a href="#"
-                                        >LEARN MORE<i
-                                            class="fa fa-long-arrow-right"
-                                        ></i
-                                    ></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-12">
-                        <!-- single-schedule -->
-                        <div class="single-schedule last" style="height: 100%;">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i class="icofont-ui-clock"></i>
-                                </div>
-                                <div class="single-content">
-                                    <!-- <span>Donec luctus</span> -->
-                                    <h4>Consultas médicas</h4>
-                                    <p>
-                                        Acesso a consultas com especialistas em diversas áreas, com atendimento
-                                        humanizado para diagnóstico, acompanhamento e tratamento.
-                                    </p>
-                                    <!-- <ul class="time-sidual">
-                                        <li class="day">
-                                            Monday - Fridayp
-                                            <span>8.00-20.00</span>
-                                        </li>
-                                        <li class="day">
-                                            Saturday <span>9.00-18.30</span>
-                                        </li>
-                                        <li class="day">
-                                            Monday - Thusday
-                                            <span>9.00-15.00</span>
-                                        </li>
-                                    </ul> -->
-                                    <!-- <a href="#"
-                                        >LEARN MORE<i
-                                            class="fa fa-long-arrow-right"
-                                        ></i
-                                    ></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Features -->
+    <section class="vs-features">
+      <div class="vs-container">
+        <div class="vs-features-grid">
+          <div class="vs-feature-card">
+            <div class="vs-feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             </div>
+            <h4>Procedimentos Estéticos</h4>
+            <p>Realce sua beleza com tratamentos modernos e personalizados, realizados por especialistas em um ambiente seguro com tecnologia de ponta.</p>
+          </div>
+          <div class="vs-feature-card vs-feature-card--mid">
+            <div class="vs-feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 12c0-1.93-1.57-3.5-3.5-3.5H13V6.5c0-1.93-1.57-3.5-3.5-3.5S6 4.57 6 6.5v.5H4.5C2.57 7 1 8.57 1 10.5S2.57 14 4.5 14H6v.5C6 16.43 7.57 18 9.5 18s3.5-1.57 3.5-3.5V14h2.5c1.93 0 3.5-1.57 3.5-3.5zM9.5 16C8.67 16 8 15.33 8 14.5V14h3v.5c0 .83-.67 1.5-1.5 1.5zM8 8v-.5C8 6.67 8.67 6 9.5 6S11 6.67 11 7.5V8H8zm3 4H4.5C3.67 12 3 11.33 3 10.5S3.67 9 4.5 9H11v3zm2 0V9h2.5c.83 0 1.5.67 1.5 1.5S16.33 12 15.5 12H13z"/></svg>
+            </div>
+            <h4>Exames laboratoriais</h4>
+            <p>Benefícios em exames médicos, desde análises de sangue até ecografias e exames complexos, atendendo diversas necessidades clínicas.</p>
+          </div>
+          <div class="vs-feature-card">
+            <div class="vs-feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.07-.44.18-.86.18-1.3C18 2.12 15.88 0 13.3 0c-1.3 0-2.4.52-3.27 1.38L9 2.41 7.96 1.38C7.09.52 6 0 4.7 0 2.12 0 0 2.12 0 4.7c0 .44.11.86.18 1.3H1.99C.89 6 0 6.89 0 8v12c0 1.11.89 2 2 2h18c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM13.3 2c1.49 0 2.7 1.21 2.7 2.7 0 .29-.06.56-.12.82-.2.79-.59 1.52-1.1 2.15L13.3 9.42l-1.47-1.73c-.52-.64-.92-1.37-1.12-2.17-.05-.25-.11-.52-.11-.82C10.6 3.21 11.81 2 13.3 2zM4.7 2c1.49 0 2.7 1.21 2.7 2.7 0 .3-.06.57-.11.82C7.09 6.32 6.69 7.05 6.17 7.69L4.7 9.42 3.22 7.67C2.71 7.04 2.31 6.31 2.11 5.52 2.06 5.27 2 5 2 4.7 2 3.21 3.21 2 4.7 2zm15.3 18H2V8h3.93l3.57 4.2 3.57-4.2H20v12z"/></svg>
+            </div>
+            <h4>Consultas médicas</h4>
+            <p>Acesso a consultas com especialistas em diversas áreas, com atendimento humanizado para diagnóstico, acompanhamento e tratamento.</p>
+          </div>
         </div>
+      </div>
     </section>
-    <!--/End Start schedule Area -->
 
-    <!-- Pricing Table -->
-    <section id="pricing-table" class="pricing-table section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>
-                            Cartão de Descontos Familiar: <b>Economia</b> e <b>Benefícios</b> em Um Só Plano
-                        </h2>
-                        <img src="../../assets/img/section-img.png" alt="#" />
-                        <p>
-                            Somos um cartão benefício que oferece descontos exclusivos através de uma mensalidade única
-                            para você e sua família
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div id="planos" class="row">
-
-                <!-- Single Table -->
-                <div class="col-lg-4 col-md-12 col-12">
-                    <div class="single-table">
-                        <!-- Table Head -->
-                        <div class="table-head">
-                            <div class="icon">
-                                <img src="../../assets/img/diamond.png" alt="">
-                            </div>
-                            <h4 class="title">Plano Diamante</h4>
-                            <div class="price">
-                                <p class="amount">
-                                    R$99,90<span>/ mês</span>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Table List -->
-                        <ul class="table-list">
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Benefícios do plano ouro
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Descontos exclusivos em exames
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Endocrinologista
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Geriatria
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Otorinolaringologista
-                            </li>
-                            <li style="padding-bottom: 30px;">
-                                <!-- <i class="icofont icofont-ui-check"></i> -->
-                                E muito mais...
-                            </li>
-
-                        </ul>
-                        <div class="table-bottom">
-                            <a class="btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Diamante%20do%20via%20sa%C3%BAde.">Selecionar plano</a>
-                        </div>
-                        <!-- Table Bottom -->
-                    </div>
-                </div>
-                <!-- End Single Table-->
-
-                <!-- Single Table -->
-                <div class="col-lg-4 col-md-12 col-12">
-                    <div class="single-table">
-                        <!-- Table Head -->
-                        <div class="table-head">
-                            <div class="icon">
-                                <img src="../../assets/img/ouro.png" alt="">
-                            </div>
-                            <h4 class="title">Plano Ouro</h4>
-                            <div class="price">
-                                <p class="amount">
-                                    R$59,90<span>/ mês</span>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Table List -->
-                        <ul class="table-list">
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Descontos em consultas e exames dentro da rede credenciada
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Benefícios do plano prata
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Pediatra
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Ortopedista
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Nutrição
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Oftalmologista
-                            </li>
-                        </ul>
-                        <div class="table-bottom">
-                            <a class="btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Ouro%20do%20via%20sa%C3%BAde.">Selecionar plano</a>
-                        </div>
-                        <!-- Table Bottom -->
-                    </div>
-                </div>
-                <!-- End Single Table-->
-
-                <!-- Single Table -->
-                <div class="col-lg-4 col-md-12 col-12">
-                    <div class="single-table">
-                        <!-- Table Head -->
-                        <div class="table-head">
-                            <div class="icon">
-                                <img src="../../assets/img/prata.png" alt="">
-                            </div>
-                            <h4 class="title">Plano Prata</h4>
-                            <div class="price">
-                                <p class="amount">
-                                    R$49,90<span>/ mês</span>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Table List -->
-                        <ul class="table-list">
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Descontos em consultas e exames dentro da rede credenciada
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                1 (uma) consulta por mês:
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Clinico geral
-                            </li>
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Ginecologista
-                            </li>
-                        </ul>
-                        <div class="table-bottom">
-                            <a class="btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Prata%20do%20via%20sa%C3%BAde.">Selecionar plano</a>
-                        </div>
-                        <!-- Table Bottom -->
-                    </div>
-                </div>
-                <!-- End Single Table-->
-
-                <!-- Single Table -->
-                <div class="col-lg-4 col-md-12 col-12">
-                    <div class="single-table">
-                        <!-- Table Head -->
-                        <div class="table-head">
-                            <div class="icon">
-                                <img src="../../assets/img/bronze.png" alt="">
-                            </div>
-                            <h4 class="title">Plano Bronze</h4>
-                            <div class="price">
-                                <p class="amount">
-                                    R$29,90<span>/ mês</span>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Table List -->
-                        <ul class="table-list">
-                            <li>
-                                <i class="icofont icofont-ui-check"></i>
-                                Descontos em consultas e exames dentro da rede credenciada
-                            </li>
-                            <!-- <li class="cross">
-                                <i class="icofont icofont-ui-close"></i>
-                                1 (uma) consulta por mês com clinico geral ou ginecologista
-                            </li>
-                            <li class="cross">
-                                <i class="icofont icofont-ui-close"></i>
-                                Pediatra
-                            </li>
-                            <li class="cross">
-                                <i class="icofont icofont-ui-close"></i>
-                                Ortopedista
-                            </li>
-                            <li class="cross">
-                                <i class="icofont icofont-ui-close"></i>
-                                Nutrição
-                            </li>
-                            <li class="cross">
-                                <i class="icofont icofont-ui-close"></i>
-                                Oftalmologista
-                            </li> -->
-                        </ul>
-                        <div class="table-bottom">
-                            <a class="btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Bronze%20do%20via%20sa%C3%BAde.">Selecionar plano</a>
-                        </div>
-                        <!-- Table Bottom -->
-                    </div>
-                </div>
-                <!-- End Single Table-->
-
-            </div>
+    <!-- Plans -->
+    <section id="planos" class="vs-plans">
+      <div class="vs-container">
+        <div class="vs-section-title">
+          <h2>Cartão de Descontos Familiar: <b>Economia</b> e <b>Benefícios</b> em Um Só Plano</h2>
+          <p>Somos um cartão benefício que oferece descontos exclusivos através de uma mensalidade única para você e sua família</p>
         </div>
+
+        <!-- Toggle Individual / Empresarial -->
+        <div class="vs-plans-toggle">
+          <button :class="{ active: planType === 'individual' }" @click="planType = 'individual'">
+            Individual
+          </button>
+          <button :class="{ active: planType === 'empresarial' }" @click="planType = 'empresarial'">
+            Empresarial
+          </button>
+        </div>
+
+        <!-- Individual plans -->
+        <div v-if="planType === 'individual'" class="vs-plans-grid">
+
+          <!-- Diamante -->
+          <div class="vs-plan-card">
+            <div class="vs-plan-badge">💎</div>
+            <h4 class="vs-plan-name">Plano Diamante</h4>
+            <div class="vs-plan-price">R$99,90<span>/mês</span></div>
+            <ul class="vs-plan-list">
+              <li>Benefícios do plano Ouro</li>
+              <li>35% de desconto em exames laboratoriais</li>
+              <li>Endocrinologista</li>
+              <li>Geriatria</li>
+              <li>Otorrinolaringologista</li>
+              <li>E muito mais...</li>
+            </ul>
+            <div class="vs-plan-dental">
+              <h5>🦷 Benefícios Odontológicos</h5>
+              <ul>
+                <li>Consulta inicial com especialista</li>
+                <li>Limpeza odontológica a cada 6 meses (titular e dependentes)</li>
+                <li>RX periapical</li>
+                <li>1 restauração (remoção de cárie)</li>
+                <li>1 sessão de clareamento em consultório</li>
+                <li>30% de desconto nos demais procedimentos odontológicos</li>
+              </ul>
+            </div>
+            <div class="vs-plan-btn">
+              <a class="vs-btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Diamante%20do%20via%20sa%C3%BAde." target="_blank">Selecionar plano</a>
+            </div>
+          </div>
+
+          <!-- Ouro -->
+          <div class="vs-plan-card">
+            <div class="vs-plan-badge">🥇</div>
+            <h4 class="vs-plan-name">Plano Ouro</h4>
+            <div class="vs-plan-price">R$59,90<span>/mês</span></div>
+            <ul class="vs-plan-list">
+              <li>Descontos em consultas e exames na rede credenciada</li>
+              <li>Benefícios do plano Prata</li>
+              <li>Pediatra</li>
+              <li>Ortopedista</li>
+              <li>Nutrição</li>
+              <li>Oftalmologista</li>
+            </ul>
+            <div class="vs-plan-dental">
+              <h5>🦷 Benefícios Odontológicos</h5>
+              <ul>
+                <li>Consulta inicial com especialista</li>
+                <li>Limpeza odontológica a cada 6 meses (titular e dependentes)</li>
+                <li>RX periapical</li>
+                <li>30% de desconto nos demais procedimentos odontológicos</li>
+              </ul>
+            </div>
+            <div class="vs-plan-btn">
+              <a class="vs-btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Ouro%20do%20via%20sa%C3%BAde." target="_blank">Selecionar plano</a>
+            </div>
+          </div>
+
+          <!-- Prata -->
+          <div class="vs-plan-card">
+            <div class="vs-plan-badge">🥈</div>
+            <h4 class="vs-plan-name">Plano Prata</h4>
+            <div class="vs-plan-price">R$49,90<span>/mês</span></div>
+            <ul class="vs-plan-list">
+              <li>Descontos em consultas e exames na rede credenciada</li>
+              <li>1 consulta gratuita por mês:</li>
+              <li>Clínico geral</li>
+              <li>Ginecologista</li>
+            </ul>
+            <div class="vs-plan-dental">
+              <h5>🦷 Benefícios Odontológicos</h5>
+              <ul>
+                <li>Consulta inicial com especialista</li>
+                <li>Limpeza odontológica a cada 6 meses (titular e dependentes)</li>
+                <li>30% de desconto nos demais procedimentos odontológicos</li>
+              </ul>
+            </div>
+            <div class="vs-plan-btn">
+              <a class="vs-btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Prata%20do%20via%20sa%C3%BAde." target="_blank">Selecionar plano</a>
+            </div>
+          </div>
+
+          <!-- Bronze -->
+          <div class="vs-plan-card">
+            <div class="vs-plan-badge">🥉</div>
+            <h4 class="vs-plan-name">Plano Bronze</h4>
+            <div class="vs-plan-price">R$29,90<span>/mês</span></div>
+            <ul class="vs-plan-list">
+              <li>Descontos em consultas e exames na rede credenciada</li>
+              <li>30% de desconto em exames laboratoriais</li>
+            </ul>
+            <div class="vs-plan-btn" style="margin-top: auto;">
+              <a class="vs-btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Bronze%20do%20via%20sa%C3%BAde." target="_blank">Selecionar plano</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Empresarial plans -->
+        <div v-if="planType === 'empresarial'" class="vs-plans-grid vs-plans-grid--2col">
+
+          <!-- Ouro Empresarial -->
+          <div class="vs-plan-card">
+            <div class="vs-plan-badge">🥇</div>
+            <h4 class="vs-plan-name">Plano Ouro</h4>
+            <div class="vs-plan-tag">Empresarial</div>
+            <div class="vs-plan-price">R$49,90<span>/mês</span></div>
+            <div class="vs-plan-section-label">Centro Médico</div>
+            <ul class="vs-plan-list">
+              <li>Descontos em consultas e exames dentro da rede credenciada</li>
+              <li>1 consulta/mês: clínico geral, ginecologia, pediatria, ortopedia, nutrição ou oftalmologia</li>
+            </ul>
+            <div class="vs-plan-dental">
+              <h5>🦷 Odontologia</h5>
+              <ul>
+                <li>Limpeza a cada 6 meses para titular e dependentes</li>
+                <li>RX periapical</li>
+                <li>30% de desconto nos demais procedimentos</li>
+              </ul>
+            </div>
+            <div class="vs-plan-btn">
+              <a class="vs-btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Ouro%20Empresarial%20do%20via%20sa%C3%BAde." target="_blank">Selecionar plano</a>
+            </div>
+          </div>
+
+          <!-- Diamante Empresarial -->
+          <div class="vs-plan-card vs-plan-card--featured">
+            <div class="vs-plan-badge">💎</div>
+            <h4 class="vs-plan-name">Plano Diamante</h4>
+            <div class="vs-plan-tag vs-plan-tag--featured">Empresarial · Recomendado</div>
+            <div class="vs-plan-price">R$79,90<span>/mês</span></div>
+            <p class="vs-plan-includes">Inclui todos os benefícios do plano Ouro, e mais:</p>
+            <div class="vs-plan-section-label">Centro Médico</div>
+            <ul class="vs-plan-list">
+              <li>1 consulta/mês: endocrinologia, geriatria ou otorrinolaringologia</li>
+            </ul>
+            <div class="vs-plan-dental">
+              <h5>🦷 Odontologia</h5>
+              <ul>
+                <li>1 restauração (remoção de cárie)</li>
+                <li>1 sessão de clareamento em consultório</li>
+                <li>30% de desconto nos demais procedimentos</li>
+              </ul>
+            </div>
+            <div class="vs-plan-btn">
+              <a class="vs-btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Diamante%20Empresarial%20do%20via%20sa%C3%BAde." target="_blank">Selecionar plano</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
-    <!--/ End Pricing Table -->
 
-    <!-- Start Feautes -->
-    <!-- <section class="Feautes section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>We Are Always Ready to Help You & Your Family</h2>
-                        <img src="../../assets/img/section-img.png" alt="#" />
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing
-                            elit praesent aliquet. pretiumts
-                        </p>
-                    </div>
-                </div>
+    <!-- About -->
+    <section class="vs-about">
+      <div class="vs-container">
+        <div class="vs-about-grid">
+          <div class="vs-about-text">
+            <h2>Centro Médico Cavalcante</h2>
+            <p>Através do cartão de benefícios o cliente tem descontos em consultas e exames dentro da rede credenciada, sendo a principal rede o centro médico Cavalcante. As consultas cortesia são prestadas através desta rede.</p>
+            <div class="vs-about-rules">
+              <div class="vs-rule-item">
+                <span class="vs-rule-icon">✓</span>
+                <span><b>1 consulta gratuita</b> no mês por contrato a partir do plano Prata e Ouro</span>
+              </div>
+              <div class="vs-rule-item">
+                <span class="vs-rule-icon">✓</span>
+                <span>Zero carência e fidelização de contrato</span>
+              </div>
+              <div class="vs-rule-item">
+                <span class="vs-rule-icon">✓</span>
+                <span>Até 5 dependentes sem acréscimo na mensalidade</span>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-12">
-
-                    <div class="single-features">
-                        <div class="signle-icon">
-                            <i class="icofont icofont-ambulance-cross"></i>
-                        </div>
-                        <h3>Emergency Help</h3>
-                        <p>
-                            Lorem ipsum sit, consectetur adipiscing elit.
-                            Maecenas mi quam vulputate.
-                        </p>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-12">
-
-                    <div class="single-features">
-                        <div class="signle-icon">
-                            <i class="icofont icofont-medical-sign-alt"></i>
-                        </div>
-                        <h3>Enriched Pharmecy</h3>
-                        <p>
-                            Lorem ipsum sit, consectetur adipiscing elit.
-                            Maecenas mi quam vulputate.
-                        </p>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-12">
-
-                    <div class="single-features last">
-                        <div class="signle-icon">
-                            <i class="icofont icofont-stethoscope"></i>
-                        </div>
-                        <h3>Medical Treatment</h3>
-                        <p>
-                            Lorem ipsum sit, consectetur adipiscing elit.
-                            Maecenas mi quam vulputate.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
+          </div>
+          <div class="vs-about-img">
+            <img src="/assets/img/medic.png" alt="Centro Médico Cavalcante" />
+          </div>
         </div>
-    </section> -->
-    <!--/ End Feautes -->
-
-    <!-- Start Fun-facts -->
-    <!-- <div id="fun-facts" class="fun-facts section overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-fun">
-                        <i class="icofont icofont-home"></i>
-                        <div class="content">
-                            <span class="counter">3468</span>
-                            <p>Hospital Rooms</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-
-                    <div class="single-fun">
-                        <i class="icofont icofont-user-alt-3"></i>
-                        <div class="content">
-                            <span class="counter">557</span>
-                            <p>Specialist Doctors</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-fun">
-                        <i class="icofont-simple-smile"></i>
-                        <div class="content">
-                            <span class="counter">4379</span>
-                            <p>Happy Patients</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-fun">
-                        <i class="icofont icofont-table"></i>
-                        <div class="content">
-                            <span class="counter">32</span>
-                            <p>Years of Experience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!--/ End Fun-facts -->
-
-    <!-- Start Why choose -->
-    <section class="why-choose section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>
-                            Centro Médico Cavalcante
-                        </h2>
-                        <a href="https://centromedicocavalcante.com.br/" target="_blank">
-                            <img src="../../assets/img/vm.png" alt="#" style="height: 60px;" />
-                        </a>
-                        <p>
-                            Através do cartão de benefícios o cliente tem descontos em consultas e exames dentro da rede
-                            credenciada, sendo a principal rede o centro médico Cavalcante.
-                            As consultas cortesia são prestadas através desta rede
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="position: relative;">
-                <div class="col-lg-6 col-12">
-
-                    <div class="choose-left">
-                        <h3>Regras do Benefício</h3>
-                        <p>
-                            <b>Uma</b> consulta gratuita no mês por contrato a partir do plano prata e ouro
-
-                        </p>
-                        <p>
-                            Zero carência e fidelização de contrato
-                        </p>
-                    </div>
-
-                </div>
-                <div class="appointment-image">
-                    <img src="../../assets/img/contact-img.png" alt="#" />
-                </div>
-                <!-- <div class="col-lg-6 col-12">
-
-                    <div class="choose-right">
-                        <div class="video-image">
-
-                            <div class="promo-video">
-                                <div class="waves-block">
-                                    <div class="waves wave-1"></div>
-                                    <div class="waves wave-2"></div>
-                                    <div class="waves wave-3"></div>
-                                </div>
-                            </div>
-
-                            <a
-                                href="https://www.youtube.com/watch?v=RFVXy6CRVR4"
-                                class="video video-popup mfp-iframe"
-                                ><i class="fa fa-play"></i
-                            ></a>
-                        </div>
-                    </div>
-
-                </div> -->
-            </div>
-        </div>
+      </div>
     </section>
-    <!--/ End Why choose -->
 
-    <!-- Start Call to action -->
-    <section class="call-action overlay" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12">
-                    <div class="content">
-                        <h2>
-                            Precisa de ajudar com o plano?
-                        </h2>
-                        <p>
-                            Entre em contato com nosso suporte! Estamos aqui para esclarecer dúvidas, resolver problemas
-                            e garantir que você aproveite ao máximo seu plano.
-                        </p>
-                        <div class="button">
-                            <a href="#" class="btn">Falar com o Suporte</a>
-                            <!-- <a href="#" class="btn second"
-                                >Suporte<i class="fa fa-long-arrow-right"></i
-                            ></a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- FAQ -->
+    <section class="vs-faq">
+      <div class="vs-container">
+        <div class="vs-section-title">
+          <h2>Perguntas <b>Frequentes</b></h2>
+          <p>Tire suas dúvidas sobre o Cartão de Benefícios Via Saúde</p>
         </div>
+        <div class="vs-faq-groups">
+          <template v-for="(group, gi) in faqGroups" :key="gi">
+            <div class="vs-faq-category">{{ group.category }}</div>
+            <div
+              v-for="(item, ii) in group.items"
+              :key="`${gi}-${ii}`"
+              class="vs-faq-item"
+              :class="{ open: openFaq === `${gi}-${ii}` }"
+            >
+              <button class="vs-faq-question" @click="toggleFaq(`${gi}-${ii}`)">
+                <span>{{ item.q }}</span>
+                <span class="vs-faq-icon">{{ openFaq === `${gi}-${ii}` ? '−' : '+' }}</span>
+              </button>
+              <div v-show="openFaq === `${gi}-${ii}`" class="vs-faq-answer">
+                <p>{{ item.a }}</p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
     </section>
-    <!--/ End Call to action -->
 
-    <!-- Footer Area -->
-    <footer id="footer" class="footer">
-        <!-- Footer Top -->
-        <!-- <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-footer">
-                            <h2>About Us</h2>
-                            <p>
-                                Lorem ipsum dolor sit am consectetur adipisicing
-                                elit do eiusmod tempor incididunt ut labore
-                                dolore magna.
-                            </p>
-                            <ul class="social">
-                                <li>
-                                    <a href="#"
-                                        ><i class="icofont-facebook"></i
-                                    ></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><i class="icofont-google-plus"></i
-                                    ></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><i class="icofont-twitter"></i
-                                    ></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><i class="icofont-vimeo"></i
-                                    ></a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        ><i class="icofont-pinterest"></i
-                                    ></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-footer f-link">
-                            <h2>Quick Links</h2>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <ul>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >Home</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >About Us</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >Services</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >Our Cases</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >Other Links</a
-                                            >
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <ul>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >Consuling</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >Finance</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >Testimonials</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >FAQ</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-caret-right"
-                                                    aria-hidden="true"
-                                                ></i
-                                                >Contact Us</a
-                                            >
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-footer">
-                            <h2>Open Hours</h2>
-                            <p>
-                                Lorem ipsum dolor sit ame consectetur
-                                adipisicing elit do eiusmod tempor incididunt.
-                            </p>
-                            <ul class="time-sidual">
-                                <li class="day">
-                                    Monday - Fridayp <span>8.00-20.00</span>
-                                </li>
-                                <li class="day">
-                                    Saturday <span>9.00-18.30</span>
-                                </li>
-                                <li class="day">
-                                    Monday - Thusday <span>9.00-15.00</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-footer">
-                            <h2>Newsletter</h2>
-                            <p>
-                                subscribe to our newsletter to get allour news
-                                in your inbox.. Lorem ipsum dolor sit amet,
-                                consectetur adipisicing elit,
-                            </p>
-                            <form
-                                action="mail/mail.php"
-                                method="get"
-                                target="_blank"
-                                class="newsletter-inner"
-                            >
-                                <input
-                                    name="email"
-                                    placeholder="Email Address"
-                                    class="common-input"
-                                    onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Your email address'"
-                                    required=""
-                                    type="email"
-                                />
-                                <button class="button">
-                                    <i class="icofont icofont-paper-plane"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--/ End Footer Top -->
-        <!-- Copyright -->
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12">
-                        <div class="copyright-content">
-                            <p>
-                                © Copyright 2025 | All Rights Reserved by
-                                <a href="" style="pointer-events: none; cursor: default;" target="_blank">A&R</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ End Copyright -->
+    <!-- CTA -->
+    <section class="vs-cta">
+      <div class="vs-container">
+        <h2>Precisa de ajuda com o plano?</h2>
+        <p>Entre em contato com nosso suporte! Estamos aqui para esclarecer dúvidas, resolver problemas e garantir que você aproveite ao máximo seu plano.</p>
+        <a href="https://wa.me/+551321912391" class="vs-btn vs-btn-light" target="_blank">Falar com o Suporte</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="vs-footer">
+      <div class="vs-container">
+        <p>© Copyright 2025 | Todos os direitos reservados por A&amp;R</p>
+      </div>
     </footer>
-    <!--/ End Footer Area -->
+
+  </div>
 </template>
 
-<style lang="scss">
-@use "../../style.scss";
+<style>
+/* =============================================
+   Via Saúde – Self-contained styles
+   All rules scoped under .vs-page
+   ============================================= */
 
+/* CSS vars – Via Saúde uses blue as primary */
+.vs-page {
+  --vs-primary: #3A57A5;
+  --vs-primary-dark: #2d4591;
+  --vs-primary-light: #5570c0;
+  --vs-secondary: #AC453A;
+  --vs-base: #eaeaea;
+  --vs-dark: #2d2d2d;
+  --vs-dark2: #555;
+  --vs-white: #fff;
+  --vs-radius: 8px;
+  --vs-shadow: 0 4px 20px rgba(0,0,0,0.08);
 
-
-.pricing-table {
-    .icon {
-        img {
-            width: 80px;
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        #planos{
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding-bottom: 30px;
-            
-            &::-webkit-scrollbar {
-                // width: 2px;
-                height: 3px;
-                // border: 1px solid #ddd;
-            }
-            &::-webkit-scrollbar-thumb {
-                background: rgba(#3A57A5, 0.3);
-                border-radius: 5px;
-            }
-        }
-        
-    }
+  font-family: 'Open Sans', sans-serif;
+  color: var(--vs-dark);
+  background: var(--vs-base);
+  min-height: 100vh;
 }
 
-.why-choose {
-    :first-child {
-        z-index: 5;
-    }
-
-    .appointment-image {
-        position: absolute;
-        opacity: .5;
-        right: 0px;
-        top: -100px;
-        z-index: 1;
-        max-width: 600px;
-    }
-
-    overflow: hidden;
+.vs-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.pricing-table .table-list .cross {
-    color: #dddddd;
+/* ---- Shared button ---- */
+.vs-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--vs-primary);
+  color: var(--vs-white) !important;
+  border-radius: var(--vs-radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+  border: 2px solid var(--vs-primary);
+  cursor: pointer;
+}
+.vs-btn:hover { background: var(--vs-primary-dark); border-color: var(--vs-primary-dark); transform: translateY(-1px); }
+
+.vs-btn-outline {
+  background: transparent;
+  color: var(--vs-white) !important;
+  border-color: var(--vs-white);
+}
+.vs-btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+.vs-btn-wpp {
+  background: #25D366;
+  border-color: #25D366;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.vs-btn-wpp:hover { background: #1ebe5a; border-color: #1ebe5a; }
+
+.vs-btn-light {
+  background: var(--vs-white);
+  color: var(--vs-primary) !important;
+  border-color: var(--vs-white);
+}
+.vs-btn-light:hover { background: var(--vs-base); }
+
+/* ---- Section title ---- */
+.vs-section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.vs-section-title h2 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--vs-dark);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.vs-section-title h2 b { font-weight: 700; color: var(--vs-primary); }
+.vs-section-title p { color: var(--vs-dark2); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+/* =============================================
+   HEADER
+   ============================================= */
+.vs-topbar {
+  background: var(--vs-primary-dark);
+  padding: 8px 0;
+}
+.vs-topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.vs-topbar-links, .vs-topbar-contacts {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.vs-topbar a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+.vs-topbar a:hover { color: #fff; }
+
+.vs-header-main {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  padding: 14px 0;
+}
+.vs-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vs-logo img {
+  height: 56px;
+  object-fit: contain;
 }
 
-@media (max-width:768px) {
-    .header-inner {
-        height: 140px;
-        position: relative;
+/* =============================================
+   HERO
+   ============================================= */
+.vs-hero {
+  background: var(--vs-primary) url('/assets/img/via_saude_bg.png') center/cover no-repeat;
+  background-blend-mode: multiply;
+  padding: 100px 0 80px;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+}
+.vs-hero-content {
+  max-width: 620px;
+}
+.vs-hero-content h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.vs-hero-content h1 span { color: #c8f0e0; }
+.vs-hero-content p {
+  color: rgba(255,255,255,0.88);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.vs-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
-        * {
-            height: 100%;
-        }
-    }
+/* =============================================
+   FEATURES
+   ============================================= */
+.vs-features {
+  background: #fff;
+  padding: 0;
+}
+.vs-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.vs-feature-card {
+  padding: 40px 32px;
+  border-right: 1px solid #f0f0f0;
+}
+.vs-feature-card:last-child { border-right: none; }
+.vs-feature-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--vs-base);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vs-primary);
+  margin-bottom: 20px;
+}
+.vs-feature-card--mid .vs-feature-icon {
+  background: var(--vs-primary);
+  color: #fff;
+}
+.vs-feature-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--vs-dark);
+  margin-bottom: 12px;
+}
+.vs-feature-card p { color: var(--vs-dark2); line-height: 1.6; font-size: 0.9rem; }
 
-    .why-choose {
-        padding-bottom: 200px;
+/* =============================================
+   PLANS
+   ============================================= */
+.vs-plans {
+  padding: 80px 0;
+  background: var(--vs-base);
+}
+.vs-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.vs-plan-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 24px;
+  box-shadow: var(--vs-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.vs-plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.vs-plan-badge {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+.vs-plan-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--vs-dark);
+  margin: 0;
+}
+.vs-plan-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--vs-primary);
+  line-height: 1;
+}
+.vs-plan-price span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--vs-dark2);
+}
+.vs-plan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+}
+.vs-plan-list li {
+  font-size: 0.85rem;
+  color: var(--vs-dark);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.4;
+}
+.vs-plan-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--vs-primary);
+  font-weight: 700;
+}
+.vs-plan-dental {
+  background: #f0f9f5;
+  border-left: 3px solid var(--vs-primary);
+  border-radius: 0 var(--vs-radius) var(--vs-radius) 0;
+  padding: 14px 16px;
+}
+.vs-plan-dental h5 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--vs-primary-dark);
+  margin: 0 0 10px 0;
+}
+.vs-plan-dental ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.vs-plan-dental ul li {
+  font-size: 0.8rem;
+  color: var(--vs-dark);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.4;
+}
+.vs-plan-dental ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--vs-primary);
+}
+.vs-plan-btn { margin-top: auto; }
+.vs-plan-btn .vs-btn { width: 100%; text-align: center; }
 
-        .appointment-image {
-            max-width: 300px;
-            top: 200px;
-            opacity: .4;
-        }
-    }
+/* Toggle Individual / Empresarial */
+.vs-plans-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  background: #fff;
+  border-radius: 50px;
+  padding: 4px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: var(--vs-shadow);
+}
+.vs-plans-toggle button {
+  padding: 10px 32px;
+  border: none;
+  background: transparent;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vs-dark2);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-family: inherit;
+}
+.vs-plans-toggle button.active {
+  background: var(--vs-primary);
+  color: #fff;
+}
+
+/* 2-col grid for Empresarial */
+.vs-plans-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* Featured card (Diamante Empresarial) */
+.vs-plan-card--featured {
+  border: 2px solid var(--vs-primary);
+  position: relative;
+}
+.vs-plan-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--vs-primary);
+  background: rgba(58,87,165,0.08);
+  border-radius: 4px;
+  padding: 3px 10px;
+  margin-bottom: 4px;
+}
+.vs-plan-tag--featured {
+  background: var(--vs-primary);
+  color: #fff;
+}
+.vs-plan-section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--vs-dark2);
+  margin-bottom: 6px;
+}
+.vs-plan-includes {
+  font-size: 0.82rem;
+  color: var(--vs-primary);
+  font-style: italic;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+/* =============================================
+   ABOUT
+   ============================================= */
+.vs-about {
+  background: var(--vs-primary-dark);
+  padding: 80px 0;
+  overflow: hidden;
+}
+.vs-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.vs-about-text h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.vs-about-text > p {
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.vs-about-rules { display: flex; flex-direction: column; gap: 14px; }
+.vs-rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.vs-rule-icon {
+  background: var(--vs-primary-light);
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.vs-about-img {
+  display: flex;
+  justify-content: center;
+  opacity: 0.7;
+}
+.vs-about-img img {
+  max-width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+}
+
+/* =============================================
+   FAQ
+   ============================================= */
+.vs-faq {
+  padding: 80px 0;
+  background: #fff;
+}
+.vs-faq-groups {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.vs-faq-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--vs-primary);
+  margin: 32px 0 10px;
+  padding: 0 4px;
+}
+.vs-faq-category:first-child { margin-top: 0; }
+.vs-faq-item {
+  border: 1px solid #e8e8e8;
+  border-radius: var(--vs-radius);
+  margin-bottom: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.vs-faq-item.open { border-color: var(--vs-primary); }
+.vs-faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vs-dark);
+  text-align: left;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.vs-faq-question:hover { background: #fafafa; }
+.vs-faq-item.open .vs-faq-question { color: var(--vs-primary); background: #f5fbf8; }
+.vs-faq-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--vs-base);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--vs-primary);
+  font-weight: 700;
+}
+.vs-faq-item.open .vs-faq-icon { background: var(--vs-primary); color: #fff; }
+.vs-faq-answer { padding: 0 20px 16px; }
+.vs-faq-answer p { color: var(--vs-dark2); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+
+/* =============================================
+   CTA
+   ============================================= */
+.vs-cta {
+  background: var(--vs-secondary);
+  padding: 72px 0;
+  text-align: center;
+}
+.vs-cta h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.vs-cta p {
+  color: rgba(255,255,255,0.85);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.vs-footer {
+  background: var(--vs-dark);
+  padding: 24px 0;
+  text-align: center;
+}
+.vs-footer p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .vs-plans-grid { grid-template-columns: repeat(2, 1fr); }
+  .vs-plans-grid--2col { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .vs-topbar-links, .vs-topbar-contacts { gap: 12px; }
+  .vs-topbar-inner { flex-direction: column; gap: 6px; text-align: center; }
+
+  .vs-hero { padding: 60px 0; min-height: auto; }
+  .vs-hero-content h1 { font-size: 1.6rem; }
+
+  .vs-features-grid { grid-template-columns: 1fr; }
+  .vs-feature-card { border-right: none; border-bottom: 1px solid #f0f0f0; }
+  .vs-feature-card:last-child { border-bottom: none; }
+
+  .vs-plans-grid { grid-template-columns: 1fr; }
+  .vs-plans-grid--2col { grid-template-columns: 1fr; }
+  .vs-plans-toggle button { padding: 10px 20px; font-size: 0.85rem; }
+
+  .vs-about-grid { grid-template-columns: 1fr; }
+  .vs-about-img { display: none; }
+
+  .vs-section-title h2 { font-size: 1.4rem; }
 }
 </style>
