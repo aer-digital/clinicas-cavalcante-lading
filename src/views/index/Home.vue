@@ -1258,9 +1258,164 @@ const estaDentroDoHorarioComercial = computed(() => {
 
 </template>
 
-<style scoped lang="scss">
-@use '../../style.scss';
+<style lang="scss">
+// Estilos globais do Home – separados aqui pois afetam elementos fora do escopo do componente
+// (body, modais Bootstrap, utilitários usados inline no template).
+@use '../../style.scss' as *;
 
+body {
+  color: $base;
+  // background-color: $base;
+}
+
+#nossa-clinica > div:nth-child(2) > div > div > div > p {
+  color: $dark;
+  font-weight: 100;
+}
+
+.modal-content {
+  backdrop-filter: blur(5px) saturate(90%);
+  -webkit-backdrop-filter: blur(5px) saturate(90%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+#contact {
+  * { color: $base; }
+
+  .atendimento a {
+    font-size: 1.5rem;
+    font-weight: bolder;
+
+    span {
+      font-size: 1.1rem;
+      font-weight: 100;
+    }
+  }
+
+  #location p { line-height: 1.4; }
+
+  #map {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 3;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    width: 90%;
+
+    img {
+      opacity: .9;
+      object-fit: cover;
+      object-position: right 65%;
+      width: 100%;
+      transform: scale(1.1);
+      transform-origin: 75% center;
+    }
+  }
+}
+
+.pass    { color: $pass    !important; }
+.notPass { color: $notPass !important; }
+
+#plans {
+  h2, p {
+    font-weight: bold;
+    line-height: 1;
+    color: $primary-dark-2;
+  }
+}
+
+#modalPacotes .modal-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+  color: $dark2;
+
+  .contact-buttons {
+    display: flex;
+    gap: 20px;
+
+    a { padding: .7rem 1.5rem; }
+
+    .btn-phone,
+    .btn-wpp {
+      background-color: $primary;
+      color: $white;
+    }
+
+    .btn-wpp { font-weight: 600; }
+  }
+
+  .img .values {
+    h2 {
+      color: $primary-dark-2;
+      font-weight: 600;
+      line-height: .8;
+      margin-bottom: 1rem;
+    }
+
+    span {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  }
+
+  .description {
+    margin: 1rem 0;
+
+    h2 { font-weight: 600; }
+    h4 { margin-top: 1rem; }
+    p  { color: $dark2; line-height: 1.4; }
+  }
+}
+
+#social {
+  margin-top: 30px;
+  font-size: 3rem;
+}
+
+#campanha {
+  display: flex;
+  color: grey;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar       { width: 10px; height: 10px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background-color: $base;
+    border-radius: 20px;
+    border: 3px solid grey;
+  }
+
+  p {
+    color: $dark;
+    font-size: 1rem;
+    line-height: 1.1;
+    margin-top: 10px;
+    white-space: pre-line;
+  }
+
+  button {
+    margin-top: 20px;
+    color: $white;
+    font-size: 1.3rem;
+    background: $primary;
+  }
+
+  #campanha-img {
+    overflow: hidden;
+
+    img { border-radius: 10px; }
+  }
+}
+</style>
+
+<style scoped lang="scss">
 .about-us {
   margin-top: 10%;
 
