@@ -327,8 +327,7 @@ const faqGroups = [
           </div>
 
           <!-- Ouro -->
-          <div class="vs-plan-card vs-plan-card--featured">
-            <div class="vs-plan-ribbon">Mais escolhido</div>
+          <div class="vs-plan-card">
             <div class="vs-plan-badge">🥇</div>
             <h4 class="vs-plan-name">Plano Ouro</h4>
             <div class="vs-plan-price">R$59,90<span>/mês</span></div>
@@ -353,9 +352,10 @@ const faqGroups = [
               <a class="vs-btn" href="https://wa.me/551321912391?text=Oi.%20%0AQueria%20saber%20mais%20sobre%20o%20Plano%20Ouro%20do%20via%20sa%C3%BAde." target="_blank">Escolher Ouro</a>
             </div>
           </div>
-
+          
           <!-- Diamante -->
-          <div class="vs-plan-card">
+          <div class="vs-plan-card vs-plan-card--featured">
+            <div class="vs-plan-ribbon">Mais escolhido</div>
             <div class="vs-plan-badge">💎</div>
             <h4 class="vs-plan-name">Plano Diamante</h4>
             <div class="vs-plan-price">R$99,90<span>/mês</span></div>
@@ -449,30 +449,30 @@ const faqGroups = [
                   <th>Principais benefícios</th>
                   <th>Bronze</th>
                   <th>Prata</th>
-                  <th class="vs-compare-featured">Ouro</th>
-                  <th>Diamante</th>
+                  <th>Ouro</th>
+                  <th class="vs-compare-featured">Diamante</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Consultas médicas</td>
-                  <td>✓</td><td>✓</td><td class="vs-compare-featured">✓</td><td>✓</td>
-                </tr>
-                <tr>
-                  <td>Exames laboratoriais</td>
-                  <td>✓</td><td>✓</td><td class="vs-compare-featured">✓</td><td>✓</td>
+                  <td>✓</td><td>✓</td><td>✓</td><td class="vs-compare-featured">✓</td>
                 </tr>
                 <tr>
                   <td>Desconto em exames</td>
-                  <td>30%</td><td>30%</td><td class="vs-compare-featured">30%</td><td>35%</td>
+                  <td>✓</td><td>✓</td><td>✓</td><td class="vs-compare-featured">✓</td>
+                </tr>
+                <tr>
+                  <td>Exames laboratoriais</td>
+                  <td>30%</td><td>30%</td><td>30%</td><td class="vs-compare-featured">35%</td>
                 </tr>
                 <tr>
                   <td>Odontologia</td>
-                  <td>—</td><td>Básica</td><td class="vs-compare-featured">Completa</td><td>Completa</td>
+                  <td>—</td><td>Básica</td><td>Completa</td><td class="vs-compare-featured">Completa</td>
                 </tr>
                 <tr>
                   <td>Especialidades com consulta cortesia/mês</td>
-                  <td>—</td><td>2</td><td class="vs-compare-featured">6</td><td>9</td>
+                  <td>—</td><td>2</td><td>6</td><td class="vs-compare-featured">9</td>
                 </tr>
               </tbody>
             </table>
@@ -507,7 +507,7 @@ const faqGroups = [
             </div>
           </div>
           <div class="vs-about-img">
-            <img src="/assets/img/medic.png" alt="Centro Médico Cavalcante" />
+            <img src="/assets/img/medicos-cavalcante.avif" alt="Centro Médico Cavalcante" />
             <div class="vs-about-badge">📍 Atendimento na Baixada Santista</div>
           </div>
         </div>
@@ -525,11 +525,11 @@ const faqGroups = [
           </div>
           <div class="vs-trust-item">
             <span class="vs-trust-icon">⭐</span>
-            <div><b>4,8/5</b><small>satisfação dos clientes</small></div>
+            <div><b>4,6/5</b><small>satisfação dos clientes</small></div>
           </div>
           <div class="vs-trust-item">
             <span class="vs-trust-icon">🏥</span>
-            <div><b>250+</b><small>clínicas parceiras</small></div>
+            <div><b>Diversos</b><small>parceiros credenciados</small></div>
           </div>
           <div class="vs-trust-item">
             <span class="vs-trust-icon">🩺</span>
@@ -621,7 +621,7 @@ const faqGroups = [
   </div>
 </template>
 
-<style>
+<style lang="scss">
 /* =============================================
    Via Saúde – Self-contained styles
    All rules scoped under .vs-page
@@ -629,7 +629,7 @@ const faqGroups = [
 
 /* CSS vars – Via Saúde uses blue as primary */
 .vs-page {
-  --vs-primary: #3A57A5;
+  --vs-primary: rgb(58, 87, 165);
   --vs-primary-dark: #2d4591;
   --vs-primary-light: #5570c0;
   --vs-secondary: #AC453A;
@@ -784,10 +784,10 @@ const faqGroups = [
   background:
     linear-gradient(
       90deg,
-      rgba(19, 46, 175, 1) 0%,
-      rgba(19, 46, 175, 1) 35%,
-      rgba(19, 46, 175, 1) 40%,
-      rgba(19, 46, 175, 0) 100%
+      rgba(58, 87, 165, 1) 0%,
+      rgba(58, 87, 165, 1) 35%,
+      rgba(58, 87, 165, 1) 40%,
+      rgba(58, 87, 165, 0) 100%
     ),
     url('/assets/img/via-saude/family_full.avif') right center / auto 140% no-repeat;
 
@@ -851,7 +851,7 @@ const faqGroups = [
 }
 .vs-hero-stats {
   margin-top: 16px;
-  background: rgba(234, 234, 234, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px);
@@ -922,7 +922,7 @@ const faqGroups = [
 }
 .vs-how-steps {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
@@ -1191,23 +1191,29 @@ const faqGroups = [
 }
 .vs-compare-table tbody tr:last-child td { border-bottom: none; }
 .vs-compare-featured {
-  background: rgba(47,174,116,0.08);
-  font-weight: 700;
+  background: rgba(65, 142, 113,0.08);
+  font-weight: 900;
+  color: var(--vs-primary);
 }
 
 /* =============================================
    ABOUT
    ============================================= */
 .vs-about {
-  background: var(--vs-primary-dark);
-  padding: 80px 0;
+  background: var(--vs-white);
   overflow: hidden;
+
+  .vs-container {
+    background: var(--vs-primary);
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+  }
 }
 .vs-about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: stretch;
 }
 .vs-about-text h2 {
   font-size: 1.8rem;
@@ -1244,24 +1250,48 @@ const faqGroups = [
   margin-top: 1px;
 }
 .vs-about-img {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  position: relative;
+  min-height: 280px;
+  border-radius: 12px;
+  overflow: visible;
 }
 .vs-about-img img {
-  max-width: 100%;
-  max-height: 340px;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+  position: absolute;
+  inset: 0;
+  // width: 100%;
+  height: 130%;
+  object-fit: cover;
+  border-radius: 12px;
+  top: -15%;
+  overflow: visible;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
 }
 .vs-about-badge {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: #fff;
+  color: var(--vs-primary);
   font-size: 0.82rem;
   font-weight: 600;
   padding: 8px 18px;
   border-radius: 20px;
+  box-shadow: var(--vs-shadow);
+  white-space: nowrap;
 }
 
 /* =============================================
