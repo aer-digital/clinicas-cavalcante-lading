@@ -5,6 +5,8 @@ import campanhas from '../../assets/data/campanhas.json';
 // Pega a campanha correspondente ao mês atual
 const mesAtualIndex = new Date().getMonth()
 const campanhaDoMes = computed(() => campanhas[mesAtualIndex])
+// Controla a exibicao da imagem da campanha, evitando renderizar a coluna quando o JSON nao tiver foto.
+const campanhaTemImagem = ref(Boolean(campanhaDoMes.value?.imagem?.trim()));
 
 onMounted(() => {
   form.value.token = Date.now(); // marca o tempo de renderização do formulário
@@ -721,7 +723,7 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="right-content">
                   <h4>Ginecologia</h4>
                   <p>Apartir de 10x</p>
-                  <h2>R$58,30</h2>
+                  <h2>R$63,30</h2>
                 </div>
               </div>
             </div>
@@ -1157,9 +1159,9 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <div class="mx-3">
                   <!-- <h4>Clinico Geral</h4> -->
                   <span>Até 39 anos</span>
-                  <h2 style="margin-bottom: 15px;">R$583,00</h2>
+                  <h2 style="margin-bottom: 15px;">R$633,00</h2>
                   <span>+40 anos</span>
-                  <h2>R$704,00</h2>
+                  <h2>R$755,00</h2>
                   <hr>
                   <span>10x sem juros ou 10% de desconto no Dinheiro ou PIX</span>
                 </div>
@@ -1237,7 +1239,7 @@ const estaDentroDoHorarioComercial = computed(() => {
         </div>
         <div id="campanha" class="modal-body" v-if="campanhaDoMes">
           <div class="row">
-            <div class="col-12 col-lg-6 order-2 order-lg-1 pb-3">
+            <div class="col-12 col-lg order-2 order-lg-1 pb-3">
               <h1 class="mb-2" style="line-height: 1.1; font-weight: 600;">{{ campanhaDoMes.titulo }}</h1>
               <h4 style="line-height: 1.1;">{{ campanhaDoMes.subtitulo }}</h4>
               <p v-html="campanhaDoMes.texto"></p>
@@ -1245,8 +1247,8 @@ const estaDentroDoHorarioComercial = computed(() => {
                 <button class="btn">Saiba +</button>
               </a>
             </div>
-            <div id="campanha-img" class="col-12 col-lg-6 order-1 order-lg-2 mb-3">
-              <img :src="campanhaDoMes.imagem" :alt="campanhaDoMes.titulo" />
+            <div id="campanha-img" class="col-12 col-lg-6 order-1 order-lg-2 mb-3" v-if="campanhaTemImagem">
+              <img :src="campanhaDoMes.imagem" :alt="campanhaDoMes.titulo" v-on:error="campanhaTemImagem = false"/>
             </div>
 
           </div>
