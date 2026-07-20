@@ -1207,6 +1207,7 @@ const faqGroups = [
     background: var(--vs-primary);
     padding: 2rem 3rem;
     border-radius: 1rem;
+    overflow: hidden;
   }
 }
 .vs-about-grid {
@@ -1258,7 +1259,7 @@ const faqGroups = [
 .vs-about-img img {
   position: absolute;
   inset: 0;
-  // width: 100%;
+  left: -25%;
   height: 130%;
   object-fit: cover;
   border-radius: 12px;
