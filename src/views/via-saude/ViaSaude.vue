@@ -446,7 +446,7 @@ const faqGroups = [
             <table class="vs-compare-table">
               <thead>
                 <tr>
-                  <th>Principais benefícios</th>
+                  <th style="color: #fff;">Principais benefícios</th>
                   <th>Bronze</th>
                   <th>Prata</th>
                   <th>Ouro</th>
@@ -1081,7 +1081,7 @@ const faqGroups = [
   left: 0;
   color: var(--vs-primary);
 }
-.vs-plan-btn { margin-top: auto; }
+.vs-plan-btn { margin-top: auto; display: flex;}
 .vs-plan-btn .vs-btn { width: 100%; text-align: center; }
 
 /* Toggle Individual / Empresarial */
