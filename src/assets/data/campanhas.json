@@ -74,25 +74,25 @@
   {
     "mes": "Outubro",
     "imagem": "/assets/img/campanhas/outubro.png",
-    "titulo": "Mês de prevenção do câncer de mama",
-    "subtitulo": "Pacote da campanha: 160,00 consulta com retorno na ginecologia e usg de mama",
-    "texto": "Valorize a saúde, bem-estar e sua vida. Faça o autoexame contra o câncer de mama. <br/>O diagnóstico precoce pode salvar vidas. Procure um médico e realize o seu!",
+    "titulo": "Outubro Rosa",
+    "subtitulo": "Mês de conscientização e prevenção do câncer de mama",
+    "texto": "Cuidar da saúde também é um gesto de amor-próprio. Neste Outubro Rosa, preparamos pacotes promocionais com consultas e exames para apoiar a prevenção e o diagnóstico precoce do câncer de mama.<br/><br/>Entre em contato para conhecer as opções, os valores e agendar seu atendimento.",
     "href": "https://wa.me/+551333024002"
   },
   {
     "mes": "Novembro",
     "imagem": "/assets/img/campanhas/novembro.png",
     "titulo": "Novembro Azul",
-    "subtitulo": "Previnir é uma das formas de lutar",
-    "texto": "",
+    "subtitulo": "Mês de conscientização e prevenção do câncer de próstata",
+    "texto": "A prevenção e o acompanhamento médico fazem a diferença. Durante o Novembro Azul, oferecemos pacotes promocionais com consultas e exames voltados à saúde do homem.<br/><br/>Entre em contato para conhecer as opções, os valores e agendar seu atendimento.",
     "href": "https://wa.me/+551333024002"
   },
   {
     "mes": "Dezembro",
     "imagem": "/assets/img/campanhas/dezembro.png",
-    "titulo": "Dezembro Laranja",
-    "subtitulo": "Previnir é uma das formas de lutar",
-    "texto": "",
+    "titulo": "Dezembro: mês de cuidar da saúde",
+    "subtitulo": "Termine o ano priorizando o seu bem-estar",
+    "texto": "Aproveite este período para colocar os cuidados com a saúde em dia. Conte com nossa equipe para receber orientação, realizar consultas e começar o novo ano cuidando melhor de você.<br/><br/>Entre em contato para saber mais e agendar seu atendimento.",
     "href": "https://wa.me/+551333024002"
   }
 ]
