@@ -8,8 +8,16 @@ const campanhaDoMes = computed(() => campanhas[mesAtualIndex])
 // Controla a exibicao da imagem da campanha, evitando renderizar a coluna quando o JSON nao tiver foto.
 const campanhaTemImagem = ref(Boolean(campanhaDoMes.value?.imagem?.trim()));
 
-const abrirChat = () => {
-  window.hWidget?.show('overlay');
+const CHAT_URL = 'https://wshort.me/OheW';
+
+const abrirChat = (event) => {
+  const dominioOficial = /(^|\.)centromedicocavalcante\.com\.br$/.test(window.location.hostname);
+  const widgetPronto = document.getElementById('h-widget-iframe') && window.hWidget?.show;
+
+  if (dominioOficial && widgetPronto) {
+    event.preventDefault();
+    window.hWidget.show('overlay');
+  }
 };
 
 onMounted(() => {
@@ -347,7 +355,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <li class="scroll-to-section"><a href="#contact">Fale conosco</a></li>
               <li class="scroll-to-section">
                 <div class="main-blue-button">
-                  <button type="button" @click="abrirChat">Chat</button>
+                  <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" @click="abrirChat">Chat</a>
                 </div>
               </li>
             </ul>
@@ -827,8 +835,9 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div style="display: flex; flex-direction: column;">
                 <a target="_blank" href="tel:+551333045401"><i class="fa fa-phone" aria-hidden="true"
                     style="margin-right: 20px;"></i><span>(13)</span> 3304 - 5401</a>
-                <button type="button" class="chat-contact" @click="abrirChat"><i
-                    class="fa fa-comments" aria-hidden="true" style="margin-right: 20px;"></i>Fale pelo chat</button>
+                <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="chat-contact"
+                  @click="abrirChat"><i class="fa fa-comments" aria-hidden="true"
+                    style="margin-right: 20px;"></i>Fale pelo chat</a>
               </div>
             </div>
 
@@ -1123,7 +1132,8 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <button type="button" class="btn btn-chat" @click="abrirChat">Fale pelo chat</button>
+              <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="btn btn-chat"
+                @click="abrirChat">Fale pelo chat</a>
             </div>
           </div>
         </div>
@@ -1161,7 +1171,8 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <button type="button" class="btn btn-chat" @click="abrirChat">Fale pelo chat</button>
+              <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="btn btn-chat"
+                @click="abrirChat">Fale pelo chat</a>
             </div>
           </div>
         </div>
@@ -1203,7 +1214,8 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <button type="button" class="btn btn-chat" @click="abrirChat">Fale pelo chat</button>
+              <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="btn btn-chat"
+                @click="abrirChat">Fale pelo chat</a>
             </div>
           </div>
         </div>
@@ -1241,7 +1253,8 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <button type="button" class="btn btn-chat" @click="abrirChat">Fale pelo chat</button>
+              <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="btn btn-chat"
+                @click="abrirChat">Fale pelo chat</a>
             </div>
           </div>
         </div>
@@ -1262,7 +1275,8 @@ const estaDentroDoHorarioComercial = computed(() => {
               <h1 class="mb-2" style="line-height: 1.1; font-weight: 600;">{{ campanhaDoMes.titulo }}</h1>
               <h4 style="line-height: 1.1;">{{ campanhaDoMes.subtitulo }}</h4>
               <p v-html="campanhaDoMes.texto"></p>
-              <button type="button" class="btn" @click="abrirChat">Saiba mais</button>
+              <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="btn"
+                @click="abrirChat">Saiba mais</a>
             </div>
             <div id="campanha-img" class="col-12 col-lg-6 order-1 order-lg-2 mb-3" v-if="campanhaTemImagem">
               <img :src="campanhaDoMes.imagem" :alt="campanhaDoMes.titulo" v-on:error="campanhaTemImagem = false"/>
@@ -1429,7 +1443,7 @@ body {
     white-space: pre-line;
   }
 
-  button {
+  .btn {
     margin-top: 20px;
     color: $white;
     font-size: 1.3rem;
