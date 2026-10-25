@@ -1044,6 +1044,13 @@ const estaDentroDoHorarioComercial = computed(() => {
     </div>
   </footer>
 
+  <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="chat-floating-link"
+    aria-label="Abrir chat de atendimento" title="Fale conosco pelo chat" @click="abrirChat">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M20 2H4a2 2 0 0 0-2 2v14l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm0 10H5.17L4 13.17V4h16v8Zm-3 4H8a2 2 0 0 0 2 2h8l4 4v-7.17A3.97 3.97 0 0 1 20 16h-3Z"/>
+    </svg>
+  </a>
+
   <!-- Modal -->
   <div class="modal fade" id="modalConsulta" tabindex="-1" aria-labelledby="modalConsultaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -1361,6 +1368,46 @@ body {
 
 .pass    { color: $pass    !important; }
 .notPass { color: $notPass !important; }
+
+.chat-floating-link {
+  position: fixed;
+  right: calc(22px + env(safe-area-inset-right));
+  bottom: calc(22px + env(safe-area-inset-bottom));
+  z-index: 1040;
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  background: #15803d;
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(21, 128, 61, .32);
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+  }
+
+  &:hover {
+    color: $white;
+    background: #116b33;
+    box-shadow: 0 10px 28px rgba(21, 128, 61, .4);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid $white;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(21, 128, 61, .45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-floating-link { transition: none; }
+}
 
 #plans {
   h2, p {
