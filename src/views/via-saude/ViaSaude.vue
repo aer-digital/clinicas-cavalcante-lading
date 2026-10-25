@@ -89,14 +89,18 @@ const faqGroups = [
         <div class="vs-container">
           <div class="vs-topbar-inner">
             <div class="vs-topbar-links">
-              <a href="https://planoonline.com.br/portal/redirect/viasaude/rede-credenciada" target="_blank">
+              <a href="https://portal-viasaude.cavalcante.tech" target="_blank" rel="noopener noreferrer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M11 7 9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></svg>
+                Portal
+              </a>
+              <!-- <a href="https://planoonline.com.br/portal/redirect/viasaude/rede-credenciada" target="_blank">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 Rede credenciada
-              </a>
-              <a href="https://planoonline.com.br/portal/redirect/viasaude/segunda-via" target="_blank">
+              </a> -->
+              <!-- <a href="https://planoonline.com.br/portal/redirect/viasaude/segunda-via" target="_blank">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
                 Segunda Via
-              </a>
+              </a> -->
             </div>
             <div class="vs-topbar-contacts">
               <a href="https://wa.me/+551321912391" target="_blank">
@@ -121,7 +125,7 @@ const faqGroups = [
               <a href="#inicio">Início</a>
               <a href="#planos">Planos</a>
               <a href="#como-funciona">Como funciona</a>
-              <a href="https://planoonline.com.br/portal/redirect/viasaude/rede-credenciada" target="_blank">Rede credenciada</a>
+              <!-- <a href="https://planoonline.com.br/portal/redirect/viasaude/rede-credenciada" target="_blank">Rede credenciada</a> -->
               <a href="#faq">FAQ</a>
             </nav>
             <a href="https://wa.me/+551321912391" class="vs-btn vs-btn-wpp" target="_blank">
