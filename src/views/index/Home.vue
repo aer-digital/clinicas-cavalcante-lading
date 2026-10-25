@@ -8,6 +8,10 @@ const campanhaDoMes = computed(() => campanhas[mesAtualIndex])
 // Controla a exibicao da imagem da campanha, evitando renderizar a coluna quando o JSON nao tiver foto.
 const campanhaTemImagem = ref(Boolean(campanhaDoMes.value?.imagem?.trim()));
 
+const abrirChat = () => {
+  window.hWidget?.show('overlay');
+};
+
 onMounted(() => {
   form.value.token = Date.now(); // marca o tempo de renderização do formulário
 
@@ -178,22 +182,36 @@ const file = ref(null)
 const fileInput = ref(null)
 
 const itemsPerGroup = 2;
-const grouped = computed(() => {
-  const groups = [];
-  for (let i = 0; i < 24; i += itemsPerGroup) {
-    groups.push(
-      [{ title: `Project ${i}`, category: "Convênio", image: `assets/img/convenios/${i}.jpg`, link: "#" },
-      { title: `Project ${i + 1}`, category: "Convênio", image: `assets/img/convenios/${i + 1}.jpg`, link: "#" }]
-    );
-  }
-  for (let i = 0; i < 10; i += itemsPerGroup) {
-    groups.push(
-      [{ title: `Project ${i}`, category: "Sindicato", image: `assets/img/sindicatos/${i}.jpg`, link: "#" },
-      { title: `Project ${i + 1}`, category: "Sindicato", image: `assets/img/sindicatos/${i + 1}.jpg`, link: "#" }]
-    );
-  }
 
-  return groups;
+const convenioImages = [
+  '0.jpg', '1.jpg', '2.jpg', '3.jpg', '5.jpg', '6.png', '7.jpg',
+  '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '15.jpg',
+  '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '23.png',
+];
+
+const sindicatoImages = [
+  '0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
+  '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg',
+];
+
+const groupPartnerImages = (images, category, directory) => {
+  const projects = images.map((image) => ({
+    title: `${category} parceiro`,
+    category,
+    image: `/assets/img/${directory}/${image}`,
+  }));
+
+  return Array.from(
+    { length: Math.ceil(projects.length / itemsPerGroup) },
+    (_, index) => projects.slice(index * itemsPerGroup, (index + 1) * itemsPerGroup),
+  );
+};
+
+const grouped = computed(() => {
+  return [
+    ...groupPartnerImages(convenioImages, 'Convênio', 'convenios'),
+    ...groupPartnerImages(sindicatoImages, 'Sindicato', 'sindicatos'),
+  ];
 });
 const pacoteSelecionado = ref('');
 
@@ -328,7 +346,9 @@ const estaDentroDoHorarioComercial = computed(() => {
               <li class="scroll-to-section"><a href="#portfolio">Parceiros</a></li>
               <li class="scroll-to-section"><a href="#contact">Fale conosco</a></li>
               <li class="scroll-to-section">
-                <div class="main-blue-button"><a href="https://wa.me/+551333024002" target="_blank">WhatsApp</a></div>
+                <div class="main-blue-button">
+                  <button type="button" @click="abrirChat">Chat</button>
+                </div>
               </li>
             </ul>
             <a class='menu-trigger'>
@@ -768,10 +788,9 @@ const estaDentroDoHorarioComercial = computed(() => {
         <div class="col-lg-12">
           <div class="loop owl-carousel">
             <div v-for="(group, groupIndex) in grouped" :key="groupIndex" class="item">
-              <div v-for="(project, projectIndex) in group" :key="projectIndex" class="portfolio-item">
+              <div v-for="project in group" :key="project.image" class="portfolio-item">
                 <div class="thumb">
-                  <img :src="project.image" :alt="project.title"
-                    @error="e => e.target.src = project.image.replace('.jpg', '.png')" />
+                  <img :src="project.image" :alt="project.title" />
                   <div class="hover-content">
                     <div class="inner-content">
                       <!-- <h4>{{ project.title }}</h4> -->
@@ -808,8 +827,8 @@ const estaDentroDoHorarioComercial = computed(() => {
               <div style="display: flex; flex-direction: column;">
                 <a target="_blank" href="tel:+551333045401"><i class="fa fa-phone" aria-hidden="true"
                     style="margin-right: 20px;"></i><span>(13)</span> 3304 - 5401</a>
-                <a target="_blank" href="https://wa.me/+551333024002"><i class="fa fa-whatsapp" aria-hidden="true"
-                    style="margin-right: 20px;"></i><span>(13)</span> 3302 - 4002</a>
+                <button type="button" class="chat-contact" @click="abrirChat"><i
+                    class="fa fa-comments" aria-hidden="true" style="margin-right: 20px;"></i>Fale pelo chat</button>
               </div>
             </div>
 
@@ -1104,7 +1123,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=551333024002&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Cl%C3%ADnico%20geral!">WhatsApp</a>
+              <button type="button" class="btn btn-chat" @click="abrirChat">Fale pelo chat</button>
             </div>
           </div>
         </div>
@@ -1142,7 +1161,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=551333024002&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%20!">WhatsApp</a>
+              <button type="button" class="btn btn-chat" @click="abrirChat">Fale pelo chat</button>
             </div>
           </div>
         </div>
@@ -1184,7 +1203,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=551333024002&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Ginecologia%2040+!">WhatsApp</a>
+              <button type="button" class="btn btn-chat" @click="abrirChat">Fale pelo chat</button>
             </div>
           </div>
         </div>
@@ -1222,7 +1241,7 @@ const estaDentroDoHorarioComercial = computed(() => {
 
             <div class="contact-buttons mt-4">
               <a class="btn btn-phone" href="tel:+551333045401">Agende por telefone</a>
-              <a class="btn btn-wpp" href="https://api.whatsapp.com/send?phone=551333024002&text=Ol%C3%A1,%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Checkup%20Pediatria">WhatsApp</a>
+              <button type="button" class="btn btn-chat" @click="abrirChat">Fale pelo chat</button>
             </div>
           </div>
         </div>
@@ -1243,9 +1262,7 @@ const estaDentroDoHorarioComercial = computed(() => {
               <h1 class="mb-2" style="line-height: 1.1; font-weight: 600;">{{ campanhaDoMes.titulo }}</h1>
               <h4 style="line-height: 1.1;">{{ campanhaDoMes.subtitulo }}</h4>
               <p v-html="campanhaDoMes.texto"></p>
-              <a :href="campanhaDoMes.href" target="_blank">
-                <button class="btn">Saiba +</button>
-              </a>
+              <button type="button" class="btn" @click="abrirChat">Saiba mais</button>
             </div>
             <div id="campanha-img" class="col-12 col-lg-6 order-1 order-lg-2 mb-3" v-if="campanhaTemImagem">
               <img :src="campanhaDoMes.imagem" :alt="campanhaDoMes.titulo" v-on:error="campanhaTemImagem = false"/>
@@ -1286,7 +1303,8 @@ body {
 #contact {
   * { color: $base; }
 
-  .atendimento a {
+  .atendimento a,
+  .atendimento button {
     font-size: 1.5rem;
     font-weight: bolder;
 
@@ -1294,6 +1312,14 @@ body {
       font-size: 1.1rem;
       font-weight: 100;
     }
+  }
+
+  .atendimento .chat-contact {
+    align-self: flex-start;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
   }
 
   #location p { line-height: 1.4; }
@@ -1342,15 +1368,16 @@ body {
     display: flex;
     gap: 20px;
 
-    a { padding: .7rem 1.5rem; }
+    a,
+    button { padding: .7rem 1.5rem; }
 
     .btn-phone,
-    .btn-wpp {
+    .btn-chat {
       background-color: $primary;
       color: $white;
     }
 
-    .btn-wpp { font-weight: 600; }
+    .btn-chat { font-weight: 600; }
   }
 
   .img .values {
