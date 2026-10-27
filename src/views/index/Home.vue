@@ -380,62 +380,50 @@ const estaDentroDoHorarioComercial = computed(() => {
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+  <section class="clinic-hero" id="top" aria-labelledby="clinic-hero-title">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6 align-self-center">
-              <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                <div class="row">
-                  <!-- <div class="col-lg-4 col-sm-4">
-                    <div class="info-stat">
-                      <h6>Agency Status:</h6>
-                      <h4>Ready Work</h4>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="info-stat">
-                      <h6>Price:</h6>
-                      <h4>$720/Month</h4>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="info-stat">
-                      <h6>Schedules</h6>
-                      <h4>$450/Meeting</h4>
-                    </div>
-                  </div> -->
-                  <div class="col-lg-12">
-                    <h2>Centro de Especialidades Médicas</h2>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="main-green-button scroll-to-section">
-                      <a href="#contact">Fale com nossos atendentes</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div class="row align-items-center clinic-hero-row">
+        <div class="col-lg-6">
+          <div class="clinic-hero-content header-text wow fadeInLeft" data-wow-duration="0.8s">
+            <span class="clinic-hero-eyebrow"><span aria-hidden="true"></span>Cuidado médico perto de você</span>
+            <h1 id="clinic-hero-title">Sua saúde merece cuidado completo.</h1>
+            <p>Consultas, exames e diferentes especialidades em um só lugar, com atendimento humano para você e sua família.</p>
+            <div class="clinic-hero-actions">
+              <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="clinic-hero-primary" @click="abrirChat">
+                Agendar atendimento
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </a>
+              <a href="#nossa-clinica" class="clinic-hero-secondary">Conheça nossa clínica</a>
             </div>
-            <div class="col-lg-6 img-doctors">
-              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="/assets/img/medic.png" alt="">
-              </div>
+            <ul class="clinic-hero-trust" aria-label="Diferenciais do Centro Médico Cavalcante">
+              <li><strong>Desde 2011</strong><span>cuidando de você</span></li>
+              <li><strong>Consultas e exames</strong><span>em um só lugar</span></li>
+              <li><strong>Guarujá e Praia Grande</strong><span>na Baixada Santista</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="clinic-hero-visual wow fadeInRight" data-wow-duration="0.8s">
+            <div class="clinic-hero-shape" aria-hidden="true"></div>
+            <img src="/assets/img/medic.png" alt="Equipe médica do Centro Médico Cavalcante" width="500" height="500">
+            <div class="clinic-hero-note">
+              <span class="clinic-hero-note-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.35 7-11V5l-7-3-7 3v5c0 6.65 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /><path d="m9 11 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              <span><strong>Atendimento humanizado</strong>Saúde com acolhimento e confiança</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <section id="campanha-atual" class="campaign-highlight" aria-labelledby="campaign-highlight-title">
     <div class="container">
       <article class="campaign-highlight-card">
         <div class="row align-items-center g-0">
           <div :class="campanhaTemImagem ? 'col-12 col-lg-7' : 'col-12'" class="campaign-highlight-content">
-            <span class="campaign-highlight-label">
+            <!-- <span class="campaign-highlight-label">
               {{ campanhaEstaAtualizada ? `Campanha de ${campanhaDoMes.mes}` : 'Cuidado contínuo' }}
-            </span>
+            </span> -->
             <h2 id="campaign-highlight-title">{{ campanhaExibida.titulo }}</h2>
             <h3>{{ campanhaExibida.subtitulo }}</h3>
             <div class="campaign-highlight-text" v-html="campanhaExibida.texto"></div>
@@ -1067,7 +1055,7 @@ const estaDentroDoHorarioComercial = computed(() => {
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <p>Copyright © 2025 A&R All Rights Reserved.
+          <p>Copyright © 2026 A&R All Rights Reserved.
 
             <!-- <br>Web Designed by <a rel="nofollow" href="https://templatemo.com"
               title="free CSS templates">TemplateMo</a> -->
@@ -1409,7 +1397,7 @@ body {
   align-items: center;
   justify-content: center;
   color: $white;
-  background: #15803d;
+  background: #183d30;
   border-radius: 50%;
   box-shadow: 0 8px 24px rgba(21, 128, 61, .32);
   transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
@@ -1509,7 +1497,7 @@ body {
   overflow: hidden;
   background: linear-gradient(135deg, #f3faf7 0%, #ffffff 62%);
   border: 1px solid rgba(65, 142, 113, .2);
-  border-radius: 24px;
+  border-radius: 1rem;
   box-shadow: 0 18px 45px rgba(36, 76, 61, .11);
 }
 
@@ -1680,6 +1668,203 @@ body {
 </style>
 
 <style scoped lang="scss">
+.clinic-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 190px 0 96px;
+  background: radial-gradient(circle at 8% 15%, rgba(65, 142, 113, .13), transparent 25%), linear-gradient(115deg, #f7fbf9 0%, #fff 58%, #edf6f2 100%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -100px;
+    bottom: -230px;
+    width: 510px;
+    height: 510px;
+    border: 1px solid rgba(65, 142, 113, .15);
+    border-radius: 50%;
+    box-shadow: 0 0 0 54px rgba(65, 142, 113, .035), 0 0 0 108px rgba(65, 142, 113, .025);
+    pointer-events: none;
+  }
+}
+
+.clinic-hero-row { min-height: 510px; }
+.clinic-hero-content { position: relative; z-index: 2; max-width: 620px; }
+
+.clinic-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: #285b49;
+  font-size: .83rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+
+  > span { width: 28px; height: 2px; background: #d68c45; }
+}
+
+.clinic-hero h1 {
+  max-width: 600px;
+  margin: 0 0 22px;
+  color: #183d30;
+  font-size: clamp(2.8rem, 5vw, 4.7rem);
+  font-weight: 800;
+  letter-spacing: -.055em;
+  line-height: .98;
+}
+
+.clinic-hero-content > p {
+  max-width: 570px;
+  margin: 0 0 32px;
+  color: #52655e;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.clinic-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  margin-bottom: 42px;
+}
+
+.clinic-hero-primary,
+.clinic-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease, color .2s ease;
+}
+
+.clinic-hero-primary {
+  gap: 12px;
+  padding: 0 24px;
+  border-radius: 12px;
+  background: #285b49;
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(40, 91, 73, .22);
+
+  &:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 16px 34px rgba(40, 91, 73, .28); }
+}
+
+.clinic-hero-secondary {
+  color: #285b49;
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 91, 73, .3);
+  text-underline-offset: 5px;
+  &:hover { color: #d07937; }
+}
+
+.clinic-hero-primary:focus-visible,
+.clinic-hero-secondary:focus-visible { outline: 3px solid rgba(214, 140, 69, .55); outline-offset: 4px; }
+
+.clinic-hero-trust {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 610px;
+  margin: 0;
+  padding: 22px 0 0;
+  border-top: 1px solid rgba(40, 91, 73, .16);
+  list-style: none;
+
+  li { display: flex; flex-direction: column; padding: 0 18px; border-left: 1px solid rgba(40, 91, 73, .14); }
+  li:first-child { padding-left: 0; border-left: 0; }
+  strong { color: #23483b; font-size: .92rem; line-height: 1.35; }
+  span { margin-top: 4px; color: #73817c; font-size: .76rem; line-height: 1.35; }
+}
+
+.clinic-hero-visual {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 560px);
+  min-height: 510px;
+  margin-left: auto;
+
+  > img {
+    position: absolute;
+    z-index: 2;
+    right: 12px;
+    bottom: 0;
+    width: min(100%, 500px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 28px rgba(25, 67, 52, .15));
+  }
+}
+
+.clinic-hero-shape {
+  position: absolute;
+  z-index: 1;
+  inset: 12px 0 24px 44px;
+  border-radius: 48% 48% 22% 48%;
+  background: linear-gradient(145deg, #bcd9cf 0%, #76aa97 100%);
+  transform: rotate(3deg);
+
+  &::before { content: ''; position: absolute; inset: 18px; border: 1px solid rgba(255, 255, 255, .5); border-radius: inherit; }
+}
+
+.clinic-hero-note {
+  position: absolute;
+  z-index: 3;
+  left: 4px;
+  bottom: 35px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 280px;
+  padding: 14px 18px;
+  border: 1px solid rgba(40, 91, 73, .1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 16px 36px rgba(29, 65, 52, .16);
+  backdrop-filter: blur(8px);
+
+  > span:last-child { display: flex; flex-direction: column; color: #6c7c76; font-size: .72rem; line-height: 1.4; }
+  strong { color: #285b49; font-size: .83rem; }
+}
+
+.clinic-hero-note-icon {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e5f2ed;
+  color: #285b49;
+}
+
+@media (max-width: 991px) {
+  .clinic-hero { padding: 145px 0 70px; }
+  .clinic-hero-row { min-height: 0; }
+  .clinic-hero-content { max-width: 720px; margin: 0 auto; text-align: center; }
+  .clinic-hero h1, .clinic-hero-content > p, .clinic-hero-trust { margin-left: auto; margin-right: auto; }
+  .clinic-hero-eyebrow, .clinic-hero-actions { justify-content: center; }
+  .clinic-hero-visual { min-height: 470px; margin: 48px auto 0; }
+}
+
+@media (max-width: 575px) {
+  .clinic-hero { padding: 125px 0 54px; }
+  .clinic-hero h1 { font-size: clamp(2.45rem, 12vw, 3.2rem); }
+  .clinic-hero-content > p { font-size: .98rem; line-height: 1.65; }
+  .clinic-hero-actions { align-items: stretch; flex-direction: column; margin-bottom: 32px; }
+  .clinic-hero-primary, .clinic-hero-secondary { width: 100%; }
+  .clinic-hero-trust { display: none; }
+  .clinic-hero-visual { min-height: 350px; margin-top: 36px; }
+  .clinic-hero-shape { inset: 5px 4px 20px 22px; }
+  .clinic-hero-visual > img { right: 0; }
+  .clinic-hero-note { left: 0; bottom: 16px; padding: 11px 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clinic-hero-primary, .clinic-hero-secondary { transition: none; }
+}
+
 .about-us {
   margin-top: 10%;
 

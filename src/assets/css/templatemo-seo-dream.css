@@ -1364,7 +1364,7 @@ Services Style
   height: 100%;
   padding: 20px 30px;
   border: 2px solid #f7f7f7;
-  border-radius: 5px;
+  border-radius: 1rem;
   transition: all .3s;
   margin-bottom: 30px;
 }
