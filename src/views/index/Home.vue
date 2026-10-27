@@ -2,13 +2,25 @@
 import { ref, computed, onMounted } from 'vue';
 import U3Carousel from '../../components/UCarousel.vue';
 import campanhas from '../../assets/data/campanhas.json';
-// Pega a campanha correspondente ao mês atual
-const mesAtualIndex = new Date().getMonth()
-const campanhaDoMes = computed(() => campanhas[mesAtualIndex])
-// Controla a exibicao da imagem da campanha, evitando renderizar a coluna quando o JSON nao tiver foto.
-const campanhaTemImagem = ref(Boolean(campanhaDoMes.value?.imagem?.trim()));
+
+const agora = new Date();
+const mesAtualIndex = agora.getMonth();
+const anoAtual = agora.getFullYear();
+const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+const campanhaDoMes = computed(() => campanhas.find((campanha) => campanha.mes === meses[mesAtualIndex]));
+const campanhaEstaAtualizada = computed(() => Number(campanhaDoMes.value?.ano) === anoAtual);
+const campanhaFallback = {
+  titulo: 'Cuidado para todos os momentos',
+  subtitulo: 'Sua saúde merece atenção durante o ano inteiro',
+  texto: 'Conte com o Centro Médico Cavalcante para realizar consultas, exames e cuidar do seu bem-estar com uma equipe preparada para receber você.',
+  imagem: '',
+};
+const campanhaExibida = computed(() => campanhaEstaAtualizada.value ? campanhaDoMes.value : campanhaFallback);
+// Evita reservar uma coluna vazia quando a campanha não possui arte ou a imagem falha.
+const campanhaTemImagem = ref(Boolean(campanhaExibida.value?.imagem?.trim()));
 
 const CHAT_URL = 'https://wshort.me/OheW';
+const CONVERSION_FORM_URL = 'https://forms.gle/4VbstHsMEsQSbMGc8';
 
 const abrirChat = (event) => {
   const dominioOficial = /(^|\.)centromedicocavalcante\.com\.br$/.test(window.location.hostname);
@@ -28,9 +40,7 @@ onMounted(() => {
   captcha.value.b = Math.floor(Math.random() * 9) + 1;
 
   setTimeout(() => {
-    if(campanhaDoMes.value.titulo != "" && campanhaDoMes.value.subtitulo != "") {
-      $('#modalCampanha').modal('show');
-    }
+    $('#modalConversao').modal('show');
   }, 1000);
 });
 
@@ -417,6 +427,29 @@ const estaDentroDoHorarioComercial = computed(() => {
       </div>
     </div>
   </div>
+
+  <section id="campanha-atual" class="campaign-highlight" aria-labelledby="campaign-highlight-title">
+    <div class="container">
+      <article class="campaign-highlight-card">
+        <div class="row align-items-center g-0">
+          <div :class="campanhaTemImagem ? 'col-12 col-lg-7' : 'col-12'" class="campaign-highlight-content">
+            <span class="campaign-highlight-label">
+              {{ campanhaEstaAtualizada ? `Campanha de ${campanhaDoMes.mes}` : 'Cuidado contínuo' }}
+            </span>
+            <h2 id="campaign-highlight-title">{{ campanhaExibida.titulo }}</h2>
+            <h3>{{ campanhaExibida.subtitulo }}</h3>
+            <div class="campaign-highlight-text" v-html="campanhaExibida.texto"></div>
+            <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="campaign-highlight-cta"
+              @click="abrirChat">Saiba mais</a>
+          </div>
+          <div v-if="campanhaTemImagem" class="col-12 col-lg-5 campaign-highlight-image">
+            <img :src="campanhaExibida.imagem" :alt="`Arte da campanha ${campanhaExibida.titulo}`"
+              @error="campanhaTemImagem = false" />
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
 
   <div id="nossa-clinica" class="our-services section">
     <div class="container">
@@ -1270,28 +1303,24 @@ const estaDentroDoHorarioComercial = computed(() => {
     </div>
   </div>
 
-  <div class="modal fade" id="modalCampanha" tabindex="-3" aria-labelledby="modalCampanhaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-      <div class="modal-content">
+  <div class="modal fade" id="modalConversao" tabindex="-1" aria-labelledby="modalConversaoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content conversion-modal">
         <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <span class="conversion-modal-eyebrow">Benefício especial</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
-        <div id="campanha" class="modal-body" v-if="campanhaDoMes">
-          <div class="row">
-            <div class="col-12 col-lg order-2 order-lg-1 pb-3">
-              <h1 class="mb-2" style="line-height: 1.1; font-weight: 600;">{{ campanhaDoMes.titulo }}</h1>
-              <h4 style="line-height: 1.1;">{{ campanhaDoMes.subtitulo }}</h4>
-              <p v-html="campanhaDoMes.texto"></p>
-              <a :href="CHAT_URL" target="_blank" rel="noopener noreferrer" class="btn"
-                @click="abrirChat">Saiba mais</a>
-            </div>
-            <div id="campanha-img" class="col-12 col-lg-6 order-1 order-lg-2 mb-3" v-if="campanhaTemImagem">
-              <img :src="campanhaDoMes.imagem" :alt="campanhaDoMes.titulo" v-on:error="campanhaTemImagem = false"/>
-            </div>
-
-          </div>
+        <div class="modal-body conversion-modal-body">
+          <div class="conversion-modal-icon" aria-hidden="true">R$ 0</div>
+          <h2 id="modalConversaoLabel">E se sua próxima consulta médica saísse por R$ 0,00?</h2>
+          <p class="conversion-modal-lead">Parece bom demais? Mas existe uma forma de aproveitar esse benefício! 👀</p>
+          <p>O Centro Médico Cavalcante tem uma condição especial para você cuidar da sua saúde de um jeito diferente.</p>
+          <p>Quer descobrir como funciona e quem pode aproveitar?</p>
+          <a :href="CONVERSION_FORM_URL" target="_blank" rel="noopener noreferrer" class="conversion-modal-cta">
+            Preencha o formulário
+          </a>
+          <small>Um de nossos agentes entrará em contato com você.</small>
         </div>
-
       </div>
     </div>
   </div>
@@ -1469,39 +1498,184 @@ body {
   font-size: 3rem;
 }
 
-#campanha {
-  display: flex;
-  color: grey;
-  overflow-x: hidden;
+.campaign-highlight {
+  position: relative;
+  padding: 0 0 60px;
+  margin-top: -10px;
+  z-index: 2;
+}
 
-  &::-webkit-scrollbar       { width: 10px; height: 10px; }
-  &::-webkit-scrollbar-track { background: transparent; }
-  &::-webkit-scrollbar-thumb {
-    background-color: $base;
-    border-radius: 20px;
-    border: 3px solid grey;
+.campaign-highlight-card {
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3faf7 0%, #ffffff 62%);
+  border: 1px solid rgba(65, 142, 113, .2);
+  border-radius: 24px;
+  box-shadow: 0 18px 45px rgba(36, 76, 61, .11);
+}
+
+.campaign-highlight-content {
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.campaign-highlight-label,
+.conversion-modal-eyebrow {
+  display: inline-flex;
+  color: $primary-dark-2;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.campaign-highlight-content {
+  h2 {
+    max-width: 760px;
+    margin: 10px 0 8px;
+    color: $primary-dark-2;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  h3 {
+    max-width: 700px;
+    color: $primary;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+}
+
+.campaign-highlight-text {
+  max-width: 720px;
+  margin-top: 16px;
+  color: $dark2;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.campaign-highlight-cta,
+.conversion-modal-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 22px;
+  padding: 12px 24px;
+  color: $white;
+  font-weight: 700;
+  background: $primary;
+  border-radius: 999px;
+  transition: background-color .2s ease, transform .2s ease;
+
+  &:hover {
+    color: $white;
+    background: $primary-dark-2;
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(65, 142, 113, .35);
+    outline-offset: 3px;
+  }
+}
+
+.campaign-highlight-image {
+  align-self: stretch;
+  min-height: 320px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+  }
+}
+
+.conversion-modal {
+  overflow: hidden;
+  background: #fff;
+  border: 0;
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(20, 55, 43, .24);
+
+  .modal-header {
+    align-items: center;
+    padding: 20px 24px 0;
+    border: 0;
+  }
+}
+
+.conversion-modal-body {
+  padding: 12px 32px 34px;
+  text-align: center;
+
+  h2 {
+    margin: 16px 0 14px;
+    color: $primary-dark-2;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.08;
   }
 
   p {
-    color: $dark;
+    margin: 10px auto 0;
+    color: $dark2;
     font-size: 1rem;
-    line-height: 1.1;
-    margin-top: 10px;
-    white-space: pre-line;
+    line-height: 1.5;
   }
 
-  .btn {
-    margin-top: 20px;
-    color: $white;
-    font-size: 1.3rem;
-    background: $primary;
+  .conversion-modal-lead {
+    color: $primary-dark-2;
+    font-size: 1.08rem;
+    font-weight: 700;
   }
 
-  #campanha-img {
-    overflow: hidden;
-
-    img { border-radius: 10px; }
+  small {
+    display: block;
+    margin-top: 12px;
+    color: $dark2;
+    line-height: 1.4;
   }
+}
+
+.conversion-modal-icon {
+  display: inline-flex;
+  width: 78px;
+  height: 78px;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  font-size: 1.35rem;
+  font-weight: 800;
+  background: $primary;
+  border-radius: 50%;
+  box-shadow: 0 10px 24px rgba(65, 142, 113, .28);
+}
+
+@media (max-width: 991.98px) {
+  .campaign-highlight {
+    padding-bottom: 40px;
+    margin-top: 0;
+  }
+
+  .campaign-highlight-image {
+    min-height: 240px;
+
+    img { min-height: 240px; }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .campaign-highlight-card,
+  .conversion-modal { border-radius: 18px; }
+
+  .conversion-modal-body { padding: 10px 22px 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campaign-highlight-cta,
+  .conversion-modal-cta { transition: none; }
 }
 </style>
 

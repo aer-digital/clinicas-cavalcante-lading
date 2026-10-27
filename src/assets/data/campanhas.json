@@ -1,6 +1,7 @@
 [
   {
     "mes": "Janeiro",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/janeiro.png",
     "titulo": "Campanha de Verão",
     "subtitulo": "Ofertas quentes para começar o ano",
@@ -8,6 +9,7 @@
   },
   {
     "mes": "Fevereiro",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/fevereiro.png",
     "titulo": "Fevereiro Laranja",
     "subtitulo": "Mês de conscientização sobre a leucemia",
@@ -15,6 +17,7 @@
   },
   {
     "mes": "Março",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/marco.png",
     "titulo": "Março de Lilas",
     "subtitulo": "Prevenção do câncer de colo de útero",
@@ -22,6 +25,7 @@
   },
   {
     "mes": "Abril",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/abril.png",
     "titulo": "Abril Vermelho",
     "subtitulo": "Mês de prevenção contra a hipertensão arterial",
@@ -29,6 +33,7 @@
   },
   {
     "mes": "Maio",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/maio.png",
     "titulo": "Mês das Mães",
     "subtitulo": "Presentes que emocionam",
@@ -36,6 +41,7 @@
   },
   {
     "mes": "Junho",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/junho.png",
     "titulo": "Arraiá de Ofertas",
     "subtitulo": "Promoções de tirar o chapéu",
@@ -43,6 +49,7 @@
   },
   {
     "mes": "Julho",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/julho.jpg",
     "titulo": "Campanha Julho Turquesa!",
     "subtitulo": "Você sabia que mais de 30% da população sofre com olho seco e nem sabe?",
@@ -50,6 +57,7 @@
   },
   {
     "mes": "Agosto",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/agosto.jpg",
     "titulo": "Mês de conscientização das doenças cardiológicas",
     "subtitulo": "Uma avaliação cardiológica mais completa por um valor promicional",
@@ -57,6 +65,7 @@
   },
   {
     "mes": "Setembro",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/setembro.png",
     "titulo": "Campanha de valorização da vida",
     "subtitulo": "Você não está sozinho, procure ajuda ❤️",
@@ -64,6 +73,7 @@
   },
   {
     "mes": "Outubro",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/outubro.png",
     "titulo": "Outubro Rosa",
     "subtitulo": "Mês de conscientização e prevenção do câncer de mama",
@@ -71,6 +81,7 @@
   },
   {
     "mes": "Novembro",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/novembro.png",
     "titulo": "Novembro Azul",
     "subtitulo": "Mês de conscientização e prevenção do câncer de próstata",
@@ -78,6 +89,7 @@
   },
   {
     "mes": "Dezembro",
+    "ano": 2026,
     "imagem": "/assets/img/campanhas/dezembro.png",
     "titulo": "Dezembro: mês de cuidar da saúde",
     "subtitulo": "Termine o ano priorizando o seu bem-estar",
