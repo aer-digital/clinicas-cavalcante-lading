@@ -1501,7 +1501,7 @@ body {
   box-shadow: 0 18px 45px rgba(36, 76, 61, .11);
 }
 
-.campaign-highlight-content {
+.campaign-highlight .campaign-highlight-content {
   padding: clamp(28px, 5vw, 56px);
 }
 
@@ -1580,7 +1580,7 @@ body {
   }
 }
 
-.conversion-modal {
+.modal-content.conversion-modal {
   overflow: hidden;
   background: #fff;
   border: 0;
@@ -1594,7 +1594,7 @@ body {
   }
 }
 
-.conversion-modal-body {
+.conversion-modal .conversion-modal-body {
   padding: 12px 32px 34px;
   text-align: center;
 
@@ -1656,9 +1656,9 @@ body {
 
 @media (max-width: 575.98px) {
   .campaign-highlight-card,
-  .conversion-modal { border-radius: 18px; }
+  .modal-content.conversion-modal { border-radius: 18px; }
 
-  .conversion-modal-body { padding: 10px 22px 28px; }
+  .conversion-modal .conversion-modal-body { padding: 10px 22px 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
